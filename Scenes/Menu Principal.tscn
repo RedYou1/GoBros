@@ -1,7 +1,35 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scenes/Joueur.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Fond.tscn" type="PackedScene" id=2]
 
 [node name="Menu Principal" type="Node"]
 
 [node name="Joueur" parent="." instance=ExtResource( 1 )]
+
+[node name="Fond" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 160 )
+
+[node name="Fond2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 32, 160 )
+
+[node name="Fond3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 64, 160 )
+
+[node name="Fond4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 96, 160 )
+
+[node name="Fond5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 128, 160 )
+
+[node name="Fond6" parent="." instance=ExtResource( 2 )]
+position = Vector2( -32, 160 )
+
+[node name="Fond7" parent="." instance=ExtResource( 2 )]
+position = Vector2( -64, 160 )
+
+[node name="Fond8" parent="." instance=ExtResource( 2 )]
+position = Vector2( -96, 160 )
+
+[node name="Fond9" parent="." instance=ExtResource( 2 )]
+position = Vector2( -128, 160 )
