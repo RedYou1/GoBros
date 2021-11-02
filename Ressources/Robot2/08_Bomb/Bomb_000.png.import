@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Bomb_000.png-e295e4c5bc5962236d31e84b8972e398.stex"
+path="res://.import/Bomb_000.png-c84e1f80bdb7c565b3ad2802a2d7ba27.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Ressources/craftpix/PNG_Animations/Robot2/08_Bomb/Bomb_000.png"
-dest_files=[ "res://.import/Bomb_000.png-e295e4c5bc5962236d31e84b8972e398.stex" ]
+source_file="res://Ressources/Robot2/08_Bomb/Bomb_000.png"
+dest_files=[ "res://.import/Bomb_000.png-c84e1f80bdb7c565b3ad2802a2d7ba27.stex" ]
 
 [params]
 

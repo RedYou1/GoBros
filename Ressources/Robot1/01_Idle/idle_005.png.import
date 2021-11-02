@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/idle_005.png-79f67fe5a37f984e4a63806ef449faad.stex"
+path="res://.import/idle_005.png-f47076434332524676fe7fa8125f8a69.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Ressources/craftpix/PNG_Animations/Robot1/01_Idle/idle_005.png"
-dest_files=[ "res://.import/idle_005.png-79f67fe5a37f984e4a63806ef449faad.stex" ]
+source_file="res://Ressources/Robot1/01_Idle/idle_005.png"
+dest_files=[ "res://.import/idle_005.png-f47076434332524676fe7fa8125f8a69.stex" ]
 
 [params]
 

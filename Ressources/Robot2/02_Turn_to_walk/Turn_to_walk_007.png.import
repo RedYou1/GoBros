@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Turn_to_walk_007.png-d64f6a7c56106f71206e3877e914cfce.stex"
+path="res://.import/Turn_to_walk_007.png-8a4c0c15cc13d07b7d0740b2ee6c2fd6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Ressources/craftpix/PNG_Animations/Robot2/02_Turn_to_walk/Turn_to_walk_007.png"
-dest_files=[ "res://.import/Turn_to_walk_007.png-d64f6a7c56106f71206e3877e914cfce.stex" ]
+source_file="res://Ressources/Robot2/02_Turn_to_walk/Turn_to_walk_007.png"
+dest_files=[ "res://.import/Turn_to_walk_007.png-8a4c0c15cc13d07b7d0740b2ee6c2fd6.stex" ]
 
 [params]
 

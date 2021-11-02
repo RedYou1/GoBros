@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Death_005.png-28b06845b3ab9cf599f3b4732bd0c191.stex"
+path="res://.import/Death_005.png-8722ab6ad0cc7f7025e1cc663bd9176f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Ressources/craftpix/PNG_Animations/Robot1/13_Death/Death_005.png"
-dest_files=[ "res://.import/Death_005.png-28b06845b3ab9cf599f3b4732bd0c191.stex" ]
+source_file="res://Ressources/Robot1/13_Death/Death_005.png"
+dest_files=[ "res://.import/Death_005.png-8722ab6ad0cc7f7025e1cc663bd9176f.stex" ]
 
 [params]
 
