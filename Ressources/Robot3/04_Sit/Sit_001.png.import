@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Sit_001.png-3b2d410c0dae79941d0a4a2785dd6cc6.stex"
+path="res://.import/Sit_001.png-eb35d335fd4b06161f4bdd04b5027e98.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Ressources/craftpix/PNG_Animations/Robot3/04_Sit/Sit_001.png"
-dest_files=[ "res://.import/Sit_001.png-3b2d410c0dae79941d0a4a2785dd6cc6.stex" ]
+source_file="res://Ressources/Robot3/04_Sit/Sit_001.png"
+dest_files=[ "res://.import/Sit_001.png-eb35d335fd4b06161f4bdd04b5027e98.stex" ]
 
 [params]
 

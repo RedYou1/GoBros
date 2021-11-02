@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Attack_009.png-deebb48bdd1212ef5d2f3ca89bf10352.stex"
+path="res://.import/Attack_009.png-906e9ce80eacf92cc817f9831a23abff.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Ressources/craftpix/PNG_Animations/Robot1/06_Attack/Attack_009.png"
-dest_files=[ "res://.import/Attack_009.png-deebb48bdd1212ef5d2f3ca89bf10352.stex" ]
+source_file="res://Ressources/Robot1/06_Attack/Attack_009.png"
+dest_files=[ "res://.import/Attack_009.png-906e9ce80eacf92cc817f9831a23abff.stex" ]
 
 [params]
 
