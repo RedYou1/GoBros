@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Run_Shot_008.png-5bd75d1d61b45830b8fa97c3454d1a4f.stex"
+path="res://.import/Run_Shot_008.png-c45dcb007b1482f7fbc55d653a6a9c0b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Ressources/craftpix/PNG_Animations/Robot1/12_Run_Shot/Run_Shot_008.png"
-dest_files=[ "res://.import/Run_Shot_008.png-5bd75d1d61b45830b8fa97c3454d1a4f.stex" ]
+source_file="res://Ressources/Robot1/12_Run_Shot/Run_Shot_008.png"
+dest_files=[ "res://.import/Run_Shot_008.png-c45dcb007b1482f7fbc55d653a6a9c0b.stex" ]
 
 [params]
 
