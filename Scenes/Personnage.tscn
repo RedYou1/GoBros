@@ -5,10 +5,20 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 15.0
 
-[node name="Personnage" type="KinematicBody2D"]
+[node name="Personnage" type="KinematicBody2D" groups=[
+"Personnage",
+]]
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+
+[node name="position de tir" type="Node2D" parent="."]
+position = Vector2( 40, 0 )
+
+[node name="cooldown de tir" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="cooldown de tir" to="." method="tirer"]
