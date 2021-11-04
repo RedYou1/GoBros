@@ -56,7 +56,6 @@ current = true
 position = Vector2( 0, -10 )
 frames = SubResource( 9 )
 animation = "Courrire"
-frame = 5
 playing = true
 
 [node name="cooldown de tir" parent="." index="4"]

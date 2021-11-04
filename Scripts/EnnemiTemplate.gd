@@ -10,14 +10,13 @@ var velocityY = 0
 var is_on_floor = false
 
 var body
-var cooldownDeTir
-var ballePosition
-var animation
-var tir = false
+var collision
+var sens = false
+
 
 func _ready():
 	body = get_node("KinematicBody2D")
-	animation = get_node("AnimatedSprite")
+	collision = get_node("KinematicBody2D/CollisionShape2D")
 
 func _physics_process(delta):
 	velocityY += GRAVITY
@@ -28,15 +27,3 @@ func _physics_process(delta):
 	else:
 		is_on_floor = false
 
-
-func tirer():
-	if tir and cooldownDeTir.is_stopped():
-		var balle = balleScene.instance()
-		
-		if animation.flip_h:
-			balle.direction *= -1
-			balle.position = position - ballePosition
-		else:
-			balle.position = position + ballePosition
-		get_parent().add_child(balle)
-		cooldownDeTir.start(cooldown_de_tir)

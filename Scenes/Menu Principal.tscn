@@ -3,7 +3,7 @@
 [ext_resource path="res://Scenes/Joueur.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Fond.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Boite.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Ennemi1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Robot1.tscn" type="PackedScene" id=4]
 
 [node name="Menu Principal" type="Node"]
 
@@ -65,5 +65,8 @@ gravity_scale = 1.0
 position = Vector2( 96, 0 )
 mode = 0
 
-[node name="Ennemi1" parent="." instance=ExtResource( 4 )]
-position = Vector2( -75.5735, 7.61628 )
+[node name="Robot1" parent="." groups=[
+"EnemyDeBase",
+"Personnage",
+] instance=ExtResource( 4 )]
+position = Vector2( -80, 0 )
