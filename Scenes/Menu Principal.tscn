@@ -30,7 +30,7 @@ position = Vector2( 128, 160 )
 gravity_scale = 1.0
 
 [node name="Fond6" parent="." instance=ExtResource( 2 )]
-position = Vector2( 128, 128 )
+position = Vector2( 160, 160 )
 gravity_scale = 1.0
 
 [node name="Fond7" parent="." instance=ExtResource( 2 )]
@@ -58,15 +58,11 @@ position = Vector2( -128, 128 )
 gravity_scale = 1.0
 
 [node name="Fond13" parent="." instance=ExtResource( 2 )]
-position = Vector2( 128, 96 )
+position = Vector2( 192, 160 )
 gravity_scale = 1.0
 
 [node name="Boite" parent="." instance=ExtResource( 3 )]
 position = Vector2( 96, 0 )
-mode = 0
 
-[node name="Robot1" parent="." groups=[
-"EnemyDeBase",
-"Personnage",
-] instance=ExtResource( 4 )]
+[node name="Robot1" parent="." instance=ExtResource( 4 )]
 position = Vector2( -80, 0 )
