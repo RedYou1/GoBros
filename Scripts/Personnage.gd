@@ -17,6 +17,7 @@ var tir = false
 func _ready():
 	animation = get_node("AnimatedSprite")
 	cooldownDeTir = get_node("cooldown de tir")
+	cooldownDeTir.connect("timeout",self,"tirer")
 	ballePosition = get_node("position de tir").position
 
 func _physics_process(delta):

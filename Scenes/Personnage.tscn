@@ -20,5 +20,3 @@ position = Vector2( 40, 0 )
 
 [node name="cooldown de tir" type="Timer" parent="."]
 one_shot = true
-
-[connection signal="timeout" from="cooldown de tir" to="." method="tirer"]

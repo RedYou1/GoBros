@@ -1,68 +1,52 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Joueur.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Fond.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Boite.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Robot1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Ressources/vacaroxa generic/Assets_area_1/Tileset/Subway_tiles.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/TileMap.gd" type="Script" id=6]
+
+[sub_resource type="TileSet" id=1]
+0/name = "Subway_tiles.png 0"
+0/texture = ExtResource( 5 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 320, 16, 32, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "Subway_tiles.png 1"
+1/texture = ExtResource( 5 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 272, 80, 32, 32 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
 
 [node name="Menu Principal" type="Node"]
 
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 3, 1, 0, 327675, 0, 0, 327676, 0, 0, 327677, 0, 0, 327678, 0, 0, 327679, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0 )
+script = ExtResource( 6 )
+
 [node name="Joueur" parent="." instance=ExtResource( 1 )]
 
-[node name="Fond" parent="." instance=ExtResource( 2 )]
-position = Vector2( 0, 160 )
-gravity_scale = 1.0
-
-[node name="Fond2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 32, 160 )
-gravity_scale = 1.0
-
-[node name="Fond3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 64, 160 )
-gravity_scale = 1.0
-
-[node name="Fond4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 96, 160 )
-gravity_scale = 1.0
-
-[node name="Fond5" parent="." instance=ExtResource( 2 )]
-position = Vector2( 128, 160 )
-gravity_scale = 1.0
-
-[node name="Fond6" parent="." instance=ExtResource( 2 )]
-position = Vector2( 160, 160 )
-gravity_scale = 1.0
-
-[node name="Fond7" parent="." instance=ExtResource( 2 )]
-position = Vector2( 0, 160 )
-gravity_scale = 1.0
-
-[node name="Fond8" parent="." instance=ExtResource( 2 )]
-position = Vector2( -32, 160 )
-gravity_scale = 1.0
-
-[node name="Fond9" parent="." instance=ExtResource( 2 )]
-position = Vector2( -64, 160 )
-gravity_scale = 1.0
-
-[node name="Fond10" parent="." instance=ExtResource( 2 )]
-position = Vector2( -96, 160 )
-gravity_scale = 1.0
-
-[node name="Fond11" parent="." instance=ExtResource( 2 )]
-position = Vector2( -128, 160 )
-gravity_scale = 1.0
-
-[node name="Fond12" parent="." instance=ExtResource( 2 )]
-position = Vector2( -128, 128 )
-gravity_scale = 1.0
-
-[node name="Fond13" parent="." instance=ExtResource( 2 )]
-position = Vector2( 192, 160 )
-gravity_scale = 1.0
-
-[node name="Boite" parent="." instance=ExtResource( 3 )]
-position = Vector2( 96, 0 )
-
-[node name="Robot1" parent="." instance=ExtResource( 4 )]
+[node name="Robot1" parent="." groups=[
+"EnemyDeBase",
+] instance=ExtResource( 4 )]
 position = Vector2( -80, 0 )
