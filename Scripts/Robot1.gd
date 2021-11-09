@@ -13,4 +13,4 @@ func _ready():
 func _physics_process(delta):
 	if self.detection_joueur:
 		self.tourner_vers_joueur()
-		self.robot_sauter(sens)
+		self.robot_marcher(self.sens)

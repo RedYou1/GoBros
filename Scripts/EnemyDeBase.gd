@@ -2,7 +2,7 @@ extends "res://Scripts/Personnage.gd"
 
 
 # Declare member variables here. Examples:
-export(float) var vitesse_ennemi = 2
+export(float) var vitesse_ennemi = 1
 var collision
 var sens = false
 
