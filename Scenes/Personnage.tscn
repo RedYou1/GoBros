@@ -9,14 +9,19 @@ radius = 15.0
 "Personnage",
 ]]
 script = ExtResource( 1 )
+cooldown_de_tir = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 
+
 [node name="position de tir" type="Node2D" parent="."]
 position = Vector2( 40, 0 )
 
 [node name="cooldown de tir" type="Timer" parent="."]
 one_shot = true
+autostart = true
+
+[connection signal="timeout" from="cooldown de tir" to="." method="tirer"]
