@@ -53,3 +53,4 @@ tile_data = PoolIntArray( -65530, 1, 0, 393207, 0, 0, 393208, 0, 0, 393209, 0, 0
 script = ExtResource( 4 )
 
 [node name="Joueur" parent="." instance=ExtResource( 3 )]
+cooldown_de_tir = 1.0

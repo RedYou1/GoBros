@@ -4,7 +4,6 @@ extends "res://Scripts/EnemyDeBase.gd"
 # Declare member variables here. Examples:
 export (int) var ajustement_saut
 export (int) var ajustement_marche
-var vie
 var raycast
 var detection_joueur = false
 
@@ -34,9 +33,9 @@ func robot_tirer(sens):
 		
 		if self.animation.flip_h:
 			balle.direction *= -1
-			balle.position = position - self.ballePosition
+			balle.position = position - self.ballePositionDroit
 		else:
-			balle.position = position + self.ballePosition
+			balle.position = position + self.ballePositionDroit
 		self.collision.position.y -= ajustement_marche
 		if self.animation.animation != "tirer":
 			self.animation.animation = "tirer"

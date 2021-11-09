@@ -8,6 +8,7 @@
 
 [node name="Joueur" parent="." instance=ExtResource( 1 )]
 position = Vector2( -196.04, 68.3887 )
+cooldown_de_tir = 1.0
 
 [node name="Fond" parent="." instance=ExtResource( 3 )]
 position = Vector2( -203.626, 209.606 )
