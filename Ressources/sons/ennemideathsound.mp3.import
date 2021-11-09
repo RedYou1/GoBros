@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ennemideathsound.mp3-627578ec7511b093337581797a6a0386.mp3str"
+
+[deps]
+
+source_file="res://Ressources/sons/ennemideathsound.mp3"
+dest_files=[ "res://.import/ennemideathsound.mp3-627578ec7511b093337581797a6a0386.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

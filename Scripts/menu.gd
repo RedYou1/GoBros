@@ -17,7 +17,7 @@ func _process(delta):
 
 #bouton jouer
 func _on_Button_pressed():
-	Global.goto_scene("res://Scenes/Menu Principal.tscn")
+	Global.goto_scene("res://Scenes/Tutoriel.tscn")
 
 #bouton options
 func _on_Button2_pressed():
