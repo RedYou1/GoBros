@@ -17,8 +17,8 @@ func robot_sauter(sens):
 		
 		elif self.animation.frame == 3:
 			self.sauter()
-		elif self.animation.frame > 3:
-			self.bouger(sens)
+	else:
+		self.bouger(sens)
 			
 	
 func robot_marcher(sens):

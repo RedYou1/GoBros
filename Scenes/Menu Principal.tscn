@@ -96,7 +96,9 @@ gravity_scale = 1.0
 position = Vector2( 60, 0 )
 mode = 0
 
-[node name="Robot1" parent="." instance=ExtResource( 4 )]
-position = Vector2( -20, 0 )
+[node name="Robot1" parent="." groups=[
+"EnemyDeBase",
+] instance=ExtResource( 4 )]
+position = Vector2( -20, 40 )
 ajustement_saut = 0
 ajustement_marche = 0
