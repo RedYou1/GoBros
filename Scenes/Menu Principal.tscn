@@ -46,7 +46,6 @@ script = ExtResource( 6 )
 
 [node name="Joueur" parent="." instance=ExtResource( 1 )]
 
-[node name="Robot1" parent="." groups=[
-"EnemyDeBase",
-] instance=ExtResource( 4 )]
+[node name="Robot1" parent="." instance=ExtResource( 4 )]
 position = Vector2( -80, 0 )
+vitesse_ennemi = null

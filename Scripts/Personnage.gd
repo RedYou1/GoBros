@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export(float) var vitesse = 10
+export(float) var vitesse = 5
 export(float) var GRAVITY = 0.98
 export(float) var cooldown_de_tir = .2
 
@@ -29,6 +29,14 @@ func _physics_process(delta):
 	else:
 		is_on_floor = false
 
+
+func bouger(multiplicateur):
+	self.animation.flip_h = multiplicateur < 0
+	move_and_collide(Vector2(self.vitesse*multiplicateur,0))
+
+func sauter():
+	if self.is_on_floor:
+		self.velocityY = -15
 
 func tirer():
 	if tir and cooldownDeTir.is_stopped():
