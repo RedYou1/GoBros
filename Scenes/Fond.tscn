@@ -4,3 +4,9 @@
 
 [node name="Fond" instance=ExtResource( 1 )]
 gravity = 0.0
+=======
+[node name="Fond" groups=[
+"Fond",
+] instance=ExtResource( 1 )]
+mode = 1
+vie = -9223372036854775808
