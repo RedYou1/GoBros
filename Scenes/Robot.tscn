@@ -5,6 +5,20 @@
 
 [node name="Robot" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
+cooldown_de_tir = 0.2
+ajustement_saut = 100
+ajustement_marche = 6
 
 [node name="AnimatedSprite" parent="." index="1"]
 scale = Vector2( 0.03, 0.03 )
+playing = true
+
+[node name="position de tir" parent="." index="2"]
+position = Vector2( 30, 0 )
+
+[node name="cooldown de tir" parent="." index="3"]
+autostart = false
+
+[node name="DetectionAvant" type="RayCast2D" parent="." index="4"]
+enabled = true
+cast_to = Vector2( 200, 0 )

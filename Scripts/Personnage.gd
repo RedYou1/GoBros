@@ -1,23 +1,21 @@
 extends KinematicBody2D
 
-export(float) var vitesse = 5
-export(float) var GRAVITY = 0.98
+var velocityY = 0
+
 export(float) var cooldown_de_tir = .2
+export(float) var GRAVITY = 0.98
 
 const balleScene = preload("res://Scenes/Balle.tscn")
-
-var velocityY = 0
 var is_on_floor = false
 
 var cooldownDeTir
 var ballePosition
 var animation
-var tir = false
+var tir = true
 
 func _ready():
 	animation = get_node("AnimatedSprite")
 	cooldownDeTir = get_node("cooldown de tir")
-	cooldownDeTir.connect("timeout",self,"tirer")
 	ballePosition = get_node("position de tir").position
 
 func _physics_process(delta):
@@ -30,16 +28,8 @@ func _physics_process(delta):
 		is_on_floor = false
 
 
-func bouger(multiplicateur):
-	self.animation.flip_h = multiplicateur < 0
-	move_and_collide(Vector2(self.vitesse*multiplicateur,0))
-
-func sauter():
-	if self.is_on_floor:
-		self.velocityY = -15
-
 func tirer():
-	if tir and cooldownDeTir.is_stopped():
+	if !tir and cooldownDeTir.is_stopped():
 		var balle = balleScene.instance()
 		
 		if animation.flip_h:
