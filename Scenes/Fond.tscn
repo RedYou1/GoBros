@@ -2,8 +2,4 @@
 
 [ext_resource path="res://Scenes/Block.tscn" type="PackedScene" id=1]
 
-[node name="Fond" groups=[
-"Fond",
-] instance=ExtResource( 1 )]
-mode = 1
-vie = -9223372036854775808
+[node name="Fond" instance=ExtResource( 1 )]
