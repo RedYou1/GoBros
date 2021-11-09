@@ -16,6 +16,7 @@ shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 
+
 [node name="position de tir" type="Node2D" parent="."]
 position = Vector2( 40, 0 )
 
