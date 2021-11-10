@@ -38,7 +38,7 @@ func _physics_process(delta):
 			#	self.robot_tirer(self.sens)
 			#else:
 			self.immobile()
-	else:
+	elif !self.mort:
 		self.robot_marcher(self.sens)
 		
 

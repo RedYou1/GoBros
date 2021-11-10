@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/Joueur.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Robot2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Robot1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Fond.tscn" type="PackedScene" id=5]
 
 [node name="TestJonathan" type="Node2D"]
@@ -65,7 +65,5 @@ position = Vector2( -100.419, 172.147 )
 [node name="Fond18" parent="." instance=ExtResource( 5 )]
 position = Vector2( -70.3855, 172.815 )
 
-[node name="Robot2" parent="." groups=[
-"EnemyDeBase",
-] instance=ExtResource( 2 )]
-position = Vector2( 135.847, 81.3782 )
+[node name="Robot1" parent="." instance=ExtResource( 2 )]
+position = Vector2( 29.7275, 91.3895 )
