@@ -2,23 +2,25 @@ extends KinematicBody2D
 
 var velocityY = 0
 
-export(float) var cooldown_de_tir
+export(float) var cooldown_de_tir = 0.1
 export(float) var GRAVITY = 0.98
 
 var vie
 export(int) var vie_max = 3
+export(int) var distance_despawn = 10000
 var mort = false
-
+var fin_mort = false
 const balleScene = preload("res://Scenes/Balle.tscn")
+
 var is_on_floor = false
 
 var collision
-var cooldownDeTir
+var cooldownDeTir = 0.2
 var ballePositionDroit
 var ballePositionHaut
 var ballePositionBas
 var animation
-var tir = true
+var tir = false
 
 func mourir(delta):
 	if self.animation.animation != "mourir":
@@ -29,6 +31,7 @@ func mourir(delta):
 		self.animation.playing = false
 		modulate.a -= delta
 		if modulate.a <= 0:
+			fin_mort = true
 			queue_free()
 	
 	
@@ -52,33 +55,6 @@ func _physics_process(delta):
 	
 	if mort:
 		mourir(delta)
-
-
-func tirer(dir_balle):
-		
-	if tir and cooldownDeTir.is_stopped():
-		var balle = balleScene.instance()
-		
-		if dir_balle == "haut":
-			balle.directionY = -balle.vitesse
-			balle.position = position + ballePositionHaut
-			get_parent().add_child(balle)
-			cooldownDeTir.start(cooldown_de_tir)
-			
-		elif dir_balle == "bas" && !is_on_floor:
-			balle.directionY = +balle.vitesse
-			balle.position = position + ballePositionBas
-			get_parent().add_child(balle)
-			cooldownDeTir.start(cooldown_de_tir)
-			
-		elif dir_balle == "droit" && animation.flip_h:
-			balle.directionX = -balle.vitesse
-			balle.position = position - ballePositionDroit
-			get_parent().add_child(balle)
-			cooldownDeTir.start(cooldown_de_tir)
-			
-		elif dir_balle == "droit" && !animation.flip_h:
-			balle.directionX = +balle.vitesse
-			balle.position = position + ballePositionDroit
-			get_parent().add_child(balle)
-			cooldownDeTir.start(cooldown_de_tir)
+	
+	if position.y > distance_despawn:
+		mort = true

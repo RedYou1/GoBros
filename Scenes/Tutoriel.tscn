@@ -37,11 +37,10 @@
 
 [node name="Tutoriel" type="Node2D"]
 
-[node name="Robot1" parent="." groups=[
-"EnemyDeBase",
-"Personnage",
-] instance=ExtResource( 2 )]
-position = Vector2( -224, 0 )
+[node name="Robot1" parent="." instance=ExtResource( 2 )]
+position = Vector2( -267.995, 136.141 )
+cooldown_de_tir = 0.1
+distance_despawn = 10000
 ajustement_saut = 100
 ajustement_marche = 6
 
@@ -54,3 +53,4 @@ script = ExtResource( 4 )
 
 [node name="Joueur" parent="." instance=ExtResource( 3 )]
 cooldown_de_tir = 1.0
+distance_despawn = 10000

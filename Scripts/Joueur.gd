@@ -8,12 +8,42 @@ func _ready():
 	barre_vie.max_value = self.vie_max
 	barre_vie.value = vie
 
+
 func hit(collider, damage):
 	if (collider.is_in_group("EnnemyDeBase") || collider.is_in_group("Balle")) && ! self.mort:
 		vie -= damage
 		barre_vie.value = vie
 		if vie <= 0:
 			self.mort = true
+
+func tirer(dir_balle):
+		
+	if tir and self.cooldownDeTir.is_stopped():
+		var balle = self.balleScene.instance()
+		
+		if dir_balle == "haut":
+			balle.directionY = -balle.vitesse
+			balle.position = position + ballePositionHaut
+			get_parent().add_child(balle)
+			self.cooldownDeTir.start(self.cooldown_de_tir)
+			
+		elif dir_balle == "bas" && !is_on_floor:
+			balle.directionY = +balle.vitesse
+			balle.position = position + ballePositionBas
+			get_parent().add_child(balle)
+			self.cooldownDeTir.start(self.cooldown_de_tir)
+			
+		elif dir_balle == "droit" && animation.flip_h:
+			balle.directionX = -balle.vitesse
+			balle.position = position - ballePositionDroit
+			get_parent().add_child(balle)
+			self.cooldownDeTir.start(self.cooldown_de_tir)
+			
+		elif dir_balle == "droit" && !animation.flip_h:
+			balle.directionX = +balle.vitesse
+			balle.position = position + ballePositionDroit
+			get_parent().add_child(balle)
+			self.cooldownDeTir.start(self.cooldown_de_tir)
 
 func set_animation():
 	self.animation.playing = true
@@ -53,6 +83,7 @@ func set_animation():
 			self.animation.animation = "idle"
 
 func _physics_process(delta):
+	
 	if !self.mort:
 		
 		set_animation()
@@ -67,15 +98,18 @@ func _physics_process(delta):
 			self.velocityY = -15
 	
 		if Input.is_action_pressed("TIRER"):
-			if Input.is_action_pressed("HAUT"):
-				self.tir = true
-				self.tirer("haut")
-			elif Input.is_action_pressed("BAS") && !self.is_on_floor:
-				self.tir = true
-				self.tirer("bas")
-			else:
+			if Input.is_action_pressed("DROIT") || Input.is_action_pressed("GAUCHE"):
 				self.tir = true
 				self.tirer("droit")
+			elif Input.is_action_pressed("BAS") && !self.is_on_floor:
+				self.tir = true
+				tirer("bas")
+			elif Input.is_action_pressed("HAUT"):
+				self.tir = true
+				tirer("haut")
+			else:
+				self.tir = true
+				tirer("droit")
 			
 		if Input.is_action_just_released("TIRER"):
 			self.tir = false

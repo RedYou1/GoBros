@@ -86,11 +86,6 @@ animations = [ {
 "name": "marcher",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 53 ), ExtResource( 51 ), ExtResource( 54 ), ExtResource( 52 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 41 ), ExtResource( 39 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 40 ), ExtResource( 48 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 45 ), ExtResource( 44 ), ExtResource( 43 ), ExtResource( 42 ) ],
-"loop": true,
-"name": "tirer",
-"speed": 15.0
-}, {
 "frames": [ ExtResource( 24 ), ExtResource( 30 ), ExtResource( 25 ), ExtResource( 31 ), ExtResource( 27 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ) ],
 "loop": true,
 "name": "sauter",
@@ -100,12 +95,19 @@ animations = [ {
 "loop": true,
 "name": "mourir",
 "speed": 15.0
+}, {
+"frames": [ ExtResource( 53 ), ExtResource( 51 ), ExtResource( 54 ), ExtResource( 52 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 41 ), ExtResource( 39 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 40 ), ExtResource( 48 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 45 ), ExtResource( 44 ), ExtResource( 43 ), ExtResource( 42 ) ],
+"loop": true,
+"name": "tirer",
+"speed": 15.0
 } ]
 
 [node name="Robot2" groups=[
 "Personnage",
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+vie_max = 10
+distance_despawn = 1000
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2( -1, 0 )
@@ -113,8 +115,15 @@ shape = SubResource( 1 )
 
 [node name="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 2 )
-animation = "mourir"
-frame = 9
+animation = "tirer"
+frame = 4
 
 [node name="cooldown de tir" parent="." index="2"]
 one_shot = true
+autostart = true
+
+[node name="TimerBouger" type="Timer" parent="." index="8"]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="TimerBouger" to="." method="_on_TimerBouger_timeout"]

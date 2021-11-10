@@ -9,7 +9,7 @@ radius = 15.0
 "Personnage",
 ]]
 script = ExtResource( 1 )
-cooldown_de_tir = 0.1
+distance_despawn = 1000
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

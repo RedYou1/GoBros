@@ -7,7 +7,7 @@
 "Robot",
 ] instance=ExtResource( 2 )]
 script = ExtResource( 1 )
-cooldown_de_tir = 0.0
+cooldown_de_tir = 1.0
 
 [node name="AnimatedSprite" parent="." index="1"]
 scale = Vector2( 0.03, 0.03 )
@@ -15,11 +15,12 @@ playing = true
 
 [node name="cooldown de tir" parent="." index="2"]
 wait_time = 1.0
-autostart = false
+one_shot = false
 
 [node name="DetectionAvant" type="RayCast2D" parent="." index="3"]
 enabled = true
 cast_to = Vector2( 200, 0 )
+collide_with_areas = true
 
 [node name="Vie" parent="." index="7"]
 margin_left = -13.0
