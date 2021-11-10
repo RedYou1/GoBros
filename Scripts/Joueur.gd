@@ -35,13 +35,13 @@ func tirer(dir_balle):
 			
 		elif dir_balle == "droit" && animation.flip_h:
 			balle.directionX = -balle.vitesse
-			balle.position = position - ballePositionDroit
+			balle.position = position + Vector2(-ballePositionDroit.x, ballePositionDroit.y)
 			get_parent().add_child(balle)
 			self.cooldownDeTir.start(self.cooldown_de_tir)
 			
 		elif dir_balle == "droit" && !animation.flip_h:
 			balle.directionX = +balle.vitesse
-			balle.position = position + ballePositionDroit
+			balle.position = position + Vector2(ballePositionDroit.x, ballePositionDroit.y)
 			get_parent().add_child(balle)
 			self.cooldownDeTir.start(self.cooldown_de_tir)
 

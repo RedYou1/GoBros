@@ -21,6 +21,7 @@ func _physics_process(delta):
 	
 	if col != null and col.is_in_group("Block"):
 		col.hit(self,damage)
+		print("block")
 		queue_free()
 		return
 	

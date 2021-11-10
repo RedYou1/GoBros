@@ -49,8 +49,12 @@ script = ExtResource( 4 )
 cooldown_de_tir = 1.0
 distance_despawn = 10000
 
-[node name="Robot2" parent="." instance=ExtResource( 2 )]
+[node name="Robot2" parent="." groups=[
+"EnemyDeBase",
+"Personnage",
+] instance=ExtResource( 2 )]
 position = Vector2( -109.446, 88.8762 )
+distance_despawn = 1000
 
 [node name="Balle" parent="." instance=ExtResource( 5 )]
 position = Vector2( 158.923, 84.0719 )

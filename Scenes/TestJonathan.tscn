@@ -67,7 +67,5 @@ position = Vector2( -70.3855, 172.815 )
 
 [node name="Robot1" parent="." groups=[
 "EnemyDeBase",
-"Personnage",
 ] instance=ExtResource( 2 )]
 position = Vector2( 29.7275, 91.3895 )
-distance_despawn = 1000
