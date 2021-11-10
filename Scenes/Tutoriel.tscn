@@ -41,16 +41,12 @@
 tile_set = SubResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( -65530, 1, 0, 393207, 0, 0, 393208, 0, 0, 393209, 0, 0, 393210, 0, 0, 393211, 0, 0, 393212, 0, 0, 393213, 0, 0, 393214, 0, 0, 393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0 )
+tile_data = PoolIntArray( -65530, 1, 0, 196606, 0, 0, 262141, 0, 0, 262142, 0, 0, 262143, 0, 0, 196616, 0, 0, 327676, 0, 0, 327678, 0, 0, 262144, 0, 0, 262152, 0, 0, 393207, 0, 0, 393208, 0, 0, 393209, 0, 0, 393210, 0, 0, 393211, 0, 0, 393212, 0, 0, 393213, 0, 0, 393214, 0, 0, 393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0 )
 script = ExtResource( 4 )
 
 [node name="Joueur" parent="." instance=ExtResource( 3 )]
 cooldown_de_tir = 1.0
 distance_despawn = 10000
 
-[node name="Robot2" parent="." groups=[
-"EnemyDeBase",
-"Personnage",
-] instance=ExtResource( 2 )]
+[node name="Robot2" parent="." instance=ExtResource( 2 )]
 position = Vector2( -109.446, 88.8762 )
-distance_despawn = 1000
