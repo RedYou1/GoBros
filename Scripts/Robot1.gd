@@ -38,10 +38,10 @@ func _physics_process(delta):
 		repli(self.sens)
 		if !repli:
 			self.tourner_vers_joueur()
-			#if self.cooldownDeTir.is_stopped():
-			#	self.robot_tirer(self.sens)
-			#else:
-			self.immobile()
+			if self.cooldownDeTir.is_stopped():
+				self.robot_tirer(self.sens)
+			else:
+				self.immobile()
 	elif !self.mort:
 		self.fonction_detection_joueur()
 		self.robot_marcher(self.sens)
