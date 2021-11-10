@@ -102,12 +102,9 @@ animations = [ {
 "speed": 15.0
 } ]
 
-[node name="Robot2" groups=[
-"Personnage",
-] instance=ExtResource( 1 )]
+[node name="Robot2" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 vie_max = 10
-distance_despawn = 1000
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2( -1, 0 )
@@ -117,10 +114,6 @@ shape = SubResource( 1 )
 frames = SubResource( 2 )
 animation = "tirer"
 frame = 15
-
-[node name="cooldown de tir" parent="." index="2"]
-one_shot = true
-autostart = true
 
 [node name="DetectionAvant" parent="." index="3"]
 position = Vector2( 15, 5 )

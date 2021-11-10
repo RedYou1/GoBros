@@ -40,8 +40,6 @@ func _physics_process(delta):
 			self.immobile()
 	elif !self.mort:
 		self.robot_marcher(self.sens)
-		
-
 
 func _on_TimerBouger_timeout():
 	if !self.detection_joueur && !self.mort:

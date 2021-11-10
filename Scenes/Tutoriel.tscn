@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Ressources/vacaroxa generic/Assets_area_1/Tileset/Subway_tiles.png" type="Texture" id=1]
-[ext_resource path="res://Scenes/Robot1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Robot2.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Joueur.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/MapGenerator.gd" type="Script" id=4]
 
@@ -37,13 +37,6 @@
 
 [node name="Tutoriel" type="Node2D"]
 
-[node name="Robot1" parent="." instance=ExtResource( 2 )]
-position = Vector2( -267.995, 136.141 )
-cooldown_de_tir = 0.1
-distance_despawn = 10000
-ajustement_saut = 100
-ajustement_marche = 6
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
 cell_size = Vector2( 32, 32 )
@@ -54,3 +47,10 @@ script = ExtResource( 4 )
 [node name="Joueur" parent="." instance=ExtResource( 3 )]
 cooldown_de_tir = 1.0
 distance_despawn = 10000
+
+[node name="Robot2" parent="." groups=[
+"EnemyDeBase",
+"Personnage",
+] instance=ExtResource( 2 )]
+position = Vector2( -109.446, 88.8762 )
+distance_despawn = 1000

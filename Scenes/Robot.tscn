@@ -18,9 +18,7 @@ wait_time = 1.0
 
 [node name="DetectionAvant" type="RayCast2D" parent="." index="3"]
 enabled = true
-exclude_parent = false
 cast_to = Vector2( 200, 0 )
-collide_with_areas = true
 
 [node name="Vie" parent="." index="7"]
 margin_left = -13.0
