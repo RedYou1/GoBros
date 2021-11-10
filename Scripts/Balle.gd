@@ -5,18 +5,16 @@ export(float) var direction = 10
 export(float) var directionX = 0
 export(float) var directionY = 0
 export(int) var damage = 1
+var movement
 
 var rayCastBlock
 
 func _ready():
 	rayCastBlock = get_node("RayCastBlock")
+	movement = Vector2(directionX,directionY)# * delta
+	rayCastBlock.cast_to = movement+Vector2(10,0).rotated(movement.angle())
 
 func _physics_process(delta):
-	
-	var movement = Vector2(directionX,directionY)# * delta
-	
-	rayCastBlock.cast_to = movement+Vector2(10,0).rotated(movement.angle())
-	
 	var col = rayCastBlock.get_collider()
 	
 	if col != null and col.is_in_group("Block"):
