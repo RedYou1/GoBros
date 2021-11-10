@@ -11,6 +11,6 @@ func _ready():
 	pass
 
 func _physics_process(delta):
-	if self.detection_joueur:
+	if self.detection_joueur && !self.mort:
 		self.tourner_vers_joueur()
-		self.robot_marcher(self.sens)
+		self.robot_tirer(self.sens)

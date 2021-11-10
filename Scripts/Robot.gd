@@ -7,6 +7,11 @@ export (int) var ajustement_marche
 var raycast
 var detection_joueur = false
 
+func hit(collider, damage):
+	self.standard_hit(collider, damage)
+	if (collider.is_in_group("Joueur") || collider.is_in_group("Balle")) && ! self.mort:
+		detection_joueur = true
+
 func robot_sauter(sens):
 	if self.is_on_floor:
 		self.collision.position.y -= ajustement_saut
@@ -51,6 +56,7 @@ func robot_tirer(sens):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	raycast = get_node("DetectionAvant")
+	self.animation.animation = "idle"
 	
 
 func _physics_process(delta):

@@ -3,7 +3,9 @@
 [ext_resource path="res://Scripts/Robot.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/EnemyDeBase.tscn" type="PackedScene" id=2]
 
-[node name="Robot" instance=ExtResource( 2 )]
+[node name="Robot" groups=[
+"Robot",
+] instance=ExtResource( 2 )]
 script = ExtResource( 1 )
 cooldown_de_tir = 0.0
 
@@ -18,5 +20,11 @@ autostart = false
 [node name="DetectionAvant" type="RayCast2D" parent="." index="3"]
 enabled = true
 cast_to = Vector2( 200, 0 )
+
+[node name="Vie" parent="." index="7"]
+margin_left = -13.0
+margin_top = -22.0
+margin_right = 9.0
+margin_bottom = -19.0
 
 [connection signal="timeout" from="cooldown de tir" to="." method="tirer"]

@@ -1,7 +1,12 @@
 extends "res://Scripts/Personnage.gd"
 
 export(float) var vitesse = 2
-var vie
+
+func hit(collider, damage):
+	if (collider.is_in_group("EnnemyDeBase") || collider.is_in_group("Balle")) && ! self.mort:
+		vie -= damage
+		if vie <= 0:
+			self.mort = true
 
 func set_animation():
 	self.animation.playing = true
@@ -41,27 +46,29 @@ func set_animation():
 			self.animation.animation = "idle"
 
 func _physics_process(delta):
-	set_animation()
+	if !self.mort:
 	
-	if Input.is_action_pressed("DROIT"):
-		move_and_collide(Vector2(vitesse,0))
+		set_animation()
+	
+		if Input.is_action_pressed("DROIT"):
+			move_and_collide(Vector2(vitesse,0))
 		
-	elif Input.is_action_pressed("GAUCHE"):
-		move_and_collide(Vector2(-vitesse,0))
+		elif Input.is_action_pressed("GAUCHE"):
+			move_and_collide(Vector2(-vitesse,0))
 	
-	if Input.is_action_just_pressed("SAUT") and self.is_on_floor:
-		self.velocityY = -15
+		if Input.is_action_just_pressed("SAUT") and self.is_on_floor:
+			self.velocityY = -15
 	
-	if Input.is_action_pressed("TIRER"):
-		if Input.is_action_pressed("HAUT"):
-			self.tir = true
-			self.tirer("haut")
-		elif Input.is_action_pressed("BAS") && !self.is_on_floor:
-			self.tir = true
-			self.tirer("bas")
-		else:
-			self.tir = true
-			self.tirer("droit")
+		if Input.is_action_pressed("TIRER"):
+			if Input.is_action_pressed("HAUT"):
+				self.tir = true
+				self.tirer("haut")
+			elif Input.is_action_pressed("BAS") && !self.is_on_floor:
+				self.tir = true
+				self.tirer("bas")
+			else:
+				self.tir = true
+				self.tirer("droit")
 			
-	if Input.is_action_just_released("TIRER"):
-		self.tir = false
+		if Input.is_action_just_released("TIRER"):
+			self.tir = false

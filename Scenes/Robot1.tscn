@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://Scenes/Robot.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Robot1.gd" type="Script" id=2]
@@ -54,6 +54,21 @@
 [ext_resource path="res://Ressources/Robot1/06_Attack/Attack_016.png" type="Texture" id=52]
 [ext_resource path="res://Ressources/Robot1/06_Attack/Attack_015.png" type="Texture" id=53]
 [ext_resource path="res://Ressources/Robot1/06_Attack/Attack_017.png" type="Texture" id=54]
+[ext_resource path="res://Ressources/Robot1/13_Death/Death_003.png" type="Texture" id=55]
+[ext_resource path="res://Ressources/Robot1/13_Death/Death_004.png" type="Texture" id=56]
+[ext_resource path="res://Ressources/Robot1/13_Death/Death_000.png" type="Texture" id=57]
+[ext_resource path="res://Ressources/Robot1/13_Death/Death_008.png" type="Texture" id=58]
+[ext_resource path="res://Ressources/Robot1/13_Death/Death_005.png" type="Texture" id=59]
+[ext_resource path="res://Ressources/Robot1/13_Death/Death_013.png" type="Texture" id=60]
+[ext_resource path="res://Ressources/Robot1/13_Death/Death_011.png" type="Texture" id=61]
+[ext_resource path="res://Ressources/Robot1/13_Death/Death_001.png" type="Texture" id=62]
+[ext_resource path="res://Ressources/Robot1/13_Death/Death_014.png" type="Texture" id=63]
+[ext_resource path="res://Ressources/Robot1/13_Death/Death_007.png" type="Texture" id=64]
+[ext_resource path="res://Ressources/Robot1/13_Death/Death_009.png" type="Texture" id=65]
+[ext_resource path="res://Ressources/Robot1/13_Death/Death_002.png" type="Texture" id=66]
+[ext_resource path="res://Ressources/Robot1/13_Death/Death_010.png" type="Texture" id=67]
+[ext_resource path="res://Ressources/Robot1/13_Death/Death_006.png" type="Texture" id=68]
+[ext_resource path="res://Ressources/Robot1/13_Death/Death_012.png" type="Texture" id=69]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 10.1599
@@ -80,6 +95,11 @@ animations = [ {
 "loop": true,
 "name": "sauter",
 "speed": 20.0
+}, {
+"frames": [ ExtResource( 57 ), ExtResource( 62 ), ExtResource( 66 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 59 ), ExtResource( 68 ), ExtResource( 64 ), ExtResource( 58 ), ExtResource( 65 ), ExtResource( 67 ), ExtResource( 61 ), ExtResource( 69 ), ExtResource( 60 ), ExtResource( 63 ) ],
+"loop": true,
+"name": "mourir",
+"speed": 15.0
 } ]
 
 [node name="Robot1" groups=[
@@ -93,10 +113,10 @@ shape = SubResource( 1 )
 
 [node name="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 2 )
-animation = "idle"
-frame = 4
+animation = "mourir"
+frame = 2
 
-[node name="cooldown de tir" parent="." index="3"]
+[node name="cooldown de tir" parent="." index="2"]
 one_shot = true
 
 [node name="TimerBouger" type="Timer" parent="." index="4"]
