@@ -52,7 +52,5 @@ position = Vector2( 198.44, 209.606 )
 [node name="Fond14" parent="." instance=ExtResource( 3 )]
 position = Vector2( -235.94, 210.136 )
 
-[node name="Robot1" parent="." groups=[
-"EnemyDeBase",
-] instance=ExtResource( 2 )]
+[node name="Robot1" parent="." instance=ExtResource( 2 )]
 position = Vector2( -38.3499, 78.7622 )
