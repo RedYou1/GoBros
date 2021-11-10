@@ -104,7 +104,6 @@ animations = [ {
 
 [node name="Robot1" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-cooldown_de_tir = 2.0
 distance_repli = 60
 
 [node name="CollisionShape2D" parent="." index="0"]
@@ -112,19 +111,16 @@ position = Vector2( -1, 0 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" parent="." index="1"]
-position = Vector2( 0, 0 )
 frames = SubResource( 2 )
 animation = "mourir"
-frame = 4
+frame = 2
 
 [node name="cooldown de tir" parent="." index="2"]
+one_shot = true
 autostart = true
 
 [node name="TimerBouger" type="Timer" parent="." index="4"]
 wait_time = 3.0
 autostart = true
-
-[node name="position de tir bas" parent="." index="7"]
-scale = Vector2( 1, 1 )
 
 [connection signal="timeout" from="TimerBouger" to="." method="_on_TimerBouger_timeout"]

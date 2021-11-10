@@ -30,12 +30,14 @@ func _ready():
 
 func _physics_process(delta):
 	if self.detection_joueur && !self.mort:
-		self.vitesse_ennemi *= 5
-		if !self.tir:
-			repli(self.sens)
+		self.vitesse_ennemi *=5
+		repli(self.sens)
 		if !repli:
 			self.tourner_vers_joueur()
-			self.robot_tirer(self.sens)
+			#if self.cooldownDeTir.is_stopped():
+			#	self.robot_tirer(self.sens)
+			#else:
+			self.immobile()
 	else:
 		self.robot_marcher(self.sens)
 		

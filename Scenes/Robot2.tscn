@@ -116,11 +116,14 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 2 )
 animation = "tirer"
-frame = 4
+frame = 15
 
 [node name="cooldown de tir" parent="." index="2"]
 one_shot = true
 autostart = true
+
+[node name="DetectionAvant" parent="." index="3"]
+position = Vector2( 15, 5 )
 
 [node name="TimerBouger" type="Timer" parent="." index="8"]
 wait_time = 3.0

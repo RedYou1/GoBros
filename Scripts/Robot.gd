@@ -65,6 +65,7 @@ func _ready():
 	
 
 func detection_joueur():
-	if get_node("DetectionAvant").get_collider() && !detection_joueur:
+	if get_node("DetectionAvant").get_collider():
+		print(get_node("DetectionAvant").get_collider().name)
 		if get_node("DetectionAvant").get_collider().name == "Joueur":
 			detection_joueur = true
