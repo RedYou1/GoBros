@@ -9,7 +9,6 @@ func _ready():
 	explosion = get_node("explosion")
 
 func hit(from,damage):
-	print(vie)
 	vie -= damage
 	apply_impulse(from.position-position,Vector2(from.direction,0))
 	if vie <= 0:
