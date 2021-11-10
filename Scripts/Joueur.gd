@@ -1,10 +1,17 @@
 extends "res://Scripts/Personnage.gd"
 
 export(float) var vitesse = 2
+var barre_vie
+
+func _ready():
+	barre_vie = get_node("Vie")
+	barre_vie.max_value = self.vie_max
+	barre_vie.value = vie
 
 func hit(collider, damage):
 	if (collider.is_in_group("EnnemyDeBase") || collider.is_in_group("Balle")) && ! self.mort:
 		vie -= damage
+		barre_vie.value = vie
 		if vie <= 0:
 			self.mort = true
 
@@ -47,7 +54,7 @@ func set_animation():
 
 func _physics_process(delta):
 	if !self.mort:
-	
+		
 		set_animation()
 	
 		if Input.is_action_pressed("DROIT"):

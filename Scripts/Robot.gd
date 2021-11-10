@@ -37,9 +37,10 @@ func robot_tirer(sens):
 		var balle = self.balleScene.instance()
 		
 		if self.animation.flip_h:
-			balle.direction *= -1
+			balle.directionX = -balle.vitesse
 			balle.position = position - self.ballePositionDroit
 		else:
+			balle.directionX = balle.vitesse
 			balle.position = position + self.ballePositionDroit
 		self.collision.position.y -= ajustement_marche
 		if self.animation.animation != "tirer":
