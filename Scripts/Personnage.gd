@@ -9,7 +9,6 @@ var vie
 export(int) var vie_max = 3
 export(int) var distance_despawn = 10000
 var mort = false
-var fin_mort = false
 const balleScene = preload("res://Scenes/Balle.tscn")
 
 var is_on_floor = false
@@ -31,8 +30,10 @@ func mourir(delta):
 		self.animation.playing = false
 		modulate.a -= delta
 		if modulate.a <= 0:
-			fin_mort = true
-			queue_free()
+			if self.name == "Joueur":
+				Global.goto_scene("res://Scenes/GameOver.tscn")
+			else:
+				queue_free()
 	
 	
 func _ready():
