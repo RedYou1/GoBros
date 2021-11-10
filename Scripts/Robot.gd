@@ -63,9 +63,15 @@ func _ready():
 	raycast = get_node("DetectionAvant")
 	self.animation.animation = "idle"
 	
+func _physics_process(delta):
+	if self.sens:
+		raycast.cast_to.x = -200
+	else:
+		raycast.cast_to.x = 200
+	
 
 func fonction_detection_joueur():
 	if get_node("DetectionAvant").get_collider():
-		#print(get_node("DetectionAvant").get_collider().name)
+		print(get_node("DetectionAvant").get_collider().name)
 		if get_node("DetectionAvant").get_collider().name == "Joueur":
 			detection_joueur = true

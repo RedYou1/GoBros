@@ -4,6 +4,7 @@ extends "res://Scripts/Robot.gd"
 # Declare member variables here. Examples:
 var repli = false
 export(int) var distance_repli
+var mem_vitesse = false
 
 func repli(sens):
 	if get_parent().get_node("Joueur"):
@@ -30,7 +31,10 @@ func _ready():
 
 func _physics_process(delta):
 	if self.detection_joueur && !self.mort:
-		self.vitesse_ennemi *=5
+		if !mem_vitesse:
+			mem_vitesse = true
+			self.vitesse_ennemi *=5
+		
 		repli(self.sens)
 		if !repli:
 			self.tourner_vers_joueur()
@@ -39,7 +43,7 @@ func _physics_process(delta):
 			#else:
 			self.immobile()
 	elif !self.mort:
-		fonction_detection_joueur()
+		self.fonction_detection_joueur()
 		self.robot_marcher(self.sens)
 
 func _on_TimerBouger_timeout():

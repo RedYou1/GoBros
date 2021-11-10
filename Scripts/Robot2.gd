@@ -21,7 +21,7 @@ func _physics_process(delta):
 			self.tourner_vers_joueur()
 			self.robot_marcher(self.sens)
 	elif !self.mort:
-		fonction_detection_joueur()
+		self.fonction_detection_joueur()
 		self.robot_marcher(self.sens)
 		
 

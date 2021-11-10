@@ -102,12 +102,14 @@ animations = [ {
 "speed": 15.0
 } ]
 
-[node name="Robot3" instance=ExtResource( 1 )]
+[node name="Robot3" groups=[
+"Personnage",
+] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 cooldown_de_tir = 3.0
-vitesse_ennemi = 10.0
-temps_avant_dash = 3.0
-temps_du_dash = 1.0
+distance_despawn = 1000
+vitesse_ennemi = 15.0
+temps_du_dash = 0.2
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2( -1, 0 )
@@ -118,12 +120,16 @@ frames = SubResource( 2 )
 animation = "idle"
 frame = 7
 
+[node name="cooldown de tir" parent="." index="2"]
+one_shot = true
+autostart = true
+
 [node name="TimerDash" type="Timer" parent="." index="8"]
 wait_time = 3.0
 one_shot = true
 
 [node name="TimerDureeDash" type="Timer" parent="." index="9"]
-wait_time = 0.001
+wait_time = 0.1
 one_shot = true
 
 [connection signal="timeout" from="TimerDash" to="." method="_on_TimerDash_timeout"]

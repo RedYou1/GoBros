@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Joueur.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Robot3.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Robot1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/MapGenerator.gd" type="Script" id=3]
 [ext_resource path="res://Ressources/vacaroxa generic/Assets_area_1/Tileset/Subway_tiles.png" type="Texture" id=4]
 
@@ -42,16 +42,16 @@ position = Vector2( -196.04, 68.3887 )
 cooldown_de_tir = 1.0
 distance_despawn = 10000
 
-[node name="Robot3" parent="." groups=[
-"EnemyDeBase",
-"Personnage",
-] instance=ExtResource( 2 )]
-position = Vector2( 87.1251, 78.0408 )
-distance_despawn = 1000
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 196593, 0, 0, 131080, 0, 0, 262129, 0, 0, 196616, 0, 0, 327665, 0, 0, 262152, 0, 0, 393201, 0, 0, 393202, 0, 0, 393203, 0, 0, 393204, 0, 0, 393205, 0, 0, 393206, 0, 0, 393207, 0, 0, 393208, 0, 0, 393209, 0, 0, 393210, 0, 0, 393211, 0, 0, 393212, 0, 0, 393213, 0, 0, 393214, 0, 0, 393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0 )
+tile_data = PoolIntArray( -15, 0, 0, 65521, 0, 0, 7, 0, 0, 131057, 0, 0, 65543, 0, 0, 196593, 0, 0, 131079, 0, 0, 262129, 0, 0, 196615, 0, 0, 327665, 0, 0, 262151, 0, 0, 393201, 0, 0, 393202, 0, 0, 393203, 0, 0, 393204, 0, 0, 393205, 0, 0, 393206, 0, 0, 393207, 0, 0, 393208, 0, 0, 393209, 0, 0, 393210, 0, 0, 393211, 0, 0, 393212, 0, 0, 393213, 0, 0, 393214, 0, 0, 393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0 )
 script = ExtResource( 3 )
+
+[node name="Robot1" parent="." groups=[
+"EnemyDeBase",
+"Personnage",
+] instance=ExtResource( 2 )]
+position = Vector2( 14.8431, 47.377 )
+distance_despawn = 1000
