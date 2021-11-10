@@ -1,6 +1,5 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Ressources/vacaroxa generic/Assets_area_1/Tileset/Subway_tiles.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Block.gd" type="Script" id=2]
 [ext_resource path="res://Ressources/vacaroxa generic/Enemies/Explosion_Particle.png" type="Texture" id=3]
 
@@ -49,8 +48,6 @@ animations = [ {
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 1 )
-region_enabled = true
 region_rect = Rect2( 320, 16, 32, 32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
