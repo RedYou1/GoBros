@@ -1,3 +1,73 @@
-[gd_scene format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Joueur.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Robot1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Fond.tscn" type="PackedScene" id=5]
 
 [node name="TestJonathan" type="Node2D"]
+
+[node name="Joueur" parent="." instance=ExtResource( 1 )]
+position = Vector2( -196.04, 68.3887 )
+cooldown_de_tir = 1.0
+distance_despawn = 10000
+
+[node name="Fond" parent="." instance=ExtResource( 5 )]
+position = Vector2( -249.254, 168.143 )
+
+[node name="Fond2" parent="." instance=ExtResource( 5 )]
+position = Vector2( -211.211, 168.81 )
+
+[node name="Fond3" parent="." instance=ExtResource( 5 )]
+position = Vector2( -173.168, 169.478 )
+
+[node name="Fond4" parent="." instance=ExtResource( 5 )]
+position = Vector2( -134.458, 169.478 )
+
+[node name="Fond5" parent="." instance=ExtResource( 5 )]
+position = Vector2( -38.3493, 172.815 )
+
+[node name="Fond6" parent="." instance=ExtResource( 5 )]
+position = Vector2( -3.64349, 172.147 )
+
+[node name="Fond7" parent="." instance=ExtResource( 5 )]
+position = Vector2( 31.7298, 170.812 )
+
+[node name="Fond8" parent="." instance=ExtResource( 5 )]
+position = Vector2( 67.7704, 171.48 )
+
+[node name="Fond9" parent="." instance=ExtResource( 5 )]
+position = Vector2( 103.811, 170.812 )
+
+[node name="Fond10" parent="." instance=ExtResource( 5 )]
+position = Vector2( 137.85, 170.812 )
+
+[node name="Fond11" parent="." instance=ExtResource( 5 )]
+position = Vector2( 173.89, 170.145 )
+
+[node name="Fond12" parent="." instance=ExtResource( 5 )]
+position = Vector2( 207.929, 168.143 )
+
+[node name="Fond13" parent="." instance=ExtResource( 5 )]
+position = Vector2( 242.634, 167.475 )
+
+[node name="Fond14" parent="." instance=ExtResource( 5 )]
+position = Vector2( 277.34, 168.143 )
+
+[node name="Fond15" parent="." instance=ExtResource( 5 )]
+position = Vector2( 311.379, 164.806 )
+
+[node name="Fond16" parent="." instance=ExtResource( 5 )]
+position = Vector2( 344.75, 164.138 )
+
+[node name="Fond17" parent="." instance=ExtResource( 5 )]
+position = Vector2( -100.419, 172.147 )
+
+[node name="Fond18" parent="." instance=ExtResource( 5 )]
+position = Vector2( -70.3855, 172.815 )
+
+[node name="Robot1" parent="." groups=[
+"EnemyDeBase",
+"Personnage",
+] instance=ExtResource( 2 )]
+position = Vector2( 29.7275, 91.3895 )
+distance_despawn = 1000

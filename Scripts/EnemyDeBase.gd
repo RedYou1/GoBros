@@ -2,12 +2,19 @@ extends "res://Scripts/Personnage.gd"
 
 
 # Declare member variables here. Examples:
-export(float) var vitesse_ennemi = 2
-var collision
+export(float) var vitesse_ennemi = 1
 var sens = false
+var barre_vie
+
+func standard_hit(collider, damage):
+	if collider.is_in_group("Balle") && !self.mort:
+		vie -= damage
+		if vie <= 0:
+			self.mort = true
 
 func _ready():
-	collision = get_node("CollisionShape2D")
+	barre_vie = get_node("Vie")
+	barre_vie.max_value = self.vie_max
 
 func sauter():
 	if self.is_on_floor:
@@ -37,5 +44,7 @@ func tourner_vers_joueur():
 		else:
 			sens = true
 		self.tourner(sens)
-		
+
+func _physics_process(delta):
+	barre_vie.value = self.vie
 
