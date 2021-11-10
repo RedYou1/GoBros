@@ -81,11 +81,6 @@ animations = [ {
 "name": "idle",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 20 ), ExtResource( 12 ), ExtResource( 16 ), ExtResource( 13 ), ExtResource( 19 ), ExtResource( 17 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 18 ) ],
-"loop": true,
-"name": "marcher",
-"speed": 15.0
-}, {
 "frames": [ ExtResource( 24 ), ExtResource( 30 ), ExtResource( 25 ), ExtResource( 31 ), ExtResource( 27 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ) ],
 "loop": true,
 "name": "sauter",
@@ -100,6 +95,11 @@ animations = [ {
 "loop": true,
 "name": "tirer",
 "speed": 15.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 20 ), ExtResource( 12 ), ExtResource( 16 ), ExtResource( 13 ), ExtResource( 19 ), ExtResource( 17 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "marcher",
+"speed": 15.0
 } ]
 
 [node name="Robot2" instance=ExtResource( 1 )]
@@ -113,7 +113,7 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 2 )
 animation = "tirer"
-frame = 15
+frame = 1
 
 [node name="DetectionAvant" parent="." index="3"]
 position = Vector2( 15, 5 )

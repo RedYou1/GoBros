@@ -39,6 +39,7 @@ func _physics_process(delta):
 			#else:
 			self.immobile()
 	elif !self.mort:
+		fonction_detection_joueur()
 		self.robot_marcher(self.sens)
 
 func _on_TimerBouger_timeout():

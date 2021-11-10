@@ -12,7 +12,6 @@ func _ready():
 
 
 func _physics_process(delta):
-	self.detection_joueur()
 	if self.detection_joueur && !self.mort:
 		if self.cooldownDeTir.is_stopped():
 			self.tourner_vers_joueur()
@@ -22,6 +21,7 @@ func _physics_process(delta):
 			self.tourner_vers_joueur()
 			self.robot_marcher(self.sens)
 	elif !self.mort:
+		fonction_detection_joueur()
 		self.robot_marcher(self.sens)
 		
 

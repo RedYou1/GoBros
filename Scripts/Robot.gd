@@ -64,7 +64,7 @@ func _ready():
 	self.animation.animation = "idle"
 	
 
-func detection_joueur():
+func fonction_detection_joueur():
 	if get_node("DetectionAvant").get_collider():
 		#print(get_node("DetectionAvant").get_collider().name)
 		if get_node("DetectionAvant").get_collider().name == "Joueur":

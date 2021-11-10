@@ -1,8 +1,39 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Joueur.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Robot1.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Fond.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Robot3.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/MapGenerator.gd" type="Script" id=3]
+[ext_resource path="res://Ressources/vacaroxa generic/Assets_area_1/Tileset/Subway_tiles.png" type="Texture" id=4]
+
+[sub_resource type="TileSet" id=1]
+0/name = "Subway_tiles.png 0"
+0/texture = ExtResource( 4 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 320, 16, 32, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "Subway_tiles.png 1"
+1/texture = ExtResource( 4 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 272, 80, 32, 32 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
 
 [node name="TestJonathan" type="Node2D"]
 
@@ -11,61 +42,16 @@ position = Vector2( -196.04, 68.3887 )
 cooldown_de_tir = 1.0
 distance_despawn = 10000
 
-[node name="Fond" parent="." instance=ExtResource( 5 )]
-position = Vector2( -249.254, 168.143 )
-
-[node name="Fond2" parent="." instance=ExtResource( 5 )]
-position = Vector2( -211.211, 168.81 )
-
-[node name="Fond3" parent="." instance=ExtResource( 5 )]
-position = Vector2( -173.168, 169.478 )
-
-[node name="Fond4" parent="." instance=ExtResource( 5 )]
-position = Vector2( -134.458, 169.478 )
-
-[node name="Fond5" parent="." instance=ExtResource( 5 )]
-position = Vector2( -38.3493, 172.815 )
-
-[node name="Fond6" parent="." instance=ExtResource( 5 )]
-position = Vector2( -3.64349, 172.147 )
-
-[node name="Fond7" parent="." instance=ExtResource( 5 )]
-position = Vector2( 31.7298, 170.812 )
-
-[node name="Fond8" parent="." instance=ExtResource( 5 )]
-position = Vector2( 67.7704, 171.48 )
-
-[node name="Fond9" parent="." instance=ExtResource( 5 )]
-position = Vector2( 103.811, 170.812 )
-
-[node name="Fond10" parent="." instance=ExtResource( 5 )]
-position = Vector2( 137.85, 170.812 )
-
-[node name="Fond11" parent="." instance=ExtResource( 5 )]
-position = Vector2( 173.89, 170.145 )
-
-[node name="Fond12" parent="." instance=ExtResource( 5 )]
-position = Vector2( 207.929, 168.143 )
-
-[node name="Fond13" parent="." instance=ExtResource( 5 )]
-position = Vector2( 242.634, 167.475 )
-
-[node name="Fond14" parent="." instance=ExtResource( 5 )]
-position = Vector2( 277.34, 168.143 )
-
-[node name="Fond15" parent="." instance=ExtResource( 5 )]
-position = Vector2( 311.379, 164.806 )
-
-[node name="Fond16" parent="." instance=ExtResource( 5 )]
-position = Vector2( 344.75, 164.138 )
-
-[node name="Fond17" parent="." instance=ExtResource( 5 )]
-position = Vector2( -100.419, 172.147 )
-
-[node name="Fond18" parent="." instance=ExtResource( 5 )]
-position = Vector2( -70.3855, 172.815 )
-
-[node name="Robot1" parent="." groups=[
+[node name="Robot3" parent="." groups=[
 "EnemyDeBase",
+"Personnage",
 ] instance=ExtResource( 2 )]
-position = Vector2( 29.7275, 91.3895 )
+position = Vector2( 87.1251, 78.0408 )
+distance_despawn = 1000
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 196593, 0, 0, 131080, 0, 0, 262129, 0, 0, 196616, 0, 0, 327665, 0, 0, 262152, 0, 0, 393201, 0, 0, 393202, 0, 0, 393203, 0, 0, 393204, 0, 0, 393205, 0, 0, 393206, 0, 0, 393207, 0, 0, 393208, 0, 0, 393209, 0, 0, 393210, 0, 0, 393211, 0, 0, 393212, 0, 0, 393213, 0, 0, 393214, 0, 0, 393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0 )
+script = ExtResource( 3 )
