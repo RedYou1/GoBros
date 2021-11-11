@@ -1,8 +1,9 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Scenes/Personnage.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Joueur.gd" type="Script" id=2]
 [ext_resource path="res://Ressources/vacaroxa generic/Player/SpriteSheet_player.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/PauseMenu.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 8.92592
@@ -212,5 +213,9 @@ cast_to = Vector2( 10, 0 )
 [node name="TimerRecovery" type="Timer" parent="." index="10"]
 wait_time = 3.0
 one_shot = true
+
+[node name="PauseMenu" parent="." index="11" instance=ExtResource( 4 )]
+visible = false
+z_index = 10
 
 [connection signal="timeout" from="TimerRecovery" to="." method="_on_TimerRecovery_timeout"]
