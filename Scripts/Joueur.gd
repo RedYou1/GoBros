@@ -131,4 +131,5 @@ func _physics_process(delta):
 		
 		if collision_mouvement:
 			if collision_mouvement.collider.has_method("hit"):
-				collision_mouvement.collider.hit(self,damage)
+				if collision_mouvement.collider.is_in_group("EnnemyDeBase"):
+					collision_mouvement.collider.hit(self,damage)

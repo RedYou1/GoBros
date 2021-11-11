@@ -48,6 +48,7 @@ distance_despawn = 10000
 ] instance=ExtResource( 2 )]
 position = Vector2( 164.774, 73.7136 )
 distance_despawn = 1000
+self_damage = null
 ajustement_saut = 0
 ajustement_marche = 0
 distance_detection = 100

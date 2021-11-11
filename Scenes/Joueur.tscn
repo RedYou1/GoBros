@@ -168,7 +168,6 @@ zoom = Vector2( 0.5, 0.5 )
 position = Vector2( 0, -8.5946 )
 frames = SubResource( 28 )
 animation = "tirer"
-frame = 1
 playing = true
 
 [node name="cooldown de tir" parent="." index="3"]
