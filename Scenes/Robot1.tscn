@@ -107,7 +107,6 @@ animations = [ {
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 distance_despawn = 1000
-self_damage = null
 distance_repli = 30
 
 [node name="CollisionShape2D" parent="." index="0"]
@@ -117,7 +116,7 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 2 )
 animation = "mourir"
-frame = 13
+frame = 8
 
 [node name="cooldown de tir" parent="." index="2"]
 one_shot = true

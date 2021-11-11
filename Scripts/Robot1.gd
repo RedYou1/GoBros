@@ -65,16 +65,8 @@ func _physics_process(delta):
 					self.robot_marcher(self.sens)
 	elif !self.mort:
 		self.fonction_detection_joueur()
-		if self.detection_mur && self.is_on_floor:
-			if self.sens:
-				self.sens = false
-				self.robot_marcher(self.sens)
-			else:
-				self.sens = true
-				self.robot_marcher(self.sens)
-			self.set_raycast()
-			get_node("TimerBouger").start()
-		elif self.detection_blocage && self.is_on_floor:
+		
+		if self.detection_blocage && self.is_on_floor:
 			self.robot_sauter(self.sens)
 		else:
 			if self.detection_vide && self.is_on_floor:

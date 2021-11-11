@@ -108,7 +108,6 @@ animations = [ {
 script = ExtResource( 2 )
 cooldown_de_tir = 3.0
 distance_despawn = 1000
-vitesse_ennemi = 15.0
 temps_du_dash = 0.2
 
 [node name="CollisionShape2D" parent="." index="0"]
@@ -118,7 +117,7 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 2 )
 animation = "idle"
-frame = 5
+frame = 7
 
 [node name="cooldown de tir" parent="." index="2"]
 one_shot = true

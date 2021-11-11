@@ -8,12 +8,13 @@ var barre_vie
 var detection_bloc
 var bloc_detecte = false
 var collision_mouvement
+var mem_modulate
 
 func gerer_recovery():
 	if in_recovery:
-		modulate.a = 100
+		self.get_node("AnimatedSprite").modulate.a = 0.5
 	else:
-		modulate.a = 255
+		self.animation.modulate = mem_modulate
 
 func set_detection_bloc():
 	if self.animation.flip_h:
@@ -35,6 +36,7 @@ func _ready():
 	detection_bloc = get_node("DetectionBloc")
 	self.cooldownDeTir.wait_time = self.cooldown_de_tir
 	get_node("TimerRecovery").wait_time = recovery_time
+	mem_modulate = self.animation.modulate
 
 
 func hit(collider, damage):
@@ -125,6 +127,7 @@ func gestion_collision():
 
 func _physics_process(delta):
 	set_detection_bloc()
+	gerer_recovery()
 	
 	if !self.mort:
 		

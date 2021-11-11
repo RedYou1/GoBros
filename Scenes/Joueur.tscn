@@ -156,6 +156,7 @@ animations = [ {
 script = ExtResource( 2 )
 cooldown_de_tir = 0.5
 vie_max = 30
+recovery_time = 3.0
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource( 1 )
@@ -208,7 +209,7 @@ enabled = true
 cast_to = Vector2( 10, 0 )
 
 [node name="TimerRecovery" type="Timer" parent="." index="10"]
-wait_time = 2.0
+wait_time = 3.0
 one_shot = true
 
 [connection signal="timeout" from="TimerRecovery" to="." method="_on_TimerRecovery_timeout"]

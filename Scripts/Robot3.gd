@@ -3,33 +3,42 @@ extends "res://Scripts/Robot.gd"
 var dash_ok = false
 var dash_fini = true
 export(float) var temps_avant_dash = 3
+export(int) var vitesse_dash = 15
 var timer_dash
 var position_dash = Vector2(99999,99999)
 var mem_timer = false
+var mem_val_vitesse
 export(float) var temps_du_dash = 0.1
 var timer_du_dash
 var mem_modulate_g
 
 func dash(delta):
 	if dash_ok:
-		self.modulate.g = mem_modulate_g
-		
-		if !dash_fini:
+		self.animation.modulate.g = mem_modulate_g
+		self.vitesse_ennemi = vitesse_dash
+		if !dash_fini && !detection_blocage && !detection_vide:
 			self.robot_marcher(self.sens)
 			
 	else:
-		self.immobile()
+		self.vitesse_ennemi = mem_val_vitesse
+		if self.detection_blocage && self.is_on_floor:
+			self.robot_sauter(self.sens)
+		elif self.detection_vide && self.is_on_floor:
+			self.immobile()
+		else:
+			self.robot_marcher(self.sens)
 		if !mem_timer:
 			mem_timer = true
 			timer_dash.start()
-		self.modulate.g -= delta / timer_dash.wait_time
+		self.animation.modulate.g -= delta / timer_dash.wait_time
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	timer_dash = get_node("TimerDash")
-	mem_modulate_g = self.modulate.g
+	mem_modulate_g = self.animation.modulate.g
 	timer_du_dash = get_node("TimerDureeDash")
 	self.detection_joueur
+	mem_val_vitesse = self.vitesse_ennemi
 
 func _physics_process(delta):
 	self.set_raycast()
