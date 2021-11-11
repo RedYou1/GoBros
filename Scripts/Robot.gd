@@ -37,7 +37,7 @@ func robot_marcher(sens):
 	
 func robot_tirer(sens):
 	self.tourner(sens)
-	if self.tir:
+	if self.tir && self.is_on_floor:
 		var balle = self.balleScene.instance()
 		self.tir = true
 		if self.animation.flip_h:
@@ -96,7 +96,7 @@ func fonction_detection_vide():
 		
 func fonction_detection_blocage():
 	if get_node("DetectionBlocAvant").get_collider() && self.is_on_floor:
-		if get_node("DetectionAvant").get_collider().is_in_group("Block"):
+		if get_node("DetectionAvant").get_collider().is_in_group("Block") && self.is_on_floor:
 			detection_blocage = true
 		else:	
 			detection_blocage = false

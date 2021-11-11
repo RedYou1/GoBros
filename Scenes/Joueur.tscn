@@ -168,6 +168,7 @@ zoom = Vector2( 0.5, 0.5 )
 position = Vector2( 0, -8.5946 )
 frames = SubResource( 28 )
 animation = "tirer"
+frame = 1
 playing = true
 
 [node name="cooldown de tir" parent="." index="3"]
@@ -206,3 +207,5 @@ __meta__ = {
 position = Vector2( 0, 12 )
 enabled = true
 cast_to = Vector2( 10, 0 )
+
+[node name="TimerRecovery" type="Timer" parent="." index="10"]

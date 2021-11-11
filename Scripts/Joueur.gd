@@ -1,9 +1,11 @@
 extends "res://Scripts/Personnage.gd"
 
 export(float) var vitesse = 2
+export(int) var damage = 1
 var barre_vie
 var detection_bloc
 var bloc_detecte = false
+var collision_mouvement
 
 func set_detection_bloc():
 	if self.animation.flip_h:
@@ -103,10 +105,10 @@ func _physics_process(delta):
 		set_animation()
 	
 		if Input.is_action_pressed("DROIT"):
-			move_and_collide(Vector2(vitesse,0))
+			collision_mouvement = move_and_collide(Vector2(vitesse,0))
 		
 		elif Input.is_action_pressed("GAUCHE"):
-			move_and_collide(Vector2(-vitesse,0))
+			collision_mouvement = move_and_collide(Vector2(-vitesse,0))
 			
 		if Input.is_action_pressed("HAUT") && bloc_detecte:
 			self.velocityY = -vitesse
@@ -126,3 +128,7 @@ func _physics_process(delta):
 			
 		if Input.is_action_just_released("TIRER"):
 			self.tir = false
+		
+		if collision_mouvement:
+			if collision_mouvement.collider.has_method("hit"):
+				collision_mouvement.collider.hit(self,damage)

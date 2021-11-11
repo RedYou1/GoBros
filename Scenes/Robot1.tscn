@@ -106,9 +106,8 @@ animations = [ {
 "Personnage",
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-cooldown_de_tir = 0.1
 distance_despawn = 1000
-distance_repli = 60
+distance_repli = 30
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2( -1, 0 )
@@ -117,7 +116,7 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 2 )
 animation = "mourir"
-frame = 10
+frame = 9
 
 [node name="cooldown de tir" parent="." index="2"]
 one_shot = true
@@ -130,9 +129,6 @@ position = Vector2( 0, -8 )
 wait_time = 3.0
 autostart = true
 
-[node name="position de tir haut" parent="." index="5"]
-scale = Vector2( 1, 1 )
-
 [node name="DetectionBlocAvant" parent="." index="9"]
 position = Vector2( 0, 8 )
 
@@ -144,6 +140,11 @@ position = Vector2( 16.4804, 11.3011 )
 
 [node name="DetectionBlocHaut" parent="." index="12"]
 position = Vector2( 0, -46.208 )
+
+[node name="DetectionRepli" type="RayCast2D" parent="." index="13"]
+position = Vector2( 131.259, 11 )
+enabled = true
+cast_to = Vector2( 0, 45 )
 
 [connection signal="timeout" from="cooldown de tir" to="." method="_on_cooldown_de_tir_timeout"]
 [connection signal="timeout" from="TimerBouger" to="." method="_on_TimerBouger_timeout"]
