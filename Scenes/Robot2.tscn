@@ -81,15 +81,15 @@ animations = [ {
 "name": "idle",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 24 ), ExtResource( 30 ), ExtResource( 25 ), ExtResource( 31 ), ExtResource( 27 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ) ],
-"loop": true,
-"name": "sauter",
-"speed": 20.0
-}, {
 "frames": [ ExtResource( 66 ), ExtResource( 68 ), ExtResource( 62 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 67 ), ExtResource( 61 ), ExtResource( 65 ), ExtResource( 60 ), ExtResource( 69 ), ExtResource( 63 ), ExtResource( 64 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 59 ) ],
 "loop": true,
 "name": "mourir",
 "speed": 15.0
+}, {
+"frames": [ ExtResource( 24 ), ExtResource( 30 ), ExtResource( 25 ), ExtResource( 31 ), ExtResource( 27 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ) ],
+"loop": true,
+"name": "sauter",
+"speed": 20.0
 }, {
 "frames": [ ExtResource( 53 ), ExtResource( 51 ), ExtResource( 54 ), ExtResource( 52 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 41 ), ExtResource( 39 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 40 ), ExtResource( 48 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 45 ), ExtResource( 44 ), ExtResource( 43 ), ExtResource( 42 ) ],
 "loop": true,
@@ -108,6 +108,7 @@ animations = [ {
 script = ExtResource( 2 )
 vie_max = 10
 distance_despawn = 1000
+distance_detection = 100
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2( -1, 0 )
@@ -116,7 +117,7 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 2 )
 animation = "tirer"
-frame = 10
+frame = 13
 
 [node name="cooldown de tir" parent="." index="2"]
 one_shot = true
@@ -129,4 +130,5 @@ position = Vector2( 15, 5 )
 wait_time = 3.0
 autostart = true
 
+[connection signal="timeout" from="cooldown de tir" to="." method="_on_cooldown_de_tir_timeout"]
 [connection signal="timeout" from="TimerBouger" to="." method="_on_TimerBouger_timeout"]

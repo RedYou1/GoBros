@@ -116,7 +116,6 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 2 )
 animation = "mourir"
-frame = 8
 
 [node name="cooldown de tir" parent="." index="2"]
 one_shot = true

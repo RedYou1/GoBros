@@ -72,12 +72,12 @@ func set_raycast():
 		raycast.cast_to.x = -distance_detection
 		get_node("DetectionBlocAvant").cast_to.x = -20
 		get_node("DetectionBlocHaut").cast_to.x = -20
-		get_node("DetectionVide").position = Vector2(-16, 11)
+		get_node("DetectionVide").position = Vector2(-13, 11)
 	else:
 		raycast.cast_to.x = distance_detection
 		get_node("DetectionBlocAvant").cast_to.x = 20
 		get_node("DetectionBlocHaut").cast_to.x = 20
-		get_node("DetectionVide").position = Vector2(16, 11)
+		get_node("DetectionVide").position = Vector2(13, 11)
 	
 
 func fonction_detection_joueur():
