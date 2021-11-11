@@ -42,3 +42,5 @@ position = Vector2( 16.6677, 14.485 )
 position = Vector2( 0.396851, -22.4221 )
 enabled = true
 cast_to = Vector2( 10, 0 )
+
+[node name="TimerBouger" type="Timer" parent="." index="12"]
