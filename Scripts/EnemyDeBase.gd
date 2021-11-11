@@ -7,10 +7,11 @@ var sens = false
 var barre_vie
 
 func standard_hit(collider, damage):
-	if collider.is_in_group("Balle") && !self.mort:
+	if (collider.is_in_group("Balle") || collider.is_in_group("Joueur")) && !self.mort:
 		vie -= damage
 		if vie <= 0:
 			self.mort = true
+	
 
 func _ready():
 	barre_vie = get_node("Vie")

@@ -5,10 +5,12 @@ extends "res://Scripts/Robot.gd"
 var repli = false
 export(int) var distance_repli
 var mem_vitesse = false
+var distance_joueur = 0
+var mem_val_vitesse
 
 func repli(sens):
 	if get_parent().get_node("Joueur"):
-		var distance_joueur = get_parent().get_node("Joueur").position.x - position.x
+		distance_joueur = get_parent().get_node("Joueur").position.x - position.x
 		if distance_joueur < 0:
 			distance_joueur *= -1
 		
@@ -18,33 +20,73 @@ func repli(sens):
 			sens_contraire_joueur = false
 		else:
 			sens_contraire_joueur = true
-		
-		if distance_joueur < distance_repli || !self.is_on_floor:
-			repli = true
-			self.robot_sauter(sens_contraire_joueur)
-		else:
+			
+		if distance_joueur < distance_repli:
+			if get_node("DetectionRepli").get_collider():
+				if get_node("DetectionRepli").get_collider().is_in_group("Block"):
+					repli = true
+		elif self.is_on_floor:
 			repli = false
+	
+		if repli:
+			if !mem_vitesse:
+				mem_vitesse = true
+				self.vitesse_ennemi *=5
+			self.robot_sauter(sens_contraire_joueur)
+		elif self.is_on_floor:
+			mem_vitesse = false
+			self.vitesse_ennemi = mem_val_vitesse
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	mem_val_vitesse = self.vitesse_ennemi
 
 func _physics_process(delta):
+	self.set_raycast()
+	if self.sens:
+		get_node("DetectionRepli").position.x = 145
+	else:
+		get_node("DetectionRepli").position.x = -145
+	self.fonction_detection_blocage()
+	self.fonction_detection_vide()
+	
 	if self.detection_joueur && !self.mort:
-		if !mem_vitesse:
-			mem_vitesse = true
-			self.vitesse_ennemi *=5
-		
 		repli(self.sens)
 		if !repli:
 			self.tourner_vers_joueur()
-			if self.cooldownDeTir.is_stopped():
+			if self.tir:
 				self.robot_tirer(self.sens)
 			else:
-				self.immobile()
+				if self.detection_blocage && self.is_on_floor:
+					self.robot_sauter(self.sens)
+				elif self.detection_vide && self.is_on_floor:
+					self.immobile()
+				else:
+					self.robot_marcher(self.sens)
 	elif !self.mort:
 		self.fonction_detection_joueur()
-		self.robot_marcher(self.sens)
+		if self.detection_mur && self.is_on_floor:
+			if self.sens:
+				self.sens = false
+				self.robot_marcher(self.sens)
+			else:
+				self.sens = true
+				self.robot_marcher(self.sens)
+			self.set_raycast()
+			get_node("TimerBouger").start()
+		elif self.detection_blocage && self.is_on_floor:
+			self.robot_sauter(self.sens)
+		else:
+			if self.detection_vide && self.is_on_floor:
+				if self.sens:
+					self.sens = false
+					self.robot_marcher(self.sens)
+				else:
+					self.sens = true
+					self.robot_marcher(self.sens)
+				get_node("TimerBouger").start()
+			else:
+				self.robot_marcher(self.sens)
 
 func _on_TimerBouger_timeout():
 	if !self.detection_joueur && !self.mort:

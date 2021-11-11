@@ -1,9 +1,11 @@
 extends "res://Scripts/Personnage.gd"
 
 export(float) var vitesse = 2
+export(int) var damage = 1
 var barre_vie
 var detection_bloc
 var bloc_detecte = false
+var collision_mouvement
 
 func set_detection_bloc():
 	if self.animation.flip_h:
@@ -23,6 +25,7 @@ func _ready():
 	barre_vie.max_value = self.vie_max
 	barre_vie.value = vie
 	detection_bloc = get_node("DetectionBloc")
+	self.cooldownDeTir.wait_time = self.cooldown_de_tir
 
 
 func hit(collider, damage):
@@ -34,32 +37,28 @@ func hit(collider, damage):
 
 func tirer(dir_balle):
 		
-	if tir and self.cooldownDeTir.is_stopped():
+	if self.tir:
 		var balle = self.balleScene.instance()
 		
 		if dir_balle == "haut":
 			balle.directionY = -balle.vitesse
 			balle.position = position + ballePositionHaut
-			get_parent().add_child(balle)
-			self.cooldownDeTir.start(self.cooldown_de_tir)
 			
-		elif dir_balle == "bas" && !is_on_floor:
+		elif dir_balle == "bas":
 			balle.directionY = +balle.vitesse
 			balle.position = position + ballePositionBas
-			get_parent().add_child(balle)
-			self.cooldownDeTir.start(self.cooldown_de_tir)
 			
 		elif dir_balle == "droit" && animation.flip_h:
 			balle.directionX = -balle.vitesse
 			balle.position = position + Vector2(-ballePositionDroit.x, ballePositionDroit.y)
-			get_parent().add_child(balle)
-			self.cooldownDeTir.start(self.cooldown_de_tir)
 			
 		elif dir_balle == "droit" && !animation.flip_h:
 			balle.directionX = +balle.vitesse
 			balle.position = position + Vector2(ballePositionDroit.x, ballePositionDroit.y)
-			get_parent().add_child(balle)
-			self.cooldownDeTir.start(self.cooldown_de_tir)
+			
+		get_parent().add_child(balle)
+		self.cooldownDeTir.start()
+		self.tir = false
 
 func set_animation():
 	self.animation.playing = true
@@ -106,10 +105,10 @@ func _physics_process(delta):
 		set_animation()
 	
 		if Input.is_action_pressed("DROIT"):
-			move_and_collide(Vector2(vitesse,0))
+			collision_mouvement = move_and_collide(Vector2(vitesse,0))
 		
 		elif Input.is_action_pressed("GAUCHE"):
-			move_and_collide(Vector2(-vitesse,0))
+			collision_mouvement = move_and_collide(Vector2(-vitesse,0))
 			
 		if Input.is_action_pressed("HAUT") && bloc_detecte:
 			self.velocityY = -vitesse
@@ -119,17 +118,18 @@ func _physics_process(delta):
 	
 		if Input.is_action_pressed("TIRER"):
 			if Input.is_action_pressed("DROIT") || Input.is_action_pressed("GAUCHE"):
-				self.tir = true
 				self.tirer("droit")
-			elif Input.is_action_pressed("BAS") && !self.is_on_floor:
-				self.tir = true
+			elif Input.is_action_pressed("BAS"):
 				tirer("bas")
 			elif Input.is_action_pressed("HAUT"):
-				self.tir = true
 				tirer("haut")
 			else:
-				self.tir = true
 				tirer("droit")
 			
 		if Input.is_action_just_released("TIRER"):
 			self.tir = false
+		
+		if collision_mouvement:
+			if collision_mouvement.collider.has_method("hit"):
+				if collision_mouvement.collider.is_in_group("EnnemyDeBase"):
+					collision_mouvement.collider.hit(self,damage)
