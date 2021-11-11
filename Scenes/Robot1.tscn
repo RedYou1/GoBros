@@ -113,7 +113,7 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 2 )
 animation = "mourir"
-frame = 14
+frame = 2
 
 [node name="DetectionAvant" parent="." index="3"]
 position = Vector2( 0, -8 )

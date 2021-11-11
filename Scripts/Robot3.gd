@@ -21,12 +21,7 @@ func dash(delta):
 			
 	else:
 		self.vitesse_ennemi = mem_val_vitesse
-		if self.detection_blocage && self.is_on_floor:
-			self.robot_sauter(self.sens)
-		elif self.detection_vide && self.is_on_floor:
-			self.immobile()
-		else:
-			self.robot_marcher(self.sens)
+		self.robot_suivre_joueur()
 		if !mem_timer:
 			mem_timer = true
 			timer_dash.start()
@@ -49,8 +44,7 @@ func _physics_process(delta):
 			self.tourner_vers_joueur()
 		dash(delta)
 	elif !self.mort:
-		self.fonction_detection_joueur()
-		self.immobile()
+		self.robot_bouger_standard()
 
 
 func _on_TimerDash_timeout():

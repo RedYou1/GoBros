@@ -53,32 +53,8 @@ func _physics_process(delta):
 	if self.detection_joueur && !self.mort:
 		repli(self.sens)
 		if !repli:
-			self.tourner_vers_joueur()
-			if self.tir:
-				self.robot_tirer(self.sens)
-			else:
-				if self.detection_blocage && self.is_on_floor:
-					self.robot_sauter(self.sens)
-				elif self.detection_vide && self.is_on_floor:
-					self.immobile()
-				else:
-					self.robot_marcher(self.sens)
-	elif !self.mort:
-		self.fonction_detection_joueur()
-		
-		if self.detection_blocage && self.is_on_floor:
-			self.robot_sauter(self.sens)
-		else:
-			if self.detection_vide && self.is_on_floor:
-				if self.sens:
-					self.sens = false
-					self.robot_marcher(self.sens)
-				else:
-					self.sens = true
-					self.robot_marcher(self.sens)
-				get_node("TimerBouger").start()
-			else:
-				self.robot_marcher(self.sens)
+			self.robot_suivre_joueur()
+		self.robot_bouger_standard()
 
 func _on_TimerBouger_timeout():
 	if !self.detection_joueur && !self.mort:
