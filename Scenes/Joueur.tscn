@@ -66,51 +66,51 @@ region = Rect2( 135, 90, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 3 )
-region = Rect2( 180, 90, 45, 45 )
+region = Rect2( 270, 0, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 3 )
-region = Rect2( 225, 90, 45, 45 )
+region = Rect2( 315, 0, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 3 )
-region = Rect2( 180, 225, 45, 45 )
+region = Rect2( 0, 45, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 3 )
-region = Rect2( 225, 225, 45, 45 )
+region = Rect2( 45, 45, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 3 )
-region = Rect2( 270, 0, 45, 45 )
+region = Rect2( 90, 45, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 3 )
-region = Rect2( 315, 0, 45, 45 )
+region = Rect2( 135, 45, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 3 )
-region = Rect2( 0, 45, 45, 45 )
+region = Rect2( 180, 45, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=23]
 atlas = ExtResource( 3 )
-region = Rect2( 45, 45, 45, 45 )
+region = Rect2( 225, 45, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=24]
 atlas = ExtResource( 3 )
-region = Rect2( 90, 45, 45, 45 )
+region = Rect2( 180, 225, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=25]
 atlas = ExtResource( 3 )
-region = Rect2( 135, 45, 45, 45 )
+region = Rect2( 225, 225, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 3 )
-region = Rect2( 180, 45, 45, 45 )
+region = Rect2( 180, 90, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=27]
 atlas = ExtResource( 3 )
-region = Rect2( 225, 45, 45, 45 )
+region = Rect2( 225, 90, 45, 45 )
 
 [sub_resource type="SpriteFrames" id=28]
 animations = [ {
@@ -134,19 +134,19 @@ animations = [ {
 "name": "tirer",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 16 ), SubResource( 17 ) ],
+"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
 "loop": true,
-"name": "tirer_haut",
+"name": "courir",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 18 ), SubResource( 19 ) ],
+"frames": [ SubResource( 24 ), SubResource( 25 ) ],
 "loop": true,
 "name": "tirer_bas",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ) ],
+"frames": [ SubResource( 26 ), SubResource( 27 ) ],
 "loop": true,
-"name": "courir",
+"name": "tirer_haut",
 "speed": 5.0
 } ]
 
@@ -198,3 +198,8 @@ text = "Vie:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="DetectionBloc" type="RayCast2D" parent="." index="9"]
+position = Vector2( 0, 12 )
+enabled = true
+cast_to = Vector2( 10, 0 )

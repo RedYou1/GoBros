@@ -2,11 +2,27 @@ extends "res://Scripts/Personnage.gd"
 
 export(float) var vitesse = 2
 var barre_vie
+var detection_bloc
+var bloc_detecte = false
+
+func set_detection_bloc():
+	if self.animation.flip_h:
+		detection_bloc.cast_to.x = -10
+	else:
+		detection_bloc.cast_to.x = 10
+	if detection_bloc.get_collider():
+		if detection_bloc.get_collider().is_in_group("Block"):
+			bloc_detecte = true
+		else:
+			bloc_detecte = false
+	else:
+		bloc_detecte = false
 
 func _ready():
 	barre_vie = get_node("Vie")
 	barre_vie.max_value = self.vie_max
 	barre_vie.value = vie
+	detection_bloc = get_node("DetectionBloc")
 
 
 func hit(collider, damage):
@@ -83,6 +99,7 @@ func set_animation():
 			self.animation.animation = "idle"
 
 func _physics_process(delta):
+	set_detection_bloc()
 	
 	if !self.mort:
 		
@@ -93,6 +110,9 @@ func _physics_process(delta):
 		
 		elif Input.is_action_pressed("GAUCHE"):
 			move_and_collide(Vector2(-vitesse,0))
+			
+		if Input.is_action_pressed("HAUT") && bloc_detecte:
+			self.velocityY = -vitesse
 	
 		if Input.is_action_just_pressed("SAUT") and self.is_on_floor:
 			self.velocityY = -15
