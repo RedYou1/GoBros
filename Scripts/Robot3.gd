@@ -18,6 +18,12 @@ func dash(delta):
 		self.vitesse_ennemi = vitesse_dash
 		if !dash_fini && !detection_blocage && !detection_vide:
 			self.robot_marcher(self.sens)
+		elif detection_vide:
+			self.robot_tirer(self.sens)
+			if !self.tir:
+				dash_ok = false
+				dash_fini = true
+				timer_dash.start(temps_avant_dash)
 			
 	else:
 		self.vitesse_ennemi = mem_val_vitesse
@@ -50,7 +56,8 @@ func _physics_process(delta):
 func _on_TimerDash_timeout():
 	dash_fini = false
 	dash_ok = true
-	timer_du_dash.start(temps_du_dash)
+	if !self.detection_vide:
+		timer_du_dash.start(temps_du_dash)
 
 
 func _on_TimerDureeDash_timeout():

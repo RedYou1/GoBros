@@ -2,6 +2,7 @@ extends "res://Scripts/Personnage.gd"
 
 export(float) var vitesse = 2
 export(float) var recovery_time = 2
+export(float) var tir_du_joueur = 0.2
 var in_recovery  = false
 export(int) var damage = 1
 var barre_vie
@@ -34,9 +35,7 @@ func _ready():
 	barre_vie.max_value = self.vie_max
 	barre_vie.value = vie
 	detection_bloc = get_node("DetectionBloc")
-	self.cooldown_de_tir = 0.2
-	self.cooldownDeTir.wait_time = self.cooldown_de_tir
-	print(self.cooldownDeTir.wait_time)
+	self.cooldownDeTir.wait_time = tir_du_joueur
 	get_node("TimerRecovery").wait_time = recovery_time
 	mem_modulate = self.animation.modulate
 
@@ -88,17 +87,17 @@ func set_animation():
 	self.animation.playing = true
 	
 	if !self.is_on_floor:
-		if Input.is_action_pressed("TIRER") && Input.is_action_pressed("BAS"):
+		if self.animation.animation != "sauter":
+			self.animation.animation = "sauter"
+		if Input.is_action_pressed("DROIT"):
+			self.animation.flip_h = false
+		elif Input.is_action_pressed("GAUCHE"):
+			self.animation.flip_h = true
+				
+	elif Input.is_action_pressed("TIRER") && Input.is_action_pressed("BAS"):
 			if self.animation.animation != "tirer_bas":
 				self.animation.animation = "tirer_bas"
-		else:
-			if self.animation.animation != "sauter":
-				self.animation.animation = "sauter"
-			if Input.is_action_pressed("DROIT"):
-				self.animation.flip_h = false
-			elif Input.is_action_pressed("GAUCHE"):
-				self.animation.flip_h = true
-	
+				
 	elif Input.is_action_pressed("DROIT"):
 		self.animation.flip_h = false
 		if self.animation.animation != "courir":

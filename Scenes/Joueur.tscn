@@ -117,7 +117,7 @@ animations = [ {
 "frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
 "loop": true,
 "name": "idle",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
 "loop": true,
@@ -132,22 +132,22 @@ animations = [ {
 "frames": [ SubResource( 14 ), SubResource( 15 ) ],
 "loop": true,
 "name": "tirer",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
 "loop": true,
 "name": "courir",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [ SubResource( 24 ), SubResource( 25 ) ],
 "loop": true,
 "name": "tirer_bas",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 26 ), SubResource( 27 ) ],
 "loop": true,
 "name": "tirer_haut",
-"speed": 5.0
+"speed": 10.0
 } ]
 
 [node name="Joueur" groups=[
@@ -156,6 +156,7 @@ animations = [ {
 script = ExtResource( 2 )
 cooldown_de_tir = 0.5
 vie_max = 30
+vitesse = 3.0
 recovery_time = 3.0
 
 [node name="CollisionShape2D" parent="." index="0"]
@@ -178,7 +179,7 @@ wait_time = 0.5
 position = Vector2( 0.189194, -27.689 )
 
 [node name="position de tir droit" parent="." index="5"]
-position = Vector2( 24.6213, -8.97302 )
+position = Vector2( 21.7463, -5.47302 )
 
 [node name="position de tir bas" parent="." index="6"]
 position = Vector2( 1.18921, 24.1079 )
