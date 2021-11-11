@@ -106,6 +106,7 @@ animations = [ {
 "Personnage",
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+cooldown_de_tir = 0.2
 vie_max = 10
 distance_despawn = 1000
 
@@ -116,7 +117,7 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 2 )
 animation = "tirer"
-frame = 2
+frame = 10
 
 [node name="cooldown de tir" parent="." index="2"]
 one_shot = true

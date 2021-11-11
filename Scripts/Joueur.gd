@@ -34,7 +34,9 @@ func _ready():
 	barre_vie.max_value = self.vie_max
 	barre_vie.value = vie
 	detection_bloc = get_node("DetectionBloc")
+	self.cooldown_de_tir = 0.2
 	self.cooldownDeTir.wait_time = self.cooldown_de_tir
+	print(self.cooldownDeTir.wait_time)
 	get_node("TimerRecovery").wait_time = recovery_time
 	mem_modulate = self.animation.modulate
 
@@ -126,7 +128,6 @@ func gestion_collision():
 				collision_mouvement.collider.hit(self,damage)
 
 func _physics_process(delta):
-	print(self.cooldownDeTir.wait_time)
 	set_detection_bloc()
 	gerer_recovery()
 	
