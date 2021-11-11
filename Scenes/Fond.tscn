@@ -6,7 +6,7 @@
 [node name="Fond" groups=[
 "Fond",
 ] instance=ExtResource( 2 )]
-mode = 1
+GRAVITY = 0.0
 vie = -9223372036854775808
 
 [node name="Sprite" parent="." index="0"]

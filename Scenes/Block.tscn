@@ -42,7 +42,7 @@ animations = [ {
 "speed": 7.5
 } ]
 
-[node name="Block" type="RigidBody2D" groups=[
+[node name="Block" type="KinematicBody2D" groups=[
 "Block",
 ]]
 script = ExtResource( 2 )
@@ -57,5 +57,3 @@ shape = SubResource( 1 )
 visible = false
 frames = SubResource( 9 )
 frame = 1
-
-[connection signal="animation_finished" from="explosion" to="." method="_on_explosion_animation_finished"]
