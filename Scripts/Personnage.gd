@@ -44,6 +44,7 @@ func _ready():
 	ballePositionHaut = get_node("position de tir haut").position
 	ballePositionBas = get_node("position de tir bas").position
 	vie = vie_max
+	cooldownDeTir.wait_time = cooldown_de_tir
 
 func _physics_process(delta):
 	velocityY += GRAVITY
@@ -59,3 +60,7 @@ func _physics_process(delta):
 	
 	if position.y > distance_despawn:
 		mort = true
+
+
+func _on_cooldown_de_tir_timeout():
+	tir = true

@@ -30,6 +30,8 @@ func _ready():
 	pass
 
 func _physics_process(delta):
+	self.fonction_detection_blocage()
+	self.fonction_detection_vide()
 	if self.detection_joueur && !self.mort:
 		if !mem_vitesse:
 			mem_vitesse = true
@@ -38,7 +40,7 @@ func _physics_process(delta):
 		repli(self.sens)
 		if !repli:
 			self.tourner_vers_joueur()
-			if self.cooldownDeTir.is_stopped():
+			if self.tir:
 				self.robot_tirer(self.sens)
 			else:
 				self.immobile()

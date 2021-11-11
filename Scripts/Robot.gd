@@ -4,8 +4,12 @@ extends "res://Scripts/EnemyDeBase.gd"
 # Declare member variables here. Examples:
 export (int) var ajustement_saut
 export (int) var ajustement_marche
+export (int) var distance_detection
+
 var raycast
 var detection_joueur = false
+var detection_vide = false
+var detection_blocage = false
 
 func hit(collider, damage):
 	self.standard_hit(collider, damage)
@@ -32,7 +36,7 @@ func robot_marcher(sens):
 	
 func robot_tirer(sens):
 	self.tourner(sens)
-	if self.cooldownDeTir.is_stopped():
+	if self.tir:
 		var balle = self.balleScene.instance()
 		self.tir = true
 		if self.animation.flip_h:
@@ -53,11 +57,10 @@ func robot_tirer(sens):
 		elif self.animation.frame == 17:
 			self.tir = false
 			self.animation.animation = "idle"
-			self.cooldownDeTir.start(self.cooldown_de_tir)
+			self.cooldownDeTir.start()
 
 func immobile():
 	self.animation.animation = "idle"
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	raycast = get_node("DetectionAvant")
@@ -65,13 +68,32 @@ func _ready():
 	
 func _physics_process(delta):
 	if self.sens:
-		raycast.cast_to.x = -200
+		raycast.cast_to.x = -distance_detection
+		get_node("DetectionBlocAvant").cast_to.x = -10
 	else:
-		raycast.cast_to.x = 200
+		raycast.cast_to.x = distance_detection
+		get_node("DetectionBlocAvant").cast_to.x = 10
 	
 
 func fonction_detection_joueur():
 	if get_node("DetectionAvant").get_collider():
-		print(get_node("DetectionAvant").get_collider().name)
 		if get_node("DetectionAvant").get_collider().name == "Joueur":
 			detection_joueur = true
+			
+func fonction_detection_vide():
+	if get_node("DetectionVide").get_collider() && self.is_on_floor:
+		if !get_node("DetectionVide").get_collider().is_in_group("Block"):
+			detection_vide = false
+		else:
+			detection_vide = true
+	else:
+		detection_vide = true
+		
+func fonction_detection_blocage():
+	if get_node("DetectionBlocAvant").get_collider() && self.is_on_floor:
+		if get_node("DetectionAvant").get_collider().is_in_group("Block"):
+			detection_blocage = true
+		else:	
+			detection_blocage = false
+	else:
+		detection_blocage = false

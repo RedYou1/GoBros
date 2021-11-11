@@ -34,27 +34,27 @@ region = Rect2( 225, 0, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 3 )
-region = Rect2( 315, 45, 45, 45 )
+region = Rect2( 270, 225, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 3 )
-region = Rect2( 270, 225, 45, 45 )
+region = Rect2( 315, 225, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 3 )
-region = Rect2( 315, 225, 45, 45 )
+region = Rect2( 0, 270, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 3 )
-region = Rect2( 0, 270, 45, 45 )
+region = Rect2( 45, 270, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 3 )
-region = Rect2( 45, 270, 45, 45 )
+region = Rect2( 90, 270, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 3 )
-region = Rect2( 90, 270, 45, 45 )
+region = Rect2( 315, 45, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 3 )
@@ -119,14 +119,14 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 8 ) ],
-"loop": true,
-"name": "sauter",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
+"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
 "loop": true,
 "name": "mourir",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 13 ) ],
+"loop": true,
+"name": "sauter",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 14 ), SubResource( 15 ) ],
@@ -154,6 +154,7 @@ animations = [ {
 "Joueur",
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+cooldown_de_tir = 0.01
 vie_max = 30
 
 [node name="CollisionShape2D" parent="." index="0"]
@@ -167,7 +168,6 @@ zoom = Vector2( 0.5, 0.5 )
 position = Vector2( 0, -8.5946 )
 frames = SubResource( 28 )
 animation = "tirer"
-frame = 1
 playing = true
 
 [node name="position de tir haut" parent="." index="4"]

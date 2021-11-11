@@ -34,32 +34,36 @@ func hit(collider, damage):
 
 func tirer(dir_balle):
 		
-	if tir and self.cooldownDeTir.is_stopped():
+	if self.tir:
 		var balle = self.balleScene.instance()
 		
 		if dir_balle == "haut":
 			balle.directionY = -balle.vitesse
 			balle.position = position + ballePositionHaut
 			get_parent().add_child(balle)
-			self.cooldownDeTir.start(self.cooldown_de_tir)
+			self.cooldownDeTir.start()
+			self.tir = false
 			
-		elif dir_balle == "bas" && !is_on_floor:
+		elif dir_balle == "bas":
 			balle.directionY = +balle.vitesse
 			balle.position = position + ballePositionBas
 			get_parent().add_child(balle)
-			self.cooldownDeTir.start(self.cooldown_de_tir)
+			self.cooldownDeTir.start()
+			self.tir = false
 			
 		elif dir_balle == "droit" && animation.flip_h:
 			balle.directionX = -balle.vitesse
 			balle.position = position + Vector2(-ballePositionDroit.x, ballePositionDroit.y)
 			get_parent().add_child(balle)
-			self.cooldownDeTir.start(self.cooldown_de_tir)
+			self.cooldownDeTir.start()
+			self.tir = false
 			
 		elif dir_balle == "droit" && !animation.flip_h:
 			balle.directionX = +balle.vitesse
 			balle.position = position + Vector2(ballePositionDroit.x, ballePositionDroit.y)
 			get_parent().add_child(balle)
-			self.cooldownDeTir.start(self.cooldown_de_tir)
+			self.cooldownDeTir.start()
+			self.tir = false
 
 func set_animation():
 	self.animation.playing = true
@@ -119,16 +123,12 @@ func _physics_process(delta):
 	
 		if Input.is_action_pressed("TIRER"):
 			if Input.is_action_pressed("DROIT") || Input.is_action_pressed("GAUCHE"):
-				self.tir = true
 				self.tirer("droit")
-			elif Input.is_action_pressed("BAS") && !self.is_on_floor:
-				self.tir = true
+			elif Input.is_action_pressed("BAS"):
 				tirer("bas")
 			elif Input.is_action_pressed("HAUT"):
-				self.tir = true
 				tirer("haut")
 			else:
-				self.tir = true
 				tirer("droit")
 			
 		if Input.is_action_just_released("TIRER"):

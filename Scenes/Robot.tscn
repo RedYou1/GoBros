@@ -26,4 +26,10 @@ margin_top = -22.0
 margin_right = 9.0
 margin_bottom = -19.0
 
-[connection signal="timeout" from="cooldown de tir" to="." method="tirer"]
+[node name="DetectionBlocAvant" type="RayCast2D" parent="." index="8"]
+enabled = true
+cast_to = Vector2( 10, 0 )
+
+[node name="DetectionVide" type="RayCast2D" parent="." index="9"]
+enabled = true
+cast_to = Vector2( 0, 10 )

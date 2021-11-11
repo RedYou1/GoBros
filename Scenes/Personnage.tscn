@@ -29,3 +29,5 @@ position = Vector2( 40, 0 )
 
 [node name="position de tir bas" type="Node2D" parent="."]
 position = Vector2( 0, 31 )
+
+[connection signal="timeout" from="cooldown de tir" to="." method="_on_cooldown_de_tir_timeout"]
