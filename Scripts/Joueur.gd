@@ -1,11 +1,19 @@
 extends "res://Scripts/Personnage.gd"
 
 export(float) var vitesse = 2
+export(float) var recovery_time = 2
+var in_recovery  = false
 export(int) var damage = 1
 var barre_vie
 var detection_bloc
 var bloc_detecte = false
 var collision_mouvement
+
+func gerer_recovery():
+	if in_recovery:
+		modulate.a = 100
+	else:
+		modulate.a = 255
 
 func set_detection_bloc():
 	if self.animation.flip_h:
@@ -26,14 +34,26 @@ func _ready():
 	barre_vie.value = vie
 	detection_bloc = get_node("DetectionBloc")
 	self.cooldownDeTir.wait_time = self.cooldown_de_tir
+	get_node("TimerRecovery").wait_time = recovery_time
 
 
 func hit(collider, damage):
-	if (collider.is_in_group("EnnemyDeBase") || collider.is_in_group("Balle")) && ! self.mort:
-		vie -= damage
-		barre_vie.value = vie
-		if vie <= 0:
-			self.mort = true
+	print(collider.name)
+	if !in_recovery:
+		if collider.is_in_group("Robot") && ! self.mort:
+			in_recovery = true
+			get_node("TimerRecovery").start()
+			vie -= damage
+			barre_vie.value = vie
+			if vie <= 0:
+				self.mort = true
+		if collider.is_in_group("Balle") && ! self.mort:
+			in_recovery = true
+			get_node("TimerRecovery").start()
+			vie -= damage
+			barre_vie.value = vie
+			if vie <= 0:
+				self.mort = true
 
 func tirer(dir_balle):
 		
@@ -97,6 +117,12 @@ func set_animation():
 		if self.animation.animation != "idle":
 			self.animation.animation = "idle"
 
+func gestion_collision():
+	if collision_mouvement:
+		if collision_mouvement.collider.has_method("hit"):
+			if collision_mouvement.collider.is_in_group("EnnemyDeBase"):
+				collision_mouvement.collider.hit(self,damage)
+
 func _physics_process(delta):
 	set_detection_bloc()
 	
@@ -128,8 +154,7 @@ func _physics_process(delta):
 			
 		if Input.is_action_just_released("TIRER"):
 			self.tir = false
-		
-		if collision_mouvement:
-			if collision_mouvement.collider.has_method("hit"):
-				if collision_mouvement.collider.is_in_group("EnnemyDeBase"):
-					collision_mouvement.collider.hit(self,damage)
+
+
+func _on_TimerRecovery_timeout():
+	in_recovery = false

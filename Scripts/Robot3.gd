@@ -15,7 +15,6 @@ func dash(delta):
 		self.modulate.g = mem_modulate_g
 		
 		if !dash_fini:
-			print("en train de dasher")
 			self.robot_marcher(self.sens)
 			
 	else:
@@ -33,6 +32,9 @@ func _ready():
 	self.detection_joueur
 
 func _physics_process(delta):
+	self.set_raycast()
+	self.fonction_detection_vide()
+	self.fonction_detection_blocage()
 	if self.detection_joueur && !self.mort:
 		if !dash_ok:
 			self.tourner_vers_joueur()
@@ -43,7 +45,6 @@ func _physics_process(delta):
 
 
 func _on_TimerDash_timeout():
-	print("dash")
 	dash_fini = false
 	dash_ok = true
 	timer_du_dash.start(temps_du_dash)

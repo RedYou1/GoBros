@@ -8,8 +8,6 @@
 ] instance=ExtResource( 2 )]
 script = ExtResource( 1 )
 cooldown_de_tir = 1.0
-ajustement_saut = 8
-ajustement_marche = 6
 distance_detection = 200
 
 [node name="AnimatedSprite" parent="." index="1"]

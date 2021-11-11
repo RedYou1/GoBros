@@ -81,15 +81,15 @@ animations = [ {
 "name": "idle",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 43 ), ExtResource( 44 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 25 ), ExtResource( 29 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 21 ), ExtResource( 13 ), ExtResource( 8 ), ExtResource( 15 ) ],
-"loop": true,
-"name": "sauter",
-"speed": 20.0
-}, {
 "frames": [ ExtResource( 56 ), ExtResource( 58 ), ExtResource( 68 ), ExtResource( 69 ), ExtResource( 55 ), ExtResource( 57 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 62 ), ExtResource( 63 ), ExtResource( 64 ), ExtResource( 65 ), ExtResource( 66 ), ExtResource( 67 ) ],
 "loop": true,
 "name": "mourir",
 "speed": 15.0
+}, {
+"frames": [ ExtResource( 43 ), ExtResource( 44 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 25 ), ExtResource( 29 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 21 ), ExtResource( 13 ), ExtResource( 8 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "sauter",
+"speed": 20.0
 }, {
 "frames": [ ExtResource( 7 ), ExtResource( 16 ), ExtResource( 23 ), ExtResource( 11 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 19 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 6 ), ExtResource( 20 ), ExtResource( 22 ), ExtResource( 4 ), ExtResource( 9 ), ExtResource( 24 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 10 ) ],
 "loop": true,
@@ -118,7 +118,7 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 2 )
 animation = "idle"
-frame = 7
+frame = 5
 
 [node name="cooldown de tir" parent="." index="2"]
 one_shot = true
@@ -132,5 +132,6 @@ one_shot = true
 wait_time = 0.1
 one_shot = true
 
+[connection signal="timeout" from="cooldown de tir" to="." method="_on_cooldown_de_tir_timeout"]
 [connection signal="timeout" from="TimerDash" to="." method="_on_TimerDash_timeout"]
 [connection signal="timeout" from="TimerDureeDash" to="." method="_on_TimerDureeDash_timeout"]

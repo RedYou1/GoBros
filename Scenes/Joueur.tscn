@@ -208,3 +208,7 @@ enabled = true
 cast_to = Vector2( 10, 0 )
 
 [node name="TimerRecovery" type="Timer" parent="." index="10"]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="TimerRecovery" to="." method="_on_TimerRecovery_timeout"]

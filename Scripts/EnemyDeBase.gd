@@ -3,8 +3,10 @@ extends "res://Scripts/Personnage.gd"
 
 # Declare member variables here. Examples:
 export(float) var vitesse_ennemi = 1
+export(int) var damage = 1
 var sens = false
 var barre_vie
+var collision_mouvement
 
 func standard_hit(collider, damage):
 	if (collider.is_in_group("Balle") || collider.is_in_group("Joueur")) && !self.mort:
@@ -24,10 +26,14 @@ func sauter():
 func bouger(sens):
 	if sens:
 		self.animation.flip_h = true
-		move_and_collide(Vector2(-vitesse_ennemi,0))
+		collision_mouvement = move_and_collide(Vector2(-vitesse_ennemi,0))
 	else:
 		self.animation.flip_h = false
-		move_and_collide(Vector2(vitesse_ennemi,0))
+		collision_mouvement = move_and_collide(Vector2(vitesse_ennemi,0))
+	if collision_mouvement:
+		if collision_mouvement.collider.has_method("hit"):
+			if collision_mouvement.collider.name == "Joueur":
+				collision_mouvement.collider.hit(self,damage)
 
 func immobile():
 	move_and_collide(Vector2(0,0))
