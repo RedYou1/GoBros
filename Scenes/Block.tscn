@@ -57,3 +57,9 @@ shape = SubResource( 1 )
 visible = false
 frames = SubResource( 9 )
 frame = 1
+
+[node name="block_above" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, -32 )
+
+[connection signal="animation_finished" from="explosion" to="." method="_on_explosion_animation_finished"]
