@@ -5,10 +5,11 @@ extends "res://Scripts/Robot.gd"
 var repli = false
 export(int) var distance_repli
 var mem_vitesse = false
+var distance_joueur = 0
 
 func repli(sens):
 	if get_parent().get_node("Joueur"):
-		var distance_joueur = get_parent().get_node("Joueur").position.x - position.x
+		distance_joueur = get_parent().get_node("Joueur").position.x - position.x
 		if distance_joueur < 0:
 			distance_joueur *= -1
 		
@@ -30,6 +31,7 @@ func _ready():
 	pass
 
 func _physics_process(delta):
+	self.set_raycast()
 	self.fonction_detection_blocage()
 	self.fonction_detection_vide()
 	if self.detection_joueur && !self.mort:
@@ -46,7 +48,28 @@ func _physics_process(delta):
 				self.immobile()
 	elif !self.mort:
 		self.fonction_detection_joueur()
-		self.robot_marcher(self.sens)
+		if self.detection_mur && self.is_on_floor:
+			if self.sens:
+				self.sens = false
+				self.robot_marcher(self.sens)
+			else:
+				self.sens = true
+				self.robot_marcher(self.sens)
+			self.set_raycast()
+			get_node("TimerBouger").start()
+		elif self.detection_blocage && self.is_on_floor:
+			self.robot_sauter(self.sens)
+		else:
+			if self.detection_vide && self.is_on_floor:
+				if self.sens:
+					self.sens = false
+					self.robot_marcher(self.sens)
+				else:
+					self.sens = true
+					self.robot_marcher(self.sens)
+				get_node("TimerBouger").start()
+			else:
+				self.robot_marcher(self.sens)
 
 func _on_TimerBouger_timeout():
 	if !self.detection_joueur && !self.mort:

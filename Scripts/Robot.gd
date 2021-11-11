@@ -4,12 +4,13 @@ extends "res://Scripts/EnemyDeBase.gd"
 # Declare member variables here. Examples:
 export (int) var ajustement_saut
 export (int) var ajustement_marche
-export (int) var distance_detection
+export (int) var distance_detection = 100
 
 var raycast
 var detection_joueur = false
 var detection_vide = false
 var detection_blocage = false
+var detection_mur = false
 
 func hit(collider, damage):
 	self.standard_hit(collider, damage)
@@ -41,10 +42,10 @@ func robot_tirer(sens):
 		self.tir = true
 		if self.animation.flip_h:
 			balle.directionX = -balle.vitesse
-			balle.position = position - self.ballePositionDroit
+			balle.position = position - ballePositionDroit
 		else:
 			balle.directionX = balle.vitesse
-			balle.position = position + self.ballePositionDroit
+			balle.position = position + ballePositionDroit
 		self.collision.position.y -= ajustement_marche
 		
 		if self.animation.animation != "tirer":
@@ -66,13 +67,17 @@ func _ready():
 	raycast = get_node("DetectionAvant")
 	self.animation.animation = "idle"
 	
-func _physics_process(delta):
+func set_raycast():
 	if self.sens:
 		raycast.cast_to.x = -distance_detection
-		get_node("DetectionBlocAvant").cast_to.x = -10
+		get_node("DetectionBlocAvant").cast_to.x = -20
+		get_node("DetectionBlocHaut").cast_to.x = -20
+		get_node("DetectionVide").position = Vector2(-16, 11)
 	else:
 		raycast.cast_to.x = distance_detection
-		get_node("DetectionBlocAvant").cast_to.x = 10
+		get_node("DetectionBlocAvant").cast_to.x = 20
+		get_node("DetectionBlocHaut").cast_to.x = 20
+		get_node("DetectionVide").position = Vector2(16, 11)
 	
 
 func fonction_detection_joueur():
@@ -82,7 +87,7 @@ func fonction_detection_joueur():
 			
 func fonction_detection_vide():
 	if get_node("DetectionVide").get_collider() && self.is_on_floor:
-		if !get_node("DetectionVide").get_collider().is_in_group("Block"):
+		if get_node("DetectionVide").get_collider().is_in_group("Block"):
 			detection_vide = false
 		else:
 			detection_vide = true
@@ -97,3 +102,11 @@ func fonction_detection_blocage():
 			detection_blocage = false
 	else:
 		detection_blocage = false
+	if detection_blocage:
+		if get_node("DetectionBlocHaut").get_collider() && self.is_on_floor:
+			if get_node("DetectionBlocHaut").get_collider().is_in_group("Block"):
+				detection_mur = true
+			else:
+				detection_mur = false
+		else:
+			detection_mur = false

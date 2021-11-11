@@ -8,6 +8,9 @@
 ] instance=ExtResource( 2 )]
 script = ExtResource( 1 )
 cooldown_de_tir = 1.0
+ajustement_saut = 8
+ajustement_marche = 6
+distance_detection = 200
 
 [node name="AnimatedSprite" parent="." index="1"]
 scale = Vector2( 0.03, 0.03 )
@@ -32,4 +35,12 @@ cast_to = Vector2( 10, 0 )
 
 [node name="DetectionVide" type="RayCast2D" parent="." index="9"]
 enabled = true
-cast_to = Vector2( 0, 10 )
+cast_to = Vector2( 0, 45 )
+
+[node name="PositionDetectionVide" type="Node2D" parent="." index="10"]
+position = Vector2( 16.6677, 14.485 )
+
+[node name="DetectionBlocHaut" type="RayCast2D" parent="." index="11"]
+position = Vector2( 0.396851, -22.4221 )
+enabled = true
+cast_to = Vector2( 10, 0 )

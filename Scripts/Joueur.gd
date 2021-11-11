@@ -23,6 +23,7 @@ func _ready():
 	barre_vie.max_value = self.vie_max
 	barre_vie.value = vie
 	detection_bloc = get_node("DetectionBloc")
+	self.cooldownDeTir.wait_time = self.cooldown_de_tir
 
 
 func hit(collider, damage):
@@ -40,30 +41,22 @@ func tirer(dir_balle):
 		if dir_balle == "haut":
 			balle.directionY = -balle.vitesse
 			balle.position = position + ballePositionHaut
-			get_parent().add_child(balle)
-			self.cooldownDeTir.start()
-			self.tir = false
 			
 		elif dir_balle == "bas":
 			balle.directionY = +balle.vitesse
 			balle.position = position + ballePositionBas
-			get_parent().add_child(balle)
-			self.cooldownDeTir.start()
-			self.tir = false
 			
 		elif dir_balle == "droit" && animation.flip_h:
 			balle.directionX = -balle.vitesse
 			balle.position = position + Vector2(-ballePositionDroit.x, ballePositionDroit.y)
-			get_parent().add_child(balle)
-			self.cooldownDeTir.start()
-			self.tir = false
 			
 		elif dir_balle == "droit" && !animation.flip_h:
 			balle.directionX = +balle.vitesse
 			balle.position = position + Vector2(ballePositionDroit.x, ballePositionDroit.y)
-			get_parent().add_child(balle)
-			self.cooldownDeTir.start()
-			self.tir = false
+			
+		get_parent().add_child(balle)
+		self.cooldownDeTir.start()
+		self.tir = false
 
 func set_animation():
 	self.animation.playing = true
