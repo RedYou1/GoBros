@@ -126,6 +126,7 @@ func gestion_collision():
 				collision_mouvement.collider.hit(self,damage)
 
 func _physics_process(delta):
+	print(self.cooldownDeTir.wait_time)
 	set_detection_bloc()
 	gerer_recovery()
 	

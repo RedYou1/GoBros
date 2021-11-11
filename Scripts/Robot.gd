@@ -5,6 +5,7 @@ extends "res://Scripts/EnemyDeBase.gd"
 export (int) var ajustement_saut
 export (int) var ajustement_marche
 export (int) var distance_detection = 100
+export (float) var temps_detection = 15
 
 var raycast
 var detection_joueur = false
@@ -13,6 +14,7 @@ var detection_blocage = false
 var detection_mur = false
 
 func robot_suivre_joueur():
+	self.fonction_detection_joueur()
 	self.tourner_vers_joueur()
 	if self.detection_mur && self.detection_blocage && self.is_on_floor:
 		self.immobile()
@@ -106,6 +108,7 @@ func immobile():
 func _ready():
 	raycast = get_node("DetectionAvant")
 	self.animation.animation = "idle"
+	get_node("TimerDetectionJoueur").wait_time = temps_detection
 	
 func set_raycast():
 	if self.sens:
@@ -124,6 +127,7 @@ func fonction_detection_joueur():
 	if get_node("DetectionAvant").get_collider():
 		if get_node("DetectionAvant").get_collider().name == "Joueur":
 			detection_joueur = true
+			get_node("TimerDetectionJoueur").start()
 			
 func fonction_detection_vide():
 	if get_node("DetectionVide").get_collider() && self.is_on_floor:
@@ -150,3 +154,7 @@ func fonction_detection_blocage():
 	else:
 		detection_mur = false
 
+
+
+func _on_TimerDetectionJoueur_timeout():
+	detection_joueur = false
