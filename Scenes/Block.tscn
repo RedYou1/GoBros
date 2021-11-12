@@ -64,4 +64,7 @@ frame = 1
 enabled = true
 cast_to = Vector2( 0, -32 )
 
+[node name="DansEcran" type="VisibilityNotifier2D" parent="."]
+rect = Rect2( -16, -16, 32, 32 )
+
 [connection signal="animation_finished" from="explosion" to="." method="_on_explosion_animation_finished"]

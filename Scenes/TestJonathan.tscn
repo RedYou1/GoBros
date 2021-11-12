@@ -50,5 +50,6 @@ script = ExtResource( 3 )
 
 [node name="Robot3" parent="." instance=ExtResource( 2 )]
 position = Vector2( -349.961, 41 )
+collision_layer = 4
 ajustement_saut = 8
 ajustement_marche = 6
