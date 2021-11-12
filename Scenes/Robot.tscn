@@ -7,8 +7,7 @@
 "Robot",
 ] instance=ExtResource( 2 )]
 script = ExtResource( 1 )
-ajustement_saut = 8
-ajustement_marche = 6
+ajustement_marche = -4
 distance_detection = 200
 
 [node name="AnimatedSprite" parent="." index="1"]

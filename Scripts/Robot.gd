@@ -12,6 +12,9 @@ var detection_joueur = false
 var detection_vide = false
 var detection_blocage = false
 var detection_mur = false
+var position_base
+var position_saut
+var position_marche
 
 func robot_suivre_joueur():
 	self.fonction_detection_joueur()
@@ -61,7 +64,7 @@ func hit(collider, damage):
 
 func robot_sauter(sens):
 	if self.is_on_floor:
-		self.collision.position.y -= ajustement_saut
+		#self.animation.position = position_saut
 		if self.animation.animation != "sauter":
 			self.animation.animation = "sauter"
 			self.animation.frame = 0
@@ -70,11 +73,12 @@ func robot_sauter(sens):
 			self.sauter()
 	else:
 		self.bouger(sens)
+		#self.animation.position = position_base
 			
 	
 func robot_marcher(sens):
 	self.bouger(sens)
-	self.animation.position.y -= ajustement_marche
+	#self.animation.position = position_marche
 	self.animation.animation = "marcher"
 	
 func robot_tirer(sens):
@@ -88,7 +92,7 @@ func robot_tirer(sens):
 		else:
 			balle.directionX = balle.vitesse
 			balle.position = position + ballePositionDroit
-		self.collision.position.y -= ajustement_marche
+		#self.animation.position = position_marche
 		
 		if self.animation.animation != "tirer":
 			self.animation.animation = "tirer"
@@ -101,14 +105,20 @@ func robot_tirer(sens):
 			self.tir = false
 			self.animation.animation = "idle"
 			self.cooldownDeTir.start()
+	#else:
+		#self.animation.position = position_base
 
 func immobile():
 	self.animation.animation = "idle"
+	#self.animation.position = position_base
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	raycast = get_node("DetectionAvant")
 	self.animation.animation = "idle"
 	get_node("TimerDetectionJoueur").wait_time = temps_detection
+	position_saut = self.animation.position + Vector2(0, -ajustement_saut)
+	position_marche = self.animation.position + Vector2(0, -ajustement_marche)
+	position_base = self.animation.position
 	
 func set_raycast():
 	if self.sens:
