@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Ressources/vacaroxa generic/Assets_area_1/Tileset/Subway_tiles.png" type="Texture" id=1]
 [ext_resource path="res://Ressources/Minecraft/stone.png" type="Texture" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://Ressources/Minecraft/grass_block_side.png" type="Texture" id=5]
 [ext_resource path="res://Ressources/vacaroxa generic/Assets_area_2/tileset/tiles_out.png" type="Texture" id=6]
 [ext_resource path="res://Ressources/Minecraft/dirt.png" type="Texture" id=7]
-[ext_resource path="res://Scenes/Balle.tscn" type="PackedScene" id=8]
 
 [sub_resource type="TileSet" id=1]
 0/name = "Subway_tiles.png 0"
@@ -121,18 +120,3 @@ script = ExtResource( 4 )
 [node name="Joueur" parent="." instance=ExtResource( 3 )]
 position = Vector2( -170.646, 150.009 )
 distance_despawn = 10000
-
-[node name="Balle" parent="Joueur" instance=ExtResource( 8 )]
-position = Vector2( 172.187, 80.1811 )
-
-[node name="Balle2" parent="Joueur" instance=ExtResource( 8 )]
-position = Vector2( 188.855, 79.3874 )
-
-[node name="Balle3" parent="Joueur" instance=ExtResource( 8 )]
-position = Vector2( 208.698, 79.3874 )
-
-[node name="Balle4" parent="Joueur" instance=ExtResource( 8 )]
-position = Vector2( 231.715, 79.3874 )
-
-[node name="Balle5" parent="Joueur" instance=ExtResource( 8 )]
-position = Vector2( 251.557, 79.3874 )
