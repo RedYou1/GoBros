@@ -2,7 +2,6 @@ extends "res://Scripts/Personnage.gd"
 
 export(float) var vitesse = 2
 export(float) var recovery_time = 2
-export(float) var tir_du_joueur = 0.2
 var in_recovery  = false
 export(int) var damage = 1
 var barre_vie
@@ -10,8 +9,6 @@ var detection_bloc
 var bloc_detecte = false
 var collision_mouvement
 var mem_modulate
-var cooldownDeTir
-var tir = false
 const balleScene = preload("res://Scenes/BalleJoueur.tscn")
 
 
@@ -39,8 +36,6 @@ func _ready():
 	barre_vie.max_value = self.vie_max
 	barre_vie.value = vie
 	detection_bloc = get_node("DetectionBloc")
-	cooldownDeTir = get_node("coolDownDeTir")
-	cooldownDeTir.wait_time = tir_du_joueur
 	get_node("TimerRecovery").wait_time = recovery_time
 	mem_modulate = self.animation.modulate
 
@@ -85,7 +80,7 @@ func tirer(dir_balle):
 			balle.position = position + Vector2(ballePositionDroit.x, ballePositionDroit.y)
 			
 		get_parent().add_child(balle)
-		self.cooldownDeTir.start(tir_du_joueur)
+		self.cooldownDeTir.start(self.temps_tir)
 		self.tir = false
 
 func set_animation():
@@ -164,8 +159,3 @@ func _physics_process(delta):
 
 func _on_TimerRecovery_timeout():
 	in_recovery = false
-
-
-func _on_coolDownDeTir_timeout():
-	print("tir ok joueur")
-	tir = true

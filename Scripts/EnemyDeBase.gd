@@ -4,13 +4,10 @@ extends "res://Scripts/Personnage.gd"
 # Declare member variables here. Examples:
 export(float) var vitesse_ennemi = 1
 export (int) var distance_detection = 100
-export(float) var tir_ennemi = 1
 export(int) var damage = 1
 var sens = false
 var barre_vie
 var collision_mouvement
-var cooldownDeTir
-var tir = false
 const balleScene = preload("res://Scenes/BalleEnnemi.tscn")
 var raycast
 var detection_joueur = false
@@ -38,8 +35,6 @@ func standard_hit(collider, damage):
 func _ready():
 	barre_vie = get_node("Vie")
 	barre_vie.max_value = self.vie_max
-	cooldownDeTir = get_node("coolDownDeTir")
-	cooldownDeTir.wait_time = tir_ennemi
 	raycast = get_node("DetectionAvant")
 	get_node("TimerDetectionJoueur").wait_time = temps_detection
 

@@ -7,6 +7,7 @@ export(float) var GRAVITY = 0.98
 var vie
 export(int) var vie_max = 3
 export(int) var distance_despawn = 10000
+export(float) var temps_tir = 1.0
 var mort = false
 
 var is_on_floor = false
@@ -16,6 +17,9 @@ var ballePositionDroit
 var ballePositionHaut
 var ballePositionBas
 var animation
+var cooldownDeTir
+
+var tir = false
 
 func mourir(delta):
 	if self.animation.animation != "mourir":
@@ -38,6 +42,8 @@ func _ready():
 	ballePositionDroit = get_node("position de tir droit").position
 	ballePositionHaut = get_node("position de tir haut").position
 	ballePositionBas = get_node("position de tir bas").position
+	cooldownDeTir = get_node("coolDownDeTir")
+	cooldownDeTir.wait_time = temps_tir
 	vie = vie_max
 
 func _physics_process(delta):
@@ -54,3 +60,7 @@ func _physics_process(delta):
 	
 	if position.y > distance_despawn:
 		mort = true
+
+
+func _on_coolDownDeTir_timeout():
+	tir = true

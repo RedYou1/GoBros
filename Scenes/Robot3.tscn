@@ -108,6 +108,7 @@ animations = [ {
 script = ExtResource( 2 )
 distance_despawn = 1000
 distance_detection = 20
+tir_ennemi = null
 temps_du_dash = 0.2
 
 [node name="CollisionShape2D" parent="." index="0"]
@@ -117,6 +118,10 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 2 )
 animation = "idle"
+frame = 7
+
+[node name="coolDownDeTir" parent="." index="6"]
+wait_time = 1.0
 
 [node name="TimerDash" type="Timer" parent="." index="8"]
 wait_time = 3.0
@@ -134,5 +139,6 @@ autostart = true
 [node name="TimerDetectionJoueur" parent="." index="15"]
 one_shot = false
 
+[connection signal="timeout" from="coolDownDeTir" to="." method="_on_coolDownDeTir_timeout"]
 [connection signal="timeout" from="TimerDash" to="." method="_on_TimerDash_timeout"]
 [connection signal="timeout" from="TimerDureeDash" to="." method="_on_TimerDureeDash_timeout"]

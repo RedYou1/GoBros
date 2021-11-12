@@ -8,6 +8,7 @@
 ] instance=ExtResource( 2 )]
 script = ExtResource( 1 )
 distance_detection = 200
+tir_ennemi = 1.0
 ajustement_marche = -4
 
 [node name="AnimatedSprite" parent="." index="1"]
@@ -19,6 +20,9 @@ margin_left = -13.0
 margin_top = -22.0
 margin_right = 9.0
 margin_bottom = -19.0
+
+[node name="coolDownDeTir" parent="." index="6"]
+wait_time = 1.0
 
 [node name="DetectionBlocAvant" type="RayCast2D" parent="." index="7"]
 enabled = true

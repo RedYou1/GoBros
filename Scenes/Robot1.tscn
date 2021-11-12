@@ -107,6 +107,7 @@ animations = [ {
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 distance_despawn = 1000
+tir_ennemi = null
 distance_repli = 30
 
 [node name="CollisionShape2D" parent="." index="0"]
@@ -114,13 +115,12 @@ position = Vector2( -1, 0 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" parent="." index="1"]
-position = Vector2( 0, 0 )
 frames = SubResource( 2 )
 animation = "mourir"
 frame = 7
 
-[node name="position de tir bas" parent="." index="4"]
-scale = Vector2( 1, 1 )
+[node name="coolDownDeTir" parent="." index="6"]
+wait_time = 1.0
 
 [node name="DetectionBlocAvant" parent="." index="7"]
 position = Vector2( 0, 8 )
@@ -139,8 +139,7 @@ position = Vector2( 131.259, 11 )
 enabled = true
 cast_to = Vector2( 0, 45 )
 
-[node name="TimerDetectionJoueur" parent="." index="13"]
-one_shot = false
-
 [node name="DetectionAvant" parent="." index="14"]
 position = Vector2( 0, -8 )
+
+[connection signal="timeout" from="coolDownDeTir" to="." method="_on_coolDownDeTir_timeout"]

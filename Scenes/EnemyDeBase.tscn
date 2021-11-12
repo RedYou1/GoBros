@@ -22,17 +22,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="coolDownDeTir" type="Timer" parent="." index="6"]
-one_shot = true
-autostart = true
-
-[node name="DetectionAvant" type="RayCast2D" parent="." index="7"]
+[node name="DetectionAvant" type="RayCast2D" parent="." index="6"]
 enabled = true
 cast_to = Vector2( 200, 0 )
 
-[node name="TimerDetectionJoueur" type="Timer" parent="." index="8"]
+[node name="TimerDetectionJoueur" type="Timer" parent="." index="7"]
 wait_time = 15.0
 one_shot = true
 
-[connection signal="timeout" from="coolDownDeTir" to="." method="_on_coolDownDeTir_timeout"]
 [connection signal="timeout" from="TimerDetectionJoueur" to="." method="_on_TimerDetectionJoueur_timeout"]
