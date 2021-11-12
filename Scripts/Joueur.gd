@@ -159,9 +159,6 @@ func _physics_process(delta):
 				tirer("haut")
 			else:
 				tirer("droit")
-			
-		if Input.is_action_just_released("TIRER"):
-			self.tir = false
 
 
 func _on_TimerRecovery_timeout():

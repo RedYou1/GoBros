@@ -7,7 +7,6 @@
 "Robot",
 ] instance=ExtResource( 2 )]
 script = ExtResource( 1 )
-cooldown_de_tir = 1.0
 ajustement_saut = 8
 ajustement_marche = 6
 distance_detection = 200
@@ -16,14 +15,11 @@ distance_detection = 200
 scale = Vector2( 0.03, 0.03 )
 playing = true
 
-[node name="cooldown de tir" parent="." index="2"]
-wait_time = 1.0
-
 [node name="DetectionAvant" type="RayCast2D" parent="." index="3"]
 enabled = true
 cast_to = Vector2( 200, 0 )
 
-[node name="Vie" parent="." index="7"]
+[node name="Vie" parent="." index="6"]
 margin_left = -13.0
 margin_top = -22.0
 margin_right = 9.0
