@@ -2,7 +2,6 @@ extends KinematicBody2D
 
 var velocityY = 0
 
-export(float) var cooldown_de_tir = 0.1
 export(float) var GRAVITY = 0.98
 
 var vie
@@ -14,12 +13,10 @@ const balleScene = preload("res://Scenes/Balle.tscn")
 var is_on_floor = false
 
 var collision
-var cooldownDeTir = 0.2
 var ballePositionDroit
 var ballePositionHaut
 var ballePositionBas
 var animation
-var tir = false
 
 func mourir(delta):
 	if self.animation.animation != "mourir":
@@ -39,12 +36,10 @@ func mourir(delta):
 func _ready():
 	collision = get_node("CollisionShape2D")
 	animation = get_node("AnimatedSprite")
-	cooldownDeTir = get_node("cooldown de tir")
 	ballePositionDroit = get_node("position de tir droit").position
 	ballePositionHaut = get_node("position de tir haut").position
 	ballePositionBas = get_node("position de tir bas").position
 	vie = vie_max
-	cooldownDeTir.wait_time = cooldown_de_tir
 
 func _physics_process(delta):
 	velocityY += GRAVITY
@@ -60,7 +55,3 @@ func _physics_process(delta):
 	
 	if position.y > distance_despawn:
 		mort = true
-
-
-func _on_cooldown_de_tir_timeout():
-	tir = true

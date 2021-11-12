@@ -39,7 +39,6 @@
 
 [node name="Joueur" parent="." instance=ExtResource( 1 )]
 position = Vector2( -26.5281, 137.835 )
-cooldown_de_tir = 1.0
 distance_despawn = 10000
 
 [node name="TileMap" type="TileMap" parent="."]

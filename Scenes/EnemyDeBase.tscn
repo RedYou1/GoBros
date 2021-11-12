@@ -11,7 +11,7 @@ script = ExtResource( 2 )
 [node name="CollisionShape2D" parent="." index="0"]
 shape = null
 
-[node name="Vie" type="ProgressBar" parent="." index="6"]
+[node name="Vie" type="ProgressBar" parent="." index="5"]
 margin_left = -38.0
 margin_top = -56.0
 margin_right = 39.0
@@ -20,3 +20,9 @@ percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="coolDownDeTir" type="Timer" parent="." index="6"]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="coolDownDeTir" to="." method="_on_coolDownDeTir_timeout"]

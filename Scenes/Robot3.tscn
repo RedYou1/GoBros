@@ -102,9 +102,12 @@ animations = [ {
 "speed": 15.0
 } ]
 
-[node name="Robot3" instance=ExtResource( 1 )]
+[node name="Robot3" groups=[
+"Personnage",
+] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 cooldown_de_tir = 3.0
+distance_despawn = 1000
 temps_du_dash = 0.2
 
 [node name="CollisionShape2D" parent="." index="0"]
@@ -112,9 +115,17 @@ position = Vector2( -1, 0 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" parent="." index="1"]
+position = Vector2( 0, 0 )
 frames = SubResource( 2 )
 animation = "idle"
-frame = 6
+frame = 2
+
+[node name="cooldown de tir" parent="." index="2"]
+one_shot = true
+autostart = true
+
+[node name="position de tir haut" parent="." index="4"]
+scale = Vector2( 1, 1 )
 
 [node name="TimerDash" type="Timer" parent="." index="8"]
 wait_time = 3.0
