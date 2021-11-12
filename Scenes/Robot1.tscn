@@ -117,27 +117,30 @@ shape = SubResource( 1 )
 position = Vector2( 0, 0 )
 frames = SubResource( 2 )
 animation = "mourir"
-frame = 13
+frame = 7
 
-[node name="position de tir haut" parent="." index="2"]
+[node name="position de tir bas" parent="." index="4"]
 scale = Vector2( 1, 1 )
 
-[node name="DetectionAvant" parent="." index="3"]
-position = Vector2( 0, -8 )
-
-[node name="DetectionBlocAvant" parent="." index="8"]
+[node name="DetectionBlocAvant" parent="." index="7"]
 position = Vector2( 0, 8 )
 
-[node name="DetectionVide" parent="." index="9"]
+[node name="DetectionVide" parent="." index="8"]
 position = Vector2( 16.1805, 10.2441 )
 
-[node name="PositionDetectionVide" parent="." index="10"]
+[node name="PositionDetectionVide" parent="." index="9"]
 position = Vector2( 16.4804, 11.3011 )
 
-[node name="DetectionBlocHaut" parent="." index="11"]
+[node name="DetectionBlocHaut" parent="." index="10"]
 position = Vector2( 0, -46.208 )
 
 [node name="DetectionRepli" type="RayCast2D" parent="." index="12"]
 position = Vector2( 131.259, 11 )
 enabled = true
 cast_to = Vector2( 0, 45 )
+
+[node name="TimerDetectionJoueur" parent="." index="13"]
+one_shot = false
+
+[node name="DetectionAvant" parent="." index="14"]
+position = Vector2( 0, -8 )

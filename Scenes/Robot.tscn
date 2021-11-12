@@ -7,43 +7,35 @@
 "Robot",
 ] instance=ExtResource( 2 )]
 script = ExtResource( 1 )
-ajustement_marche = -4
 distance_detection = 200
+ajustement_marche = -4
 
 [node name="AnimatedSprite" parent="." index="1"]
 scale = Vector2( 0.03, 0.03 )
 playing = true
 
-[node name="DetectionAvant" type="RayCast2D" parent="." index="3"]
-enabled = true
-cast_to = Vector2( 200, 0 )
-
-[node name="Vie" parent="." index="6"]
+[node name="Vie" parent="." index="5"]
 margin_left = -13.0
 margin_top = -22.0
 margin_right = 9.0
 margin_bottom = -19.0
 
-[node name="DetectionBlocAvant" type="RayCast2D" parent="." index="8"]
+[node name="DetectionBlocAvant" type="RayCast2D" parent="." index="7"]
 enabled = true
 cast_to = Vector2( 10, 0 )
 
-[node name="DetectionVide" type="RayCast2D" parent="." index="9"]
+[node name="DetectionVide" type="RayCast2D" parent="." index="8"]
 enabled = true
 cast_to = Vector2( 0, 45 )
 
-[node name="PositionDetectionVide" type="Node2D" parent="." index="10"]
+[node name="PositionDetectionVide" type="Node2D" parent="." index="9"]
 position = Vector2( 16.6677, 14.485 )
 
-[node name="DetectionBlocHaut" type="RayCast2D" parent="." index="11"]
+[node name="DetectionBlocHaut" type="RayCast2D" parent="." index="10"]
 position = Vector2( 0.396851, -22.4221 )
 enabled = true
 cast_to = Vector2( 10, 0 )
 
-[node name="TimerBouger" type="Timer" parent="." index="12"]
-
-[node name="TimerDetectionJoueur" type="Timer" parent="." index="13"]
-wait_time = 15.0
+[node name="TimerBouger" type="Timer" parent="." index="11"]
 
 [connection signal="timeout" from="TimerBouger" to="." method="_on_TimerBouger_timeout"]
-[connection signal="timeout" from="TimerDetectionJoueur" to="." method="_on_TimerDetectionJoueur_timeout"]

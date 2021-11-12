@@ -42,7 +42,6 @@ func _ready():
 	mem_val_vitesse = self.vitesse_ennemi
 
 func _physics_process(delta):
-	self.set_raycast()
 	if self.sens:
 		get_node("DetectionRepli").position.x = 145
 	else:

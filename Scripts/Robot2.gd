@@ -10,7 +10,6 @@ func _ready():
 
 
 func _physics_process(delta):
-	self.set_raycast()
 	self.fonction_detection_vide()
 	self.fonction_detection_blocage()
 	
@@ -21,7 +20,6 @@ func _physics_process(delta):
 		else:
 			self.robot_suivre_joueur()
 	elif !self.mort:
-		self.fonction_detection_joueur()
 		self.robot_bouger_standard()
 		
 

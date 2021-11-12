@@ -42,7 +42,6 @@ func _ready():
 	mem_val_vitesse = self.vitesse_ennemi
 
 func _physics_process(delta):
-	self.set_raycast()
 	self.fonction_detection_vide()
 	self.fonction_detection_blocage()
 	if self.detection_joueur && !self.mort:
@@ -50,6 +49,7 @@ func _physics_process(delta):
 			self.tourner_vers_joueur()
 		dash(delta)
 	elif !self.mort:
+		self.animation.modulate.g = mem_modulate_g
 		self.robot_bouger_standard()
 
 
