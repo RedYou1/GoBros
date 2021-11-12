@@ -59,6 +59,15 @@ func tourner_vers_joueur():
 		else:
 			sens = true
 		self.tourner(sens)
+		
+func est_tourne_vers_joueur():
+	if get_parent().get_node("Joueur"):
+		if get_parent().get_node("Joueur").position.x > self.position.x && sens == false:
+			return true
+		else:
+			return false
+	else:
+		return false
 
 func _physics_process(delta):
 	barre_vie.value = self.vie

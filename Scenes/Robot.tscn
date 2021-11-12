@@ -45,4 +45,5 @@ cast_to = Vector2( 10, 0 )
 [node name="TimerDetectionJoueur" type="Timer" parent="." index="13"]
 wait_time = 15.0
 
+[connection signal="timeout" from="TimerBouger" to="." method="_on_TimerBouger_timeout"]
 [connection signal="timeout" from="TimerDetectionJoueur" to="." method="_on_TimerDetectionJoueur_timeout"]

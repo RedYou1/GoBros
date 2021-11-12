@@ -55,11 +55,3 @@ func _physics_process(delta):
 		if !repli:
 			self.robot_suivre_joueur()
 		self.robot_bouger_standard()
-
-func _on_TimerBouger_timeout():
-	if !self.detection_joueur && !self.mort:
-		if self.sens:
-			self.sens = false
-		else:
-			self.sens = true
-		

@@ -122,12 +122,18 @@ func _ready():
 	
 func set_raycast():
 	if self.sens:
-		raycast.cast_to.x = -distance_detection
+		if est_tourne_vers_joueur():
+			raycast.cast_to = Vector2(distance_detection,0)
+			raycast.look_at(get_node("../Joueur").position)
+		else:
+			raycast.cast_to = Vector2(-distance_detection,0)
 		get_node("DetectionBlocAvant").cast_to.x = -20
 		get_node("DetectionBlocHaut").cast_to.x = -30
 		get_node("DetectionVide").position = Vector2(-13, 11)
 	else:
-		raycast.cast_to.x = distance_detection
+		raycast.cast_to = Vector2(distance_detection,0)
+		if est_tourne_vers_joueur():
+			raycast.look_at(get_node("../Joueur").position)
 		get_node("DetectionBlocAvant").cast_to.x = 20
 		get_node("DetectionBlocHaut").cast_to.x = 30
 		get_node("DetectionVide").position = Vector2(13, 11)
@@ -168,3 +174,12 @@ func fonction_detection_blocage():
 
 func _on_TimerDetectionJoueur_timeout():
 	detection_joueur = false
+
+
+func _on_TimerBouger_timeout():
+	if !self.detection_joueur && !self.mort:
+		if self.sens:
+			self.sens = false
+		else:
+			self.sens = true
+		
