@@ -12,6 +12,7 @@ var collision_mouvement
 var mem_modulate
 var cooldownDeTir
 var tir = false
+const balleScene = preload("res://Scenes/BalleJoueur.tscn")
 
 
 func gerer_recovery():

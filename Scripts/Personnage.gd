@@ -8,7 +8,6 @@ var vie
 export(int) var vie_max = 3
 export(int) var distance_despawn = 10000
 var mort = false
-const balleScene = preload("res://Scenes/Balle.tscn")
 
 var is_on_floor = false
 

@@ -10,6 +10,7 @@ var barre_vie
 var collision_mouvement
 var cooldownDeTir
 var tir = false
+const balleScene = preload("res://Scenes/BalleEnnemi.tscn")
 
 
 
