@@ -33,10 +33,14 @@ func hit(from,damage):
 		get_node("CollisionShape2D").disabled = true
 		explosion.visible = true
 		explosion.playing = true
+		var raycast = get_node("block_above")
+		var col = raycast.get_collider()
+		if col != null and col.is_in_group("Block"):
+			col.unSleep()
 
 
 func _on_explosion_animation_finished():
-	remove_block()
+	queue_free()
 
 func unSleep():
 	sleep = false
@@ -44,7 +48,3 @@ func unSleep():
 	var col = raycast.get_collider()
 	if col != null and col.is_in_group("Block"):
 		col.unSleep()
-
-func remove_block():
-	unSleep()
-	queue_free()
