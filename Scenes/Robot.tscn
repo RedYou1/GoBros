@@ -42,4 +42,9 @@ autostart = true
 [node name="coolDownDeTir" parent="." index="13"]
 wait_time = 1.0
 
+[node name="DetectionBlocMilieu" type="RayCast2D" parent="." index="14"]
+position = Vector2( 0, -25 )
+enabled = true
+cast_to = Vector2( 10, 0 )
+
 [connection signal="timeout" from="TimerBouger" to="." method="_on_TimerBouger_timeout"]

@@ -12,6 +12,7 @@ var detection_mur = false
 var position_base
 var position_saut
 var position_marche
+var tir_robot = false
 
 func robot_suivre_joueur():
 	self.fonction_detection_joueur()
@@ -93,14 +94,18 @@ func robot_tirer(sens):
 		if self.animation.animation != "tirer":
 			self.animation.animation = "tirer"
 			self.animation.frame = 0
-		elif self.animation.frame == 5:
+		elif self.animation.frame == 5 && !tir_robot:
+			tir_robot = true
 			get_parent().add_child(balle)
-		elif self.animation.frame == 12:
+		elif self.animation.frame == 12 && !tir_robot:
+			tir_robot = true
 			get_parent().add_child(balle)
 		elif self.animation.frame == 17:
 			self.tir = false
 			self.animation.animation = "idle"
 			self.cooldownDeTir.start()
+		else:
+			tir_robot = false
 	#else:
 		#self.animation.position = position_base
 
@@ -118,19 +123,23 @@ func robot_set_raycast():
 	if self.is_in_group("Araignee"):
 		if self.sens:
 			get_node("DetectionBlocAvant").cast_to.x = -30
+			get_node("DetectionBlocMilieu").cast_to.x = -30
 			get_node("DetectionBlocHaut").cast_to.x = -35
 			get_node("DetectionVide").position = Vector2(-23, 11)
 		else:
 			get_node("DetectionBlocAvant").cast_to.x = 30
+			get_node("DetectionBlocMilieu").cast_to.x = 30
 			get_node("DetectionBlocHaut").cast_to.x = 35
 			get_node("DetectionVide").position = Vector2(23, 11)
 	else:
 		if self.sens:
 			get_node("DetectionBlocAvant").cast_to.x = -20
+			get_node("DetectionBlocMilieu").cast_to.x = -20
 			get_node("DetectionBlocHaut").cast_to.x = -30
 			get_node("DetectionVide").position = Vector2(-13, 11)
 		else:
 			get_node("DetectionBlocAvant").cast_to.x = 20
+			get_node("DetectionBlocMilieu").cast_to.x = 20
 			get_node("DetectionBlocHaut").cast_to.x = 30
 			get_node("DetectionVide").position = Vector2(13, 11)
 			
@@ -146,6 +155,11 @@ func fonction_detection_vide():
 func fonction_detection_blocage():
 	if get_node("DetectionBlocAvant").get_collider() && self.is_on_floor:
 		if get_node("DetectionBlocAvant").get_collider().is_in_group("Block") && self.is_on_floor:
+			detection_blocage = true
+		else:	
+			detection_blocage = false
+	elif get_node("DetectionBlocMilieu").get_collider() && self.is_on_floor:
+		if get_node("DetectionBlocMilieu").get_collider().is_in_group("Block") && self.is_on_floor:
 			detection_blocage = true
 		else:	
 			detection_blocage = false
