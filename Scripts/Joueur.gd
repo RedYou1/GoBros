@@ -123,9 +123,15 @@ func set_animation():
 func gestion_collision():
 	if collision_mouvement:
 		if collision_mouvement.collider.has_method("hit"):
-			if collision_mouvement.collider.is_in_group("EnnemyDeBase"):
+			if collision_mouvement.collider.is_in_group("Robot") && !in_recovery:
 				collision_mouvement.collider.hit(self,damage)
-
+				in_recovery = true
+				get_node("TimerRecovery").start()
+				vie -= damage
+				barre_vie.value = vie
+				if vie <= 0:
+					self.mort = true
+					
 func _physics_process(delta):
 	set_detection_bloc()
 	gerer_recovery()
