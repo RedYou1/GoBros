@@ -41,13 +41,14 @@ extents = Vector2( 130.643, 21.4379 )
 
 [node name="BalleAraignee" instance=ExtResource( 1 )]
 scale = Vector2( 0.2, 0.3 )
+collision_layer = 8
 script = ExtResource( 3 )
 damage = 5
 
 [node name="Sprite" parent="." index="0"]
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" parent="." index="1"]

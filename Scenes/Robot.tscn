@@ -26,13 +26,13 @@ cast_to = Vector2( 10, 0 )
 
 [node name="DetectionVide" type="RayCast2D" parent="." index="8"]
 enabled = true
-cast_to = Vector2( 0, 45 )
+cast_to = Vector2( 0, 80 )
 
 [node name="PositionDetectionVide" type="Node2D" parent="." index="9"]
 position = Vector2( 16.6677, 14.485 )
 
 [node name="DetectionBlocHaut" type="RayCast2D" parent="." index="10"]
-position = Vector2( 0.396851, -22.4221 )
+position = Vector2( 0.397, -58 )
 enabled = true
 cast_to = Vector2( 10, 0 )
 

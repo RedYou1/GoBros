@@ -5,9 +5,8 @@ const balleAraignee = preload("res://Scenes/BalleAraignee.tscn")
 export (float) var vitesse_course = 1.5
 	
 func araignee_tirer(sens):
-	self.tourner(sens)
+	self.tourner_vers_joueur()
 	if self.tir && self.is_on_floor:
-		print(self.cooldownDeTir.time_left)
 		
 		var balle = balleAraignee.instance()
 		if self.animation.flip_h:

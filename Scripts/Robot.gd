@@ -56,7 +56,7 @@ func robot_bouger_standard():
 			
 func hit(collider, damage):
 	self.standard_hit(collider, damage)
-	if (collider.is_in_group("Joueur") || collider.is_in_group("Balle")) && ! self.mort:
+	if (collider.name == "Joueur" || collider.is_in_group("Balle")) && ! self.mort:
 		detection_joueur = true
 
 func robot_sauter(sens):

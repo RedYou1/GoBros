@@ -15,14 +15,18 @@ export (float) var temps_detection = 15
 func set_raycast():
 	if self.sens:
 		if est_tourne_vers_joueur():
-			raycast.cast_to = Vector2(distance_detection,0)
+			raycast.cast_to.x = distance_detection
 			raycast.look_at(get_node("../Joueur").position)
 		else:
-			raycast.cast_to = Vector2(-distance_detection,0)
+			raycast.cast_to.x = -distance_detection
+			raycast.rotation = 0
 	else:
-		raycast.cast_to = Vector2(distance_detection,0)
+		raycast.cast_to.x = distance_detection
 		if est_tourne_vers_joueur():
 			raycast.look_at(get_node("../Joueur").position)
+		else:
+			raycast.rotation = 0
+		
 
 func standard_hit(collider, damage):
 	if (collider.is_in_group("Balle") || collider.is_in_group("Joueur")) && !self.mort:
@@ -36,6 +40,7 @@ func _ready():
 	barre_vie.max_value = self.vie_max
 	raycast = get_node("DetectionAvant")
 	get_node("TimerDetectionJoueur").wait_time = temps_detection
+	detection_joueur = false
 
 func sauter():
 	if self.is_on_floor:

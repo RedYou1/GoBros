@@ -105,9 +105,10 @@ animations = [ {
 [node name="Robot1" groups=[
 "Personnage",
 ] instance=ExtResource( 1 )]
+collision_mask = 1
 script = ExtResource( 2 )
 distance_despawn = 1000
-distance_repli = 30
+distance_repli = 50
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2( -1, 0 )
@@ -116,10 +117,12 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 2 )
 animation = "mourir"
-frame = 14
+frame = 9
 
 [node name="DetectionAvant" parent="." index="6"]
 position = Vector2( 0, -8 )
+collision_mask = 1
+collide_with_areas = false
 
 [node name="DetectionBlocAvant" parent="." index="7"]
 position = Vector2( 0, 8 )
@@ -131,12 +134,12 @@ position = Vector2( 16.1805, 10.2441 )
 position = Vector2( 16.4804, 11.3011 )
 
 [node name="DetectionBlocHaut" parent="." index="10"]
-position = Vector2( 0, -46.208 )
+position = Vector2( 0, -58 )
 
 [node name="DetectionRepli" type="RayCast2D" parent="." index="12"]
 position = Vector2( 131.259, 11 )
 enabled = true
-cast_to = Vector2( 0, 45 )
+cast_to = Vector2( 0, 80 )
 
 [node name="coolDownDeTir" parent="." index="14"]
 one_shot = true

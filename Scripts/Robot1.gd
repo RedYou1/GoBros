@@ -52,6 +52,9 @@ func _physics_process(delta):
 	if self.detection_joueur && !self.mort:
 		repli(self.sens)
 		if !repli:
-			self.robot_suivre_joueur()
+			if tir:
+				self.robot_tirer(self.sens)
+			else:
+				self.robot_suivre_joueur()
 	elif !self.mort:
 		self.robot_bouger_standard()
