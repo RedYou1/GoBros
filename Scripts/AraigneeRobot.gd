@@ -5,7 +5,6 @@ const balleAraignee = preload("res://Scenes/BalleAraignee.tscn")
 export (float) var vitesse_course = 1.5
 	
 func araignee_tirer(sens):
-	self.tourner_vers_joueur()
 	if self.tir && self.is_on_floor:
 		
 		var balle = balleAraignee.instance()
@@ -39,6 +38,7 @@ func _physics_process(delta):
 		if self.tir:
 			araignee_tirer(self.sens)
 		else:
+			self.tourner_vers_joueur()
 			self.robot_suivre_joueur()
 	elif !self.mort:
 		self.robot_bouger_standard()

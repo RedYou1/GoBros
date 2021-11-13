@@ -13,7 +13,7 @@ func _ready():
 	explosion = get_node("explosion")
 
 func _physics_process(delta):
-	if get_node("DansEcran").is_on_screen():
+	#if get_node("DansEcran").is_on_screen():
 		if not sleep:
 			if GRAVITY != 0:
 				velocityY += GRAVITY

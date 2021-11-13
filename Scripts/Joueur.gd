@@ -97,7 +97,11 @@ func set_animation():
 	elif Input.is_action_pressed("TIRER") && Input.is_action_pressed("BAS"):
 			if self.animation.animation != "tirer_bas":
 				self.animation.animation = "tirer_bas"
-				
+	
+	elif Input.is_action_pressed("TIRER") && Input.is_action_pressed("HAUT"):
+		if self.animation.animation != "tirer_haut":
+			self.animation.animation = "tirer_haut"
+	
 	elif Input.is_action_pressed("DROIT"):
 		self.animation.flip_h = false
 		if self.animation.animation != "courir":
@@ -107,10 +111,6 @@ func set_animation():
 		self.animation.flip_h = true
 		if self.animation.animation != "courir":
 			self.animation.animation = "courir"
-	
-	elif Input.is_action_pressed("TIRER") && Input.is_action_pressed("HAUT"):
-		if self.animation.animation != "tirer_haut":
-			self.animation.animation = "tirer_haut"
 	
 	elif Input.is_action_pressed("TIRER"):
 		if self.animation.animation != "tirer":
@@ -153,9 +153,7 @@ func _physics_process(delta):
 			self.velocityY = -15
 	
 		if Input.is_action_pressed("TIRER"):
-			if Input.is_action_pressed("DROIT") || Input.is_action_pressed("GAUCHE"):
-				self.tirer("droit")
-			elif Input.is_action_pressed("BAS"):
+			if Input.is_action_pressed("BAS"):
 				tirer("bas")
 			elif Input.is_action_pressed("HAUT"):
 				tirer("haut")

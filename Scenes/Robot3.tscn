@@ -119,7 +119,7 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 2 )
 animation = "idle"
-frame = 2
+frame = 5
 
 [node name="DetectionAvant" parent="." index="6"]
 position = Vector2( 3, -10 )

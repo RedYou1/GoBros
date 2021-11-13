@@ -75,19 +75,19 @@ region = Rect2( 225, 45, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 3 )
-region = Rect2( 180, 225, 45, 45 )
+region = Rect2( 180, 90, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 3 )
-region = Rect2( 225, 225, 45, 45 )
+region = Rect2( 225, 90, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 3 )
-region = Rect2( 180, 90, 45, 45 )
+region = Rect2( 180, 225, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 3 )
-region = Rect2( 225, 90, 45, 45 )
+region = Rect2( 225, 225, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 3 )
@@ -132,12 +132,12 @@ animations = [ {
 }, {
 "frames": [ SubResource( 18 ), SubResource( 19 ) ],
 "loop": true,
-"name": "tirer_bas",
+"name": "tirer_haut",
 "speed": 10.0
 }, {
 "frames": [ SubResource( 20 ), SubResource( 21 ) ],
 "loop": true,
-"name": "tirer_haut",
+"name": "tirer_bas",
 "speed": 10.0
 }, {
 "frames": [ SubResource( 22 ) ],
@@ -173,7 +173,6 @@ zoom = Vector2( 0.5, 0.5 )
 position = Vector2( 0, -8.5946 )
 frames = SubResource( 28 )
 animation = "tirer"
-frame = 1
 playing = true
 
 [node name="position de tir haut" parent="." index="3"]

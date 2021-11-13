@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Ressources/vacaroxa generic/Assets_area_1/Tileset/Subway_tiles.png" type="Texture" id=1]
 [ext_resource path="res://Ressources/Minecraft/stone.png" type="Texture" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://Ressources/Minecraft/grass_block_side.png" type="Texture" id=5]
 [ext_resource path="res://Ressources/vacaroxa generic/Assets_area_2/tileset/tiles_out.png" type="Texture" id=6]
 [ext_resource path="res://Ressources/Minecraft/dirt.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/Robot1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Robot2.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/AraigneeRobot.tscn" type="PackedScene" id=10]
 
 [sub_resource type="TileSet" id=1]
 0/name = "Subway_tiles.png 0"
@@ -120,3 +123,12 @@ script = ExtResource( 4 )
 [node name="Joueur" parent="." instance=ExtResource( 3 )]
 position = Vector2( -170.646, 150.009 )
 distance_despawn = 10000
+
+[node name="AraigneeRobot" parent="." instance=ExtResource( 10 )]
+position = Vector2( -931.768, 163.649 )
+
+[node name="Robot1" parent="." instance=ExtResource( 8 )]
+position = Vector2( 487.819, 124.007 )
+
+[node name="Robot2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1171.18, 239.159 )
