@@ -8,7 +8,6 @@ export(int) var damage = 1
 var sens = false
 var barre_vie
 var collision_mouvement
-const balleScene = preload("res://Scenes/BalleEnnemi.tscn")
 var raycast
 var detection_joueur = false
 export (float) var temps_detection = 15
@@ -43,11 +42,10 @@ func sauter():
 		self.velocityY = -15
 		
 func bouger(sens):
+	self.tourner(sens)
 	if sens:
-		self.animation.flip_h = true
 		collision_mouvement = move_and_collide(Vector2(-vitesse_ennemi,0))
 	else:
-		self.animation.flip_h = false
 		collision_mouvement = move_and_collide(Vector2(vitesse_ennemi,0))
 	if collision_mouvement:
 		if collision_mouvement.collider.has_method("hit"):
@@ -58,10 +56,16 @@ func immobile():
 	move_and_collide(Vector2(0,0))
 
 func tourner(sens):
-	if sens:
-		self.animation.flip_h = true
+	if self.is_in_group("Araignee"):
+		if sens:
+			self.animation.flip_h = false
+		else:
+			self.animation.flip_h = true
 	else:
-		self.animation.flip_h = false
+		if sens:
+			self.animation.flip_h = true
+		else:
+			self.animation.flip_h = false
 
 func fonction_detection_joueur():
 	if get_node("DetectionAvant").get_collider():
@@ -75,7 +79,6 @@ func tourner_vers_joueur():
 			sens = false
 		else:
 			sens = true
-		self.tourner(sens)
 		
 func est_tourne_vers_joueur():
 	if get_parent().get_node("Joueur"):

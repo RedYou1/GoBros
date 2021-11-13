@@ -44,6 +44,7 @@ func _ready():
 	ballePositionBas = get_node("position de tir bas").position
 	cooldownDeTir = get_node("coolDownDeTir")
 	cooldownDeTir.wait_time = temps_tir
+	cooldownDeTir.start()
 	vie = vie_max
 
 func _physics_process(delta):

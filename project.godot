@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Go Bros"
-run/main_scene="res://Scenes/testMapJC.tscn"
+run/main_scene="res://Scenes/TestJonathan.tscn"
 boot_splash/image="res://loading_screen.PNG"
 config/icon="res://icon.png"
 

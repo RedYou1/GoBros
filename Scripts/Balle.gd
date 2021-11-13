@@ -6,12 +6,14 @@ export(float) var directionX = 0
 export(float) var directionY = 0
 export(int) var damage = 1
 var movement
+var mort = false
 
 func _ready():
 	movement = Vector2(directionX,directionY)# * delta
+	get_node("Sprite").rotation = movement.angle()
+	
 
 func _physics_process(delta):
-	
 	var col = move_and_collide(movement)
 	
 	if col != null:

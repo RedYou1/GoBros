@@ -1,0 +1,54 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Scenes/Balle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Ressources/Araignée/laser.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/BalleAraignee.gd" type="Script" id=3]
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 1464, 266 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 2 )
+region = Rect2( 1464, 0, 1464, 266 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 2 )
+region = Rect2( 2928, 0, 1464, 266 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 2 )
+region = Rect2( 4392, 0, 1464, 266 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 2 )
+region = Rect2( 5856, 0, 1464, 266 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 2 )
+region = Rect2( 7320, 0, 1464, 266 )
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"loop": true,
+"name": "default",
+"speed": 20.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 130.643, 21.4379 )
+
+[node name="BalleAraignee" instance=ExtResource( 1 )]
+scale = Vector2( 0.2, 0.3 )
+script = ExtResource( 3 )
+damage = 5
+
+[node name="Sprite" parent="." index="0"]
+scale = Vector2( 0.2, 0.2 )
+frames = SubResource( 1 )
+frame = 4
+playing = true
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource( 8 )

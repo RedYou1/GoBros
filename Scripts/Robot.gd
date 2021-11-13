@@ -5,6 +5,7 @@ extends "res://Scripts/EnemyDeBase.gd"
 export (int) var ajustement_saut
 export (int) var ajustement_marche
 
+const balleScene = preload("res://Scenes/BalleEnnemi.tscn")
 var detection_vide = false
 var detection_blocage = false
 var detection_mur = false
@@ -81,7 +82,6 @@ func robot_tirer(sens):
 	self.tourner(sens)
 	if self.tir && self.is_on_floor:
 		var balle = self.balleScene.instance()
-		self.tir = true
 		if self.animation.flip_h:
 			balle.directionX = -balle.vitesse
 			balle.position = position - ballePositionDroit
@@ -115,14 +115,24 @@ func _ready():
 	position_base = self.animation.position
 	
 func robot_set_raycast():
-	if self.sens:
-		get_node("DetectionBlocAvant").cast_to.x = -20
-		get_node("DetectionBlocHaut").cast_to.x = -30
-		get_node("DetectionVide").position = Vector2(-13, 11)
+	if self.is_in_group("Araignee"):
+		if self.sens:
+			get_node("DetectionBlocAvant").cast_to.x = -25
+			get_node("DetectionBlocHaut").cast_to.x = -35
+			get_node("DetectionVide").position = Vector2(-23, 11)
+		else:
+			get_node("DetectionBlocAvant").cast_to.x = 25
+			get_node("DetectionBlocHaut").cast_to.x = 35
+			get_node("DetectionVide").position = Vector2(23, 11)
 	else:
-		get_node("DetectionBlocAvant").cast_to.x = 20
-		get_node("DetectionBlocHaut").cast_to.x = 30
-		get_node("DetectionVide").position = Vector2(13, 11)
+		if self.sens:
+			get_node("DetectionBlocAvant").cast_to.x = -20
+			get_node("DetectionBlocHaut").cast_to.x = -30
+			get_node("DetectionVide").position = Vector2(-13, 11)
+		else:
+			get_node("DetectionBlocAvant").cast_to.x = 20
+			get_node("DetectionBlocHaut").cast_to.x = 30
+			get_node("DetectionVide").position = Vector2(13, 11)
 			
 func fonction_detection_vide():
 	if get_node("DetectionVide").get_collider() && self.is_on_floor:
