@@ -22,9 +22,12 @@ func set_raycast():
 			raycast.rotation = 0
 	else:
 		raycast.cast_to.x = distance_detection
+		print("droite")
 		if est_tourne_vers_joueur():
+			print("joueur")
 			raycast.look_at(get_node("../Joueur").position)
 		else:
+			print("pas_joueur")
 			raycast.rotation = 0
 		
 
@@ -88,6 +91,8 @@ func tourner_vers_joueur():
 func est_tourne_vers_joueur():
 	if get_parent().get_node("Joueur"):
 		if get_parent().get_node("Joueur").position.x > self.position.x && sens == false:
+			return true
+		elif get_parent().get_node("Joueur").position.x < self.position.x && sens == true:
 			return true
 		else:
 			return false
