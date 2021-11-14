@@ -1,5 +1,6 @@
-extends Control
-	
+extends Node2D
+
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -7,21 +8,9 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	Global.memoire_scene = get_tree().edited_scene_root.get_resource_path()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
-
-func _on_Retour_pressed():
-	Global.goto_scene("res://Scenes/Menu.tscn")
-
-
-func _on_Quitter_pressed():
-	get_tree().quit()
-
-
-func _on_Restart_pressed():
-	Global.goto_scene(Global.memoire_scene)

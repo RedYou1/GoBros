@@ -5,6 +5,7 @@ extends Node
 # var a = 2
 # var b = "text"
 var current_scene = null
+var memoire_scene = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
