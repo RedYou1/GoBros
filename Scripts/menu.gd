@@ -8,7 +8,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$VBoxContainer/Button.grab_focus() #permet de changer de bouton via flèche du clavier
+	get_node("CenterContainer/VBoxContainer/Button").grab_focus() #permet de changer de bouton via flèche du clavier
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
