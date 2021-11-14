@@ -12,7 +12,7 @@ func araignee_tirer(sens):
 			balle.directionX = balle.vitesse
 			balle.position = position + Vector2(-ballePositionDroit.x, ballePositionDroit.y)
 		else:
-			balle.directionX = balle.vitesse
+			balle.directionX = -balle.vitesse
 			balle.position = position + Vector2(ballePositionDroit.x, ballePositionDroit.y)
 		#self.animation.position = position_marche
 		if self.animation.animation != "tirer":

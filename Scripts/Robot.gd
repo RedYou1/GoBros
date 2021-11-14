@@ -57,8 +57,10 @@ func robot_bouger_standard():
 			
 func hit(collider, damage):
 	self.standard_hit(collider, damage)
-	if (collider.name == "Joueur" || collider.is_in_group("Balle")) && ! self.mort:
+	if (collider.name == "Joueur" || collider.is_in_group("Balle")) && ! self.mort && !detection_joueur:
 		detection_joueur = true
+		self.tourner_vers_joueur()
+		self.tourner(self.sens)
 
 func robot_sauter(sens):
 	if self.is_on_floor:
@@ -122,15 +124,15 @@ func _ready():
 func robot_set_raycast():
 	if self.is_in_group("Araignee"):
 		if self.sens:
-			get_node("DetectionBlocAvant").cast_to.x = -30
-			get_node("DetectionBlocMilieu").cast_to.x = -30
+			get_node("DetectionBlocAvant").cast_to.x = -27
+			get_node("DetectionBlocMilieu").cast_to.x = -27
 			get_node("DetectionBlocHaut").cast_to.x = -35
-			get_node("DetectionVide").position = Vector2(-23, 11)
+			get_node("DetectionVide").position = Vector2(-17, 11)
 		else:
-			get_node("DetectionBlocAvant").cast_to.x = 30
-			get_node("DetectionBlocMilieu").cast_to.x = 30
+			get_node("DetectionBlocAvant").cast_to.x = 27
+			get_node("DetectionBlocMilieu").cast_to.x = 27
 			get_node("DetectionBlocHaut").cast_to.x = 35
-			get_node("DetectionVide").position = Vector2(23, 11)
+			get_node("DetectionVide").position = Vector2(17, 11)
 	else:
 		if self.sens:
 			get_node("DetectionBlocAvant").cast_to.x = -20
