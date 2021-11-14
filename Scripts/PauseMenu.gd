@@ -12,9 +12,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("PAUSE"):
+	if Input.is_action_just_pressed("PAUSE") && !self.visible:
 		self.visible = true
 		get_tree().paused = true
+	elif Input.is_action_just_pressed("PAUSE") && self.visible:
+		self.visible = false
+		get_tree().paused = false
 
 
 func _on_Retour_button_down():
