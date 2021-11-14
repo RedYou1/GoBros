@@ -118,6 +118,7 @@ position = Vector2( 143.631, -384.974 )
 distance_despawn = 10000
 
 [node name="TileMap" type="TileMap" parent="."]
+z_index = -10
 tile_set = SubResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1

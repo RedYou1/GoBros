@@ -166,8 +166,35 @@ recovery_time = 3.0
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="." index="1"]
+scale = Vector2( 0.5, 0.5 )
+z_index = 20
+rotating = true
 current = true
 zoom = Vector2( 0.5, 0.5 )
+limit_smoothed = true
+
+[node name="Node2D" type="Node2D" parent="Camera2D" index="0"]
+scale = Vector2( 2, 2 )
+
+[node name="Vie" type="ProgressBar" parent="Camera2D/Node2D" index="0"]
+margin_left = -293.198
+margin_top = -177.657
+margin_right = -193.198
+margin_bottom = -162.657
+rect_min_size = Vector2( 100, 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelVie" type="Label" parent="Camera2D/Node2D" index="1"]
+margin_left = -318.198
+margin_top = -177.657
+margin_right = -294.198
+margin_bottom = -163.657
+text = "Vie:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AnimatedSprite" parent="." index="2"]
 position = Vector2( 0, -8.5946 )
@@ -184,36 +211,16 @@ position = Vector2( 14.1069, -4.67932 )
 [node name="position de tir bas" parent="." index="5"]
 position = Vector2( -0.100554, 13.0953 )
 
-[node name="Vie" type="ProgressBar" parent="." index="6"]
-margin_left = -448.577
-margin_top = -266.01
-margin_right = -348.577
-margin_bottom = -251.01
-rect_min_size = Vector2( 100, 15 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="LabelVie" type="Label" parent="." index="7"]
-margin_left = -475.077
-margin_top = -265.01
-margin_right = -451.077
-margin_bottom = -251.01
-text = "Vie:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="DetectionBloc" type="RayCast2D" parent="." index="8"]
+[node name="DetectionBloc" type="RayCast2D" parent="." index="6"]
 position = Vector2( 0, 12 )
 enabled = true
 cast_to = Vector2( 10, 0 )
 
-[node name="TimerRecovery" type="Timer" parent="." index="9"]
+[node name="TimerRecovery" type="Timer" parent="." index="7"]
 wait_time = 3.0
 one_shot = true
 
-[node name="PauseMenu" parent="." index="10" instance=ExtResource( 4 )]
+[node name="PauseMenu" parent="." index="8" instance=ExtResource( 4 )]
 visible = false
 z_index = 10
 

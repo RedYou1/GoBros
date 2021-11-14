@@ -33,7 +33,7 @@ func set_detection_bloc():
 		bloc_detecte = false
 
 func _ready():
-	barre_vie = get_node("Vie")
+	barre_vie = get_node("Camera2D/Node2D/Vie")
 	barre_vie.max_value = self.vie_max
 	barre_vie.value = vie
 	detection_bloc = get_node("DetectionBloc")
