@@ -124,15 +124,15 @@ func _ready():
 func robot_set_raycast():
 	if self.is_in_group("Araignee"):
 		if self.sens:
-			get_node("DetectionBlocAvant").cast_to.x = -27
-			get_node("DetectionBlocMilieu").cast_to.x = -27
-			get_node("DetectionBlocHaut").cast_to.x = -35
+			get_node("DetectionBlocAvant").cast_to.x = -14
+			get_node("DetectionBlocMilieu").cast_to.x = -14
+			get_node("DetectionBlocHaut").cast_to.x = -20
 			get_node("DetectionVide").position = Vector2(-17, 11)
 		else:
-			get_node("DetectionBlocAvant").cast_to.x = 27
-			get_node("DetectionBlocMilieu").cast_to.x = 27
-			get_node("DetectionBlocHaut").cast_to.x = 35
-			get_node("DetectionVide").position = Vector2(17, 11)
+			get_node("DetectionBlocAvant").cast_to.x = 14
+			get_node("DetectionBlocMilieu").cast_to.x = 14
+			get_node("DetectionBlocHaut").cast_to.x = 20
+			get_node("DetectionVide").position = Vector2(9, 11)
 	else:
 		if self.sens:
 			get_node("DetectionBlocAvant").cast_to.x = -20

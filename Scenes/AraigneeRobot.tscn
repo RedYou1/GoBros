@@ -753,18 +753,18 @@ vitesse_ennemi = 0.5
 ajustement_marche = 0
 
 [node name="CollisionShape2D" parent="." index="0"]
+scale = Vector2( 0.5, 0.5 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" parent="." index="1"]
 position = Vector2( 0, 1 )
-scale = Vector2( 0.25, 0.25 )
+scale = Vector2( 0.125, 0.125 )
 frames = SubResource( 177 )
 animation = "tirer"
-frame = 21
+frame = 28
 
 [node name="position de tir droit" parent="." index="3"]
 position = Vector2( -54.5586, -2.3928 )
-scale = Vector2( 1, 1 )
 
 [node name="Vie" parent="." index="5"]
 margin_left = -22.5585
@@ -779,9 +779,17 @@ collide_with_areas = false
 [node name="PositionDetectionVide" parent="." index="9"]
 position = Vector2( -36.8898, 24.1782 )
 
+[node name="DetectionBlocHaut" parent="." index="10"]
+position = Vector2( 0.397, -29 )
+
 [node name="TimerBouger" parent="." index="11"]
 wait_time = 5.0
 
 [node name="coolDownDeTir" parent="." index="13"]
 one_shot = true
 autostart = true
+
+[node name="DetectionBlocMilieu" parent="." index="14"]
+position = Vector2( 0, -13 )
+
+[connection signal="timeout" from="coolDownDeTir" to="." method="_on_coolDownDeTir_timeout"]

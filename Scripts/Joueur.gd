@@ -8,6 +8,7 @@ var barre_vie
 var detection_bloc
 var bloc_detecte = false
 var collision_mouvement
+var velocite
 var mem_modulate
 const balleScene = preload("res://Scenes/BalleJoueur.tscn")
 

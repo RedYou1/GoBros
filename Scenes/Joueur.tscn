@@ -35,83 +35,83 @@ region = Rect2( 225, 0, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 3 )
-region = Rect2( 90, 90, 45, 45 )
+region = Rect2( 270, 225, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 3 )
-region = Rect2( 135, 90, 45, 45 )
+region = Rect2( 315, 225, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 3 )
-region = Rect2( 270, 0, 45, 45 )
+region = Rect2( 0, 270, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 3 )
-region = Rect2( 315, 0, 45, 45 )
+region = Rect2( 45, 270, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 3 )
-region = Rect2( 0, 45, 45, 45 )
+region = Rect2( 90, 270, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 3 )
-region = Rect2( 45, 45, 45, 45 )
+region = Rect2( 315, 45, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 3 )
-region = Rect2( 90, 45, 45, 45 )
+region = Rect2( 90, 90, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 3 )
-region = Rect2( 135, 45, 45, 45 )
+region = Rect2( 135, 90, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 3 )
-region = Rect2( 180, 45, 45, 45 )
+region = Rect2( 270, 0, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 3 )
-region = Rect2( 225, 45, 45, 45 )
+region = Rect2( 315, 0, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 3 )
-region = Rect2( 180, 90, 45, 45 )
+region = Rect2( 0, 45, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 3 )
-region = Rect2( 225, 90, 45, 45 )
+region = Rect2( 45, 45, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 3 )
-region = Rect2( 180, 225, 45, 45 )
+region = Rect2( 90, 45, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 3 )
-region = Rect2( 225, 225, 45, 45 )
+region = Rect2( 135, 45, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 3 )
-region = Rect2( 315, 45, 45, 45 )
+region = Rect2( 180, 45, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=23]
 atlas = ExtResource( 3 )
-region = Rect2( 270, 225, 45, 45 )
+region = Rect2( 225, 45, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=24]
 atlas = ExtResource( 3 )
-region = Rect2( 315, 225, 45, 45 )
+region = Rect2( 180, 225, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=25]
 atlas = ExtResource( 3 )
-region = Rect2( 0, 270, 45, 45 )
+region = Rect2( 225, 225, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 3 )
-region = Rect2( 45, 270, 45, 45 )
+region = Rect2( 180, 90, 45, 45 )
 
 [sub_resource type="AtlasTexture" id=27]
 atlas = ExtResource( 3 )
-region = Rect2( 90, 270, 45, 45 )
+region = Rect2( 225, 90, 45, 45 )
 
 [sub_resource type="SpriteFrames" id=28]
 animations = [ {
@@ -120,35 +120,35 @@ animations = [ {
 "name": "idle",
 "speed": 15.0
 }, {
-"frames": [ SubResource( 8 ), SubResource( 9 ) ],
+"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
 "loop": true,
-"name": "tirer",
-"speed": 10.0
+"name": "mourir",
+"speed": 5.0
 }, {
-"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
-"loop": true,
-"name": "courir",
-"speed": 15.0
-}, {
-"frames": [ SubResource( 18 ), SubResource( 19 ) ],
-"loop": true,
-"name": "tirer_haut",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 20 ), SubResource( 21 ) ],
-"loop": true,
-"name": "tirer_bas",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 22 ) ],
+"frames": [ SubResource( 13 ) ],
 "loop": true,
 "name": "sauter",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ) ],
+"frames": [ SubResource( 14 ), SubResource( 15 ) ],
 "loop": true,
-"name": "mourir",
-"speed": 5.0
+"name": "tirer",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
+"loop": true,
+"name": "courir",
+"speed": 15.0
+}, {
+"frames": [ SubResource( 24 ), SubResource( 25 ) ],
+"loop": true,
+"name": "tirer_bas",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 26 ), SubResource( 27 ) ],
+"loop": true,
+"name": "tirer_haut",
+"speed": 10.0
 } ]
 
 [node name="Joueur" groups=[
@@ -166,6 +166,7 @@ recovery_time = 3.0
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="." index="1"]
+position = Vector2( 0, -50 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
 
@@ -185,20 +186,20 @@ position = Vector2( 14.1069, -4.67932 )
 position = Vector2( -0.100554, 13.0953 )
 
 [node name="Vie" type="ProgressBar" parent="." index="6"]
-margin_left = -227.0
-margin_top = -149.0
-margin_right = -127.0
-margin_bottom = -134.0
+margin_left = -210.992
+margin_top = -182.844
+margin_right = -110.992
+margin_bottom = -167.844
 rect_min_size = Vector2( 100, 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="LabelVie" type="Label" parent="." index="7"]
-margin_left = -255.0
-margin_top = -148.0
-margin_right = -231.0
-margin_bottom = -134.0
+margin_left = -237.492
+margin_top = -181.844
+margin_right = -213.492
+margin_bottom = -167.844
 text = "Vie:"
 __meta__ = {
 "_edit_use_anchors_": false
