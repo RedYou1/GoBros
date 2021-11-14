@@ -124,14 +124,14 @@ func _ready():
 func robot_set_raycast():
 	if self.is_in_group("Araignee"):
 		if self.sens:
-			get_node("DetectionBlocAvant").cast_to.x = -14
-			get_node("DetectionBlocMilieu").cast_to.x = -14
-			get_node("DetectionBlocHaut").cast_to.x = -20
+			get_node("DetectionBlocAvant").cast_to.x = -25
+			get_node("DetectionBlocMilieu").cast_to.x = -25
+			get_node("DetectionBlocHaut").cast_to.x = -40
 			get_node("DetectionVide").position = Vector2(-17, 11)
 		else:
-			get_node("DetectionBlocAvant").cast_to.x = 14
-			get_node("DetectionBlocMilieu").cast_to.x = 14
-			get_node("DetectionBlocHaut").cast_to.x = 20
+			get_node("DetectionBlocAvant").cast_to.x = 25
+			get_node("DetectionBlocMilieu").cast_to.x = 25
+			get_node("DetectionBlocHaut").cast_to.x = 40
 			get_node("DetectionVide").position = Vector2(9, 11)
 	else:
 		if self.sens:
@@ -155,25 +155,42 @@ func fonction_detection_vide():
 		detection_vide = true
 		
 func fonction_detection_blocage():
-	if get_node("DetectionBlocAvant").get_collider() && self.is_on_floor:
-		if get_node("DetectionBlocAvant").get_collider().is_in_group("Block") && self.is_on_floor:
-			detection_blocage = true
-		else:	
-			detection_blocage = false
-	elif get_node("DetectionBlocMilieu").get_collider() && self.is_on_floor:
-		if get_node("DetectionBlocMilieu").get_collider().is_in_group("Block") && self.is_on_floor:
-			detection_blocage = true
-		else:	
-			detection_blocage = false
-	else:
-		detection_blocage = false
-	if get_node("DetectionBlocHaut").get_collider() && self.is_on_floor:
-		if get_node("DetectionBlocHaut").get_collider().is_in_group("Block") && self.is_on_floor:
-			detection_mur = true
-		else:	
+	if self.is_in_group("Araignee"):
+		if get_node("DetectionBlocHaut").get_collider() && get_node("DetectionBlocMilieu").get_collider()  && self.is_on_floor:
+			if get_node("DetectionBlocHaut").get_collider().is_in_group("Block") && self.is_on_floor:
+				detection_mur = true
+			else:	
+				detection_mur = false
+		else:
 			detection_mur = false
+		if (get_node("DetectionBlocAvant").get_collider() || get_node("DetectionBlocMilieu").get_collider()) && self.is_on_floor:
+			if get_node("DetectionBlocAvant").get_collider().is_in_group("Block") && self.is_on_floor:
+				detection_blocage = true
+			else:	
+				detection_blocage = false
+		elif get_node("DetectionBlocMilieu").get_collider() && self.is_on_floor:
+			if get_node("DetectionBlocMilieu").get_collider().is_in_group("Block") && self.is_on_floor:
+				detection_blocage = true
+			else:	
+				detection_blocage = false
+		else:
+			detection_blocage = false
 	else:
-		detection_mur = false
+		if get_node("DetectionBlocHaut").get_collider() && get_node("DetectionBlocAvant").get_collider()  && self.is_on_floor:
+			if get_node("DetectionBlocHaut").get_collider().is_in_group("Block") && self.is_on_floor:
+				detection_mur = true
+			else:	
+				detection_mur = false
+		else:
+			detection_mur = false
+			
+		if get_node("DetectionBlocAvant").get_collider() && self.is_on_floor:
+			if get_node("DetectionBlocAvant").get_collider().is_in_group("Block") && self.is_on_floor:
+				detection_blocage = true
+			else:	
+				detection_blocage = false
+		else:
+			detection_blocage = false
 
 
 
