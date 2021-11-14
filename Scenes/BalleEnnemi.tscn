@@ -13,6 +13,7 @@ animations = [ {
 
 [node name="BalleEnnemi" instance=ExtResource( 1 )]
 collision_layer = 8
+vitesse = 6.0
 
 [node name="Sprite" parent="." index="0"]
 scale = Vector2( 0.7, 1 )

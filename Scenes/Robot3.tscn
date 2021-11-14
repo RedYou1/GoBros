@@ -84,7 +84,7 @@ animations = [ {
 "frames": [ ExtResource( 7 ), ExtResource( 16 ), ExtResource( 23 ), ExtResource( 11 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 19 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 6 ), ExtResource( 20 ), ExtResource( 22 ), ExtResource( 4 ), ExtResource( 9 ), ExtResource( 24 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "tirer",
-"speed": 15.0
+"speed": 30.0
 }, {
 "frames": [ ExtResource( 56 ), ExtResource( 58 ), ExtResource( 68 ), ExtResource( 69 ), ExtResource( 55 ), ExtResource( 57 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 62 ), ExtResource( 63 ), ExtResource( 64 ), ExtResource( 65 ), ExtResource( 66 ), ExtResource( 67 ) ],
 "loop": true,
@@ -117,7 +117,7 @@ shape = SubResource( 1 )
 scale = Vector2( 0.12, 0.12 )
 frames = SubResource( 2 )
 animation = "idle"
-frame = 2
+frame = 8
 
 [node name="DetectionAvant" parent="." index="6"]
 position = Vector2( 3, -10 )

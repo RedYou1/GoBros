@@ -114,7 +114,7 @@
 [node name="TestJonathan" type="Node2D"]
 
 [node name="Joueur" parent="." instance=ExtResource( 1 )]
-position = Vector2( 166.106, -396.961 )
+position = Vector2( 143.631, -384.974 )
 distance_despawn = 10000
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -148,3 +148,7 @@ message = "Oui, je me téléporte. Ne pose pas de question. Un premier ennemi t'
 
 [node name="Robot2" parent="." instance=ExtResource( 9 )]
 position = Vector2( 2738.69, -358.853 )
+
+[node name="Mob_Tutoriel6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 3522.74, -180.631 )
+message = "Félicitations! Tu as vaincu ton premier ennemi. Tu peux maintenant poursuivre ta route jusqu'à la fin."

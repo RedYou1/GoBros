@@ -106,6 +106,7 @@ animations = [ {
 collision_mask = 1
 script = ExtResource( 2 )
 vie_max = 20
+temps_tir = 2.0
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2( -1, 0 )
@@ -115,7 +116,7 @@ shape = SubResource( 1 )
 scale = Vector2( 0.12, 0.12 )
 frames = SubResource( 2 )
 animation = "tirer"
-frame = 14
+frame = 11
 
 [node name="DetectionAvant" parent="." index="6"]
 position = Vector2( 1.62143, -6.00014 )

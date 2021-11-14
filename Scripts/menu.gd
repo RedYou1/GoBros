@@ -25,4 +25,4 @@ func _on_Button2_pressed():
 
 #boutons quitter
 func _on_Button3_pressed():
-	pass # Replace with function body.
+	get_tree().quit()
