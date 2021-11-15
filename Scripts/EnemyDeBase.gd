@@ -22,12 +22,9 @@ func set_raycast():
 			raycast.rotation = 0
 	else:
 		raycast.cast_to.x = distance_detection
-		print("droite")
 		if est_tourne_vers_joueur():
-			print("joueur")
 			raycast.look_at(get_node("../Joueur").position)
 		else:
-			print("pas_joueur")
 			raycast.rotation = 0
 		
 
@@ -107,7 +104,6 @@ func _physics_process(delta):
 
 
 func _on_coolDownDeTir_timeout():
-	print("tir ok ennemi")
 	tir = true
 
 

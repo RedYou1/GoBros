@@ -124,13 +124,7 @@ script = ExtResource( 1 )
 position = Vector2( -2.22815, -42.837 )
 
 [node name="DebutNiveau" parent="." instance=ExtResource( 9 )]
-margin_left = -660.789
-margin_top = -165.648
-margin_right = -404.789
-margin_bottom = 90.3525
+position = Vector2( -312.705, -8.90898 )
 
 [node name="FinNiveau" parent="." instance=ExtResource( 8 )]
-margin_left = 409.567
-margin_top = -100.523
-margin_right = 665.568
-margin_bottom = 27.4762
+position = Vector2( 298.451, 5.3454 )
