@@ -91,7 +91,7 @@ func robot_tirer(sens):
 		else:
 			balle.directionX = balle.vitesse
 			balle.position = position + ballePositionDroit
-		#self.animation.position = position_marche
+		self.animation.position = position_marche
 		
 		if self.animation.animation != "tirer":
 			self.animation.animation = "tirer"
@@ -108,12 +108,12 @@ func robot_tirer(sens):
 			self.cooldownDeTir.start()
 		else:
 			tir_robot = false
-	#else:
-		#self.animation.position = position_base
+	else:
+		self.animation.position = position_base
 
 func immobile():
 	self.animation.animation = "idle"
-	#self.animation.position = position_base
+	self.animation.position = position_base
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.animation.animation = "idle"
@@ -163,7 +163,7 @@ func fonction_detection_blocage():
 				detection_mur = false
 		else:
 			detection_mur = false
-		if (get_node("DetectionBlocAvant").get_collider() || get_node("DetectionBlocMilieu").get_collider()) && self.is_on_floor:
+		if get_node("DetectionBlocAvant").get_collider() && self.is_on_floor:
 			if get_node("DetectionBlocAvant").get_collider().is_in_group("Block") && self.is_on_floor:
 				detection_blocage = true
 			else:	
