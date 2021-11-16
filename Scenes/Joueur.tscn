@@ -200,6 +200,7 @@ __meta__ = {
 position = Vector2( 0, -8.5946 )
 frames = SubResource( 28 )
 animation = "tirer"
+frame = 1
 playing = true
 
 [node name="position de tir haut" parent="." index="3"]
