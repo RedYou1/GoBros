@@ -10,6 +10,8 @@ extends "res://Scripts/EnemyDeBase.gd"
 func _ready():
 	pass # Replace with function body.
 
+func hit(collider, damage):
+	self.standard_hit(collider, damage)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
