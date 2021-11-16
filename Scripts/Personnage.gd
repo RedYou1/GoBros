@@ -2,21 +2,50 @@ extends KinematicBody2D
 
 var velocityY = 0
 
-export(float) var cooldown_de_tir = .2
 export(float) var GRAVITY = 0.98
 
-const balleScene = preload("res://Scenes/Balle.tscn")
+var vie
+export(int) var vie_max = 3
+export(int) var distance_despawn = 10000
+export(float) var temps_tir = 1.0
+var mort = false
+
 var is_on_floor = false
 
-var cooldownDeTir
-var ballePosition
+var collision
+var ballePositionDroit
+var ballePositionHaut
+var ballePositionBas
 var animation
-var tir = true
+var cooldownDeTir
 
+var tir = false
+
+func mourir(delta):
+	if self.animation.animation != "mourir":
+		self.animation.animation = "mourir"
+		self.animation.frame = 0
+		self.animation.playing = true
+	if animation.frame == animation.frames.get_frame_count("mourir")-1:
+		self.animation.playing = false
+		modulate.a -= delta
+		if modulate.a <= 0:
+			if self.name == "Joueur":
+				Global.goto_scene("res://Scenes/GameOver.tscn")
+			else:
+				queue_free()
+	
+	
 func _ready():
+	collision = get_node("CollisionShape2D")
 	animation = get_node("AnimatedSprite")
-	cooldownDeTir = get_node("cooldown de tir")
-	ballePosition = get_node("position de tir").position
+	ballePositionDroit = get_node("position de tir droit").position
+	ballePositionHaut = get_node("position de tir haut").position
+	ballePositionBas = get_node("position de tir bas").position
+	cooldownDeTir = get_node("coolDownDeTir")
+	cooldownDeTir.wait_time = temps_tir
+	cooldownDeTir.start()
+	vie = vie_max
 
 func _physics_process(delta):
 	velocityY += GRAVITY
@@ -26,16 +55,13 @@ func _physics_process(delta):
 		velocityY = 0
 	else:
 		is_on_floor = false
+	
+	if mort:
+		mourir(delta)
+	
+	if position.y > distance_despawn:
+		mort = true
 
 
-func tirer():
-	if !tir and cooldownDeTir.is_stopped():
-		var balle = balleScene.instance()
-		
-		if animation.flip_h:
-			balle.direction *= -1
-			balle.position = position - ballePosition
-		else:
-			balle.position = position + ballePosition
-		get_parent().add_child(balle)
-		cooldownDeTir.start(cooldown_de_tir)
+func _on_coolDownDeTir_timeout():
+	tir = true

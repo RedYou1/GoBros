@@ -6,7 +6,31 @@
 [node name="EnemyDeBase" groups=[
 "EnemyDeBase",
 ] instance=ExtResource( 1 )]
+collision_layer = 6
+collision_mask = 17
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = null
+
+[node name="Vie" type="ProgressBar" parent="." index="5"]
+margin_left = -38.0
+margin_top = -56.0
+margin_right = 39.0
+margin_bottom = -50.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DetectionAvant" type="RayCast2D" parent="." index="6"]
+enabled = true
+cast_to = Vector2( 200, 0 )
+collision_mask = 17
+collide_with_areas = true
+
+[node name="TimerDetectionJoueur" type="Timer" parent="." index="7"]
+wait_time = 15.0
+one_shot = true
+
+[connection signal="timeout" from="TimerDetectionJoueur" to="." method="_on_TimerDetectionJoueur_timeout"]

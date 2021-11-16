@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/FinNiveau.gd" type="Script" id=1]
+[ext_resource path="res://Ressources/fin_niveau.png" type="Texture" id=2]
+
+[node name="FinNiveau" type="Node2D"]
+z_index = 50
+script = ExtResource( 1 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 8.50085, 0 )
+enabled = true
+cast_to = Vector2( -64, 0 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -1000.0
+margin_top = -500.0
+margin_right = 1000.0
+margin_bottom = 500.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fin_niveau" type="Sprite" parent="."]
+position = Vector2( -0.55127, -16.1529 )
+scale = Vector2( 0.5, 0.5 )
+z_index = -4
+texture = ExtResource( 2 )

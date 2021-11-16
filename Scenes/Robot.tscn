@@ -3,22 +3,48 @@
 [ext_resource path="res://Scripts/Robot.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/EnemyDeBase.tscn" type="PackedScene" id=2]
 
-[node name="Robot" instance=ExtResource( 2 )]
+[node name="Robot" groups=[
+"Robot",
+] instance=ExtResource( 2 )]
 script = ExtResource( 1 )
-cooldown_de_tir = 0.2
-ajustement_saut = 100
-ajustement_marche = 6
+distance_detection = 200
+ajustement_marche = -4
 
 [node name="AnimatedSprite" parent="." index="1"]
 scale = Vector2( 0.03, 0.03 )
 playing = true
 
-[node name="position de tir" parent="." index="2"]
-position = Vector2( 30, 0 )
+[node name="Vie" parent="." index="5"]
+margin_left = -13.0
+margin_top = -22.0
+margin_right = 9.0
+margin_bottom = -19.0
 
-[node name="cooldown de tir" parent="." index="3"]
-autostart = false
-
-[node name="DetectionAvant" type="RayCast2D" parent="." index="4"]
+[node name="DetectionBlocAvant" type="RayCast2D" parent="." index="7"]
 enabled = true
-cast_to = Vector2( 200, 0 )
+cast_to = Vector2( 10, 0 )
+
+[node name="DetectionVide" type="RayCast2D" parent="." index="8"]
+enabled = true
+cast_to = Vector2( 0, 80 )
+
+[node name="PositionDetectionVide" type="Node2D" parent="." index="9"]
+position = Vector2( 16.6677, 14.485 )
+
+[node name="DetectionBlocHaut" type="RayCast2D" parent="." index="10"]
+position = Vector2( 0.397, -58 )
+enabled = true
+cast_to = Vector2( 10, 0 )
+
+[node name="TimerBouger" type="Timer" parent="." index="11"]
+autostart = true
+
+[node name="coolDownDeTir" parent="." index="13"]
+wait_time = 1.0
+
+[node name="DetectionBlocMilieu" type="RayCast2D" parent="." index="14"]
+position = Vector2( 0, -25 )
+enabled = true
+cast_to = Vector2( 10, 0 )
+
+[connection signal="timeout" from="TimerBouger" to="." method="_on_TimerBouger_timeout"]

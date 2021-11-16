@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/DebutNiveau.gd" type="Script" id=1]
+
+[node name="DebutNiveau" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -981.629
+margin_top = -528.57
+margin_right = 1018.37
+margin_bottom = 471.43
+__meta__ = {
+"_edit_use_anchors_": false
+}
