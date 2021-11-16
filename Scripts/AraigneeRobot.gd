@@ -27,7 +27,6 @@ func araignee_tirer(sens):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	vitesse_ennemi
 	self.tourner(sens)
 
 func _physics_process(delta):

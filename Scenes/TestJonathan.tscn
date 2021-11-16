@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Joueur.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Mob_Tutoriel.tscn" type="PackedScene" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://Ressources/Minecraft/stone.png" type="Texture" id=6]
 [ext_resource path="res://Ressources/Minecraft/dirt.png" type="Texture" id=7]
 [ext_resource path="res://Ressources/vacaroxa generic/Assets_area_2/tileset/tiles_out.png" type="Texture" id=8]
-[ext_resource path="res://Scenes/AraigneeRobot.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Background1.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/DebutNiveau.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scenes/FinNiveau.tscn" type="PackedScene" id=12]
@@ -159,9 +158,3 @@ position = Vector2( -35.3115, -338.434 )
 [node name="FinNiveau" parent="." instance=ExtResource( 12 )]
 position = Vector2( 7585.78, -143.38 )
 scene_prochain_niveau = "res://Scenes/Menu.tscn"
-
-[node name="AraigneeRobot" parent="." groups=[
-"EnemyDeBase",
-] instance=ExtResource( 9 )]
-position = Vector2( 578.053, -295.744 )
-collision_layer = 6

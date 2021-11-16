@@ -22,6 +22,8 @@ func _physics_process(delta):
 				sleep = true
 			else:
 				unSleep()
+		else:
+			sleep = true
 	
 		if position.y > distance_despawn:
 			queue_free()

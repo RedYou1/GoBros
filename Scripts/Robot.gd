@@ -42,7 +42,6 @@ func robot_bouger_standard():
 		
 	elif self.detection_blocage && !self.detection_mur && self.is_on_floor:
 		self.robot_sauter(self.sens)
-		get_node("TimerBouger").start()
 	else:
 		if self.detection_vide && self.is_on_floor:
 			if self.sens:
@@ -64,7 +63,7 @@ func hit(collider, damage):
 
 func robot_sauter(sens):
 	if self.is_on_floor:
-		#self.animation.position = position_saut
+		self.animation.position = position_saut
 		if self.animation.animation != "sauter":
 			self.animation.animation = "sauter"
 			self.animation.frame = 0
@@ -73,12 +72,12 @@ func robot_sauter(sens):
 			self.sauter()
 	else:
 		self.bouger(sens)
-		#self.animation.position = position_base
+		self.animation.position = position_base
 			
 	
 func robot_marcher(sens):
 	self.bouger(sens)
-	#self.animation.position = position_marche
+	self.animation.position = position_marche
 	self.animation.animation = "marcher"
 	
 func robot_tirer(sens):
