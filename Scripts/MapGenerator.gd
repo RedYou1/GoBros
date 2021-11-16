@@ -2,7 +2,9 @@ extends TileMap
 
 const block = preload("res://Scenes/Block.tscn")
 const blocks = {
-	"0": preload("res://Scenes/Fond.tscn")
+	"0": preload("res://Scenes/Fond.tscn"),
+	"7": preload("res://Scenes/Lave.tscn"),
+	"8": preload("res://Scenes/Eau.tscn")
 }
 
 func _process(delta):

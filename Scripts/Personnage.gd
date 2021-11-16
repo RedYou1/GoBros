@@ -19,6 +19,8 @@ var ballePositionBas
 var animation
 var cooldownDeTir
 
+var is_in_liquide = false
+
 var tir = false
 
 func mourir(delta):
@@ -49,7 +51,10 @@ func _ready():
 
 func _physics_process(delta):
 	velocityY += GRAVITY
-	var t = move_and_collide(Vector2(0,velocityY))
+	var vec = Vector2(0,velocityY)
+	if is_in_liquide:
+		vec *= 0.1
+	var t = move_and_collide(vec)
 	if t != null:
 		is_on_floor = true
 		velocityY = 0
