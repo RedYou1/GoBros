@@ -96,9 +96,13 @@ func robot_tirer(sens):
 			self.animation.animation = "tirer"
 			self.animation.frame = 0
 		elif self.animation.frame == 5 && !tir_robot:
+			son_tir = true
+			get_node("SonTir").play()
 			tir_robot = true
 			get_parent().add_child(balle)
 		elif self.animation.frame == 12 && !tir_robot:
+			son_tir = true
+			get_node("SonTir").play()
 			tir_robot = true
 			get_parent().add_child(balle)
 		elif self.animation.frame == 17:

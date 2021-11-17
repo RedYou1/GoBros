@@ -2,7 +2,6 @@ extends "res://Scripts/Robot.gd"
 
 # Declare member variables here. Examples:
 const balleAraignee = preload("res://Scenes/BalleAraignee.tscn")
-export (float) var vitesse_course = 1.5
 	
 func araignee_tirer(sens):
 	if self.tir && self.is_on_floor:
@@ -19,8 +18,11 @@ func araignee_tirer(sens):
 			self.animation.animation = "tirer"
 			self.animation.frame = 0
 		elif self.animation.frame == 28:
+			son_tir = true
+			get_node("SonTir").play()
 			get_parent().add_child(balle)
 		elif self.animation.frame == 59:
+			son_tir = false
 			self.tir = false
 			self.animation.animation = "idle"
 			self.cooldownDeTir.start(temps_tir)

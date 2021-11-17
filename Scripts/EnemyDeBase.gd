@@ -31,6 +31,8 @@ func set_raycast():
 func standard_hit(collider, damage):
 	if (collider.is_in_group("Balle") || collider.is_in_group("Joueur")) && !self.mort:
 		vie -= damage
+		son_hit = true
+		get_node("SonHit").play()
 		if vie <= 0:
 			self.mort = true
 	

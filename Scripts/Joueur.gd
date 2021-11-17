@@ -12,7 +12,6 @@ var velocite
 var mem_modulate
 const balleScene = preload("res://Scenes/BalleJoueur.tscn")
 
-
 func gerer_recovery():
 	if in_recovery:
 		self.get_node("AnimatedSprite").modulate.a = 0.5
@@ -44,6 +43,8 @@ func _ready():
 func hit(collider, damage):
 	if !in_recovery:
 		if collider.is_in_group("Robot") && ! self.mort:
+			son_hit = true
+			get_node("SonHit").play()
 			in_recovery = true
 			get_node("TimerRecovery").start()
 			vie -= damage
@@ -51,6 +52,8 @@ func hit(collider, damage):
 			if vie <= 0:
 				self.mort = true
 		if collider.is_in_group("Balle") && ! self.mort:
+			son_hit = true
+			get_node("SonHit").play()
 			in_recovery = true
 			get_node("TimerRecovery").start()
 			vie -= damage
@@ -66,6 +69,8 @@ func hit(collider, damage):
 func tirer(dir_balle):
 		
 	if self.tir:
+		son_tir = true
+		get_node("SonTir").play()
 		var balle = self.balleScene.instance()
 		
 		if dir_balle == "haut":
@@ -134,9 +139,7 @@ func gestion_collision():
 				get_node("TimerRecovery").start()
 				vie -= damage
 				barre_vie.value = vie
-				if vie <= 0:
-					self.mort = true
-					
+				
 func _physics_process(delta):
 	set_detection_bloc()
 	gerer_recovery()
