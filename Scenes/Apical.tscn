@@ -30,6 +30,7 @@ collision_layer = 2
 script = ExtResource( 2 )
 GRAVITY = 0.0
 vie_max = 150
+distance_despawn = 100000
 temps_tir = 0.3
 vitesse_ennemi = 10.0
 distance_detection = 400

@@ -30,7 +30,12 @@ export(int) var balles_max = 100
 var son_ambiance = false
 
 func hit(collider, damage):
-	self.standard_hit(collider, damage)
+	if (collider.is_in_group("Balle") || collider.is_in_group("Joueur")) && !self.mort:
+		vie -= damage
+		son_hit = true
+		get_node("SonHit").play()
+		if vie <= 0:
+			self.mort = true
 
 func intro_apical(delta):
 	if !detection_joueur:
