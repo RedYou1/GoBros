@@ -1,6 +1,5 @@
 extends "res://Scripts/EnemyDeBase.gd"
 
-
 # Declare member variables here. Examples:
 const balleApical = preload("res://Scenes/BalleApical.tscn")
 var phases_ok = false

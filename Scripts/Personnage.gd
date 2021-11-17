@@ -31,6 +31,8 @@ func mourir(delta):
 		modulate.a -= delta
 		if modulate.a <= 0:
 			if self.name == "Joueur":
+				Global.memoire_scene = "res://Scenes/" + get_parent().name + ".tscn"
+				print(Global.memoire_scene)
 				Global.goto_scene("res://Scenes/GameOver.tscn")
 			else:
 				queue_free()
