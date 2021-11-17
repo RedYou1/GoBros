@@ -184,7 +184,11 @@ func dash_apical(delta):
 				mouvement_cote = vitesse_dash
 				if position.x < fin_niveau:
 					bouger_apical()
+					if collision_mouvement:
+						if collision_mouvement.get_collider().name == "Joueur":
+							set_collision_mask_bit(0, false)
 				else:
+					set_collision_mask_bit(0, true)
 					vitesse_ennemi = mem_vitesse
 					dash_ok = false
 					dash = false
@@ -197,7 +201,11 @@ func dash_apical(delta):
 				mouvement_cote = -vitesse_dash
 				if position.x > depart_niveau:
 					bouger_apical()
+					if collision_mouvement:
+						if collision_mouvement.get_collider().name == "Joueur":
+							set_collision_mask_bit(0, false)
 				else:
+					set_collision_mask_bit(0, true)
 					sens = true
 					vitesse_ennemi = mem_vitesse
 					dash_ok = false
@@ -235,6 +243,9 @@ func marteau_apical():
 			mouvement_haut = vitesse_ennemi
 			if position.y < hauteur + profondeur_marteau*32 + 16:
 				bouger_apical()
+				if collision_mouvement:
+					if collision_mouvement.get_collider().name == "Joueur":
+						set_collision_mask_bit(0, false)
 			else:
 				marteau_fait = true
 		elif bloc <= 11: 
@@ -243,6 +254,7 @@ func marteau_apical():
 			if position.y > hauteur:
 				bouger_apical()
 			else:
+				set_collision_mask_bit(0, true)
 				marteau = false
 				marteau_fait = false
 				bloc+=1
