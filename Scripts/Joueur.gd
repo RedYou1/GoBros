@@ -130,9 +130,7 @@ func gestion_collision():
 				get_node("TimerRecovery").start()
 				vie -= damage
 				barre_vie.value = vie
-				if vie <= 0:
-					self.mort = true
-					
+				
 func _physics_process(delta):
 	set_detection_bloc()
 	gerer_recovery()

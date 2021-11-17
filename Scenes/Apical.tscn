@@ -14,6 +14,11 @@ animations = [ {
 "loop": true,
 "name": "default",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "mourir",
+"speed": 5.0
 } ]
 
 [node name="Apical" groups=[
@@ -23,7 +28,7 @@ collision_layer = 2
 collision_mask = 16
 script = ExtResource( 2 )
 GRAVITY = 0.0
-vie_max = 100
+vie_max = 5
 temps_tir = 0.3
 vitesse_ennemi = 10.0
 distance_detection = 400
@@ -37,6 +42,7 @@ shape = SubResource( 3 )
 
 [node name="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 2 )
+animation = "mourir"
 
 [node name="position de tir bas" parent="." index="4"]
 position = Vector2( 0.264862, 28.6162 )
@@ -68,7 +74,7 @@ grow_horizontal = 2
 grow_vertical = 2
 rect_clip_content = true
 size_flags_horizontal = 4
-text = "Que le test commence!"
+text = "J'espère que tu as révisé tes notes de cours. Que le test commence!"
 align = 3
 autowrap = true
 __meta__ = {
@@ -76,7 +82,7 @@ __meta__ = {
 }
 
 [node name="TimerBulle" type="Timer" parent="." index="10"]
-wait_time = 3.0
+wait_time = 5.0
 one_shot = true
 
 [connection signal="timeout" from="TimerBulle" to="." method="_on_TimerBulle_timeout"]

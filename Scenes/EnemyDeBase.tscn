@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Personnage.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/EnemyDeBase.gd" type="Script" id=2]
+[ext_resource path="res://Ressources/sons/ennemideathsound.mp3" type="AudioStream" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.172549, 1, 0, 1 )
@@ -36,5 +37,8 @@ collide_with_areas = true
 [node name="TimerDetectionJoueur" type="Timer" parent="." index="7"]
 wait_time = 15.0
 one_shot = true
+
+[node name="Mort" parent="." index="9"]
+stream = ExtResource( 3 )
 
 [connection signal="timeout" from="TimerDetectionJoueur" to="." method="_on_TimerDetectionJoueur_timeout"]

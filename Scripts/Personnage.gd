@@ -22,7 +22,6 @@ var cooldownDeTir
 var tir = false
 
 func mourir(delta):
-	get_node("Mort").stream_paused = false
 	if self.animation.animation != "mourir":
 		self.animation.animation = "mourir"
 		self.animation.frame = 0
@@ -37,6 +36,8 @@ func mourir(delta):
 				Global.goto_scene("res://Scenes/GameOver.tscn")
 			else:
 				queue_free()
+	else:
+		get_node("Mort").stream_paused = false
 	
 	
 func _ready():

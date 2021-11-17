@@ -23,6 +23,7 @@ var position_tir_ok = false
 var position_intro_ok = false
 var bulle_vue = false
 var timer_bulle = false
+var mem_mort = false
 export(float) var vitesse_marteau
 export(float) var vitesse_dash
 export(int) var balles_max = 100
@@ -35,6 +36,7 @@ func intro_apical(delta):
 		tourner_vers_joueur()
 		fonction_detection_joueur()
 	elif !position_intro_ok:
+		get_parent().get_node("Ambiance").stream_paused = false
 		if !memoire_hauteur:
 			if get_node("../Joueur"):
 				if get_node("../Joueur").is_on_floor:
@@ -260,14 +262,21 @@ func _ready():
 
 
 func _physics_process(delta):
-	if phase == 0:
-		intro_apical(delta)
-	if phase == 1:
-		tirer_apical()
-	if phase == 2:
-		marteau_apical()
-	elif phase == 3:
-		dash_apical(delta)
+	if !self.mort:
+		if phase == 0:
+			intro_apical(delta)
+		if phase == 1:
+			tirer_apical()
+		if phase == 2:
+			marteau_apical()
+		elif phase == 3:
+			dash_apical(delta)
+	else:
+		if !mem_mort:
+			get_node("Vie").visible = false
+			self.modulate.a = 5
+			mem_mort = true
+		get_parent().get_node("Ambiance").volume_db -= delta*50
 
 
 
