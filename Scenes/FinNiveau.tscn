@@ -7,10 +7,10 @@
 z_index = 50
 script = ExtResource( 1 )
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( 8.50085, 0 )
+[node name="Area" type="RayCast2D" parent="."]
+position = Vector2( 28.5009, -0.75 )
 enabled = true
-cast_to = Vector2( -64, 0 )
+cast_to = Vector2( -100, 0 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false

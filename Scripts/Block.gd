@@ -33,6 +33,7 @@ func hit(from,damage):
 	if vie <= 0:
 		get_node("Sprite").visible = false
 		get_node("CollisionShape2D").disabled = true
+		get_node("SonExplosion").play()
 		explosion.visible = true
 		explosion.playing = true
 		var raycast = get_node("block_above")

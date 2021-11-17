@@ -10,9 +10,9 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _physics_process(delta):
+	if get_node("Son").get_playback_position() >= get_node("Son").stream.get_length() - 0.05:
+		get_node("Son").stream_paused = true
 
 
 func _on_Retour_pressed():

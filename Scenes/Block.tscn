@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
+[ext_resource path="res://Ressources/sons/explosion_ast.wav" type="AudioStream" id=1]
 [ext_resource path="res://Scripts/Block.gd" type="Script" id=2]
 [ext_resource path="res://Ressources/vacaroxa generic/Enemies/Explosion_Particle.png" type="Texture" id=3]
 
@@ -39,7 +40,7 @@ animations = [ {
 "frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
 "name": "default",
-"speed": 7.5
+"speed": 5.0
 } ]
 
 [node name="Block" type="KinematicBody2D" groups=[
@@ -64,5 +65,10 @@ frame = 1
 [node name="block_above" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( 0, -32 )
+
+[node name="SonExplosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -15.0
+pitch_scale = 2.0
 
 [connection signal="animation_finished" from="explosion" to="." method="_on_explosion_animation_finished"]

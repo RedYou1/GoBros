@@ -11,7 +11,9 @@ config_version=4
 [application]
 
 config/name="Go Bros"
+
 run/main_scene="res://Scenes/Level1.tscn"
+
 boot_splash/image="res://loading_screen.PNG"
 config/icon="res://icon.png"
 
@@ -23,6 +25,7 @@ Global="*res://Scripts/Global.gd"
 
 window/size/width=1280
 window/size/height=720
+window/size/fullscreen=true
 
 [importer_defaults]
 

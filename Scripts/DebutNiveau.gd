@@ -13,7 +13,7 @@ func _ready():
 
 func _process(delta):
 	if get_node("ColorRect").modulate.a > 0:
-		get_node("ColorRect").modulate.a -= delta
+		get_node("ColorRect").modulate.a -= delta/2
 	else:
 		get_node("ColorRect").modulate.a = 0
 		get_node("ColorRect").visible = false;
