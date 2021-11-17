@@ -11,9 +11,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if get_node("RayCast2D").get_collider():
-		print(get_node("RayCast2D").get_collider().name)
-		if get_node("RayCast2D").get_collider().name == "Joueur":
+	if get_node("Area").get_collider():
+		print(get_node("Area").get_collider().name)
+		if get_node("Area").get_collider().name == "Joueur":
 			get_node("ColorRect").visible = true
 			if get_node("ColorRect").modulate.a < 1:
 				get_node("ColorRect").modulate.a += delta
