@@ -22,6 +22,7 @@ func araignee_tirer(sens):
 			get_node("SonTir").play()
 			get_parent().add_child(balle)
 		elif self.animation.frame == 59:
+			son_tir = false
 			self.tir = false
 			self.animation.animation = "idle"
 			self.cooldownDeTir.start(temps_tir)

@@ -742,11 +742,13 @@ animations = [ {
 
 [node name="AraigneeRobot" groups=[
 "Araignee",
+"Personnage",
 ] instance=ExtResource( 1 )]
 z_index = 3
 collision_mask = 1
 script = ExtResource( 2 )
 vie_max = 50
+distance_despawn = 1000
 temps_tir = 5.0
 vitesse_ennemi = 0.5
 ajustement_saut = 3
@@ -760,7 +762,7 @@ position = Vector2( 0, 1 )
 scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 177 )
 animation = "tirer"
-frame = 39
+frame = 50
 
 [node name="position de tir droit" parent="." index="3"]
 position = Vector2( -54.5586, -2.3928 )
@@ -784,8 +786,19 @@ position = Vector2( 0, -50 )
 [node name="TimerBouger" parent="." index="11"]
 wait_time = 5.0
 
+[node name="coolDownDeTir" parent="." index="13"]
+one_shot = true
+autostart = true
+
 [node name="DetectionBlocMilieu" parent="." index="14"]
 position = Vector2( 0, -20 )
 
 [node name="SonTir" parent="." index="16"]
 stream = ExtResource( 8 )
+autoplay = true
+stream_paused = true
+
+[node name="SonHit" parent="." index="17"]
+volume_db = 0.0
+
+[connection signal="timeout" from="coolDownDeTir" to="." method="_on_coolDownDeTir_timeout"]

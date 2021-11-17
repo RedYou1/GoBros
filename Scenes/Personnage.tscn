@@ -39,4 +39,9 @@ volume_db = -20.0
 autoplay = true
 stream_paused = true
 
+[node name="SonHit" type="AudioStreamPlayer" parent="."]
+volume_db = -20.0
+autoplay = true
+stream_paused = true
+
 [connection signal="timeout" from="coolDownDeTir" to="." method="_on_coolDownDeTir_timeout"]

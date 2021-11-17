@@ -49,5 +49,8 @@ scene_prochain_niveau = "res://Scenes/Menu.tscn"
 
 [node name="BackgroundBoss" parent="." instance=ExtResource( 4 )]
 
-[node name="AraigneeRobot" parent="." instance=ExtResource( 5 )]
+[node name="AraigneeRobot" parent="." groups=[
+"EnemyDeBase",
+] instance=ExtResource( 5 )]
 position = Vector2( 604.495, -220.117 )
+collision_layer = 6

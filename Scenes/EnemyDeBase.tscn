@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Personnage.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/EnemyDeBase.gd" type="Script" id=2]
 [ext_resource path="res://Ressources/sons/ennemideathsound.mp3" type="AudioStream" id=3]
+[ext_resource path="res://Ressources/sons/mixkit-small-hit-in-a-game-2072.wav" type="AudioStream" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.172549, 1, 0, 1 )
@@ -40,5 +41,8 @@ one_shot = true
 
 [node name="Mort" parent="." index="9"]
 stream = ExtResource( 3 )
+
+[node name="SonHit" parent="." index="11"]
+stream = ExtResource( 4 )
 
 [connection signal="timeout" from="TimerDetectionJoueur" to="." method="_on_TimerDetectionJoueur_timeout"]

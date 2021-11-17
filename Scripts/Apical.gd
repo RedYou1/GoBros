@@ -116,6 +116,8 @@ func tirer_apical():
 		balle.position = position + Vector2(0,30)
 		if get_node("../Joueur"):
 			balle.look_at(get_node("../Joueur").position)
+		son_tir = true
+		get_node("SonTir").play()
 		get_parent().add_child(balle)
 		tir = false
 		cooldownDeTir.start(temps_tir)

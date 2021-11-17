@@ -19,6 +19,7 @@ var ballePositionBas
 var animation
 var cooldownDeTir
 var son_tir = false
+var son_hit = false
 var tir = false
 
 func mourir(delta):
@@ -68,12 +69,17 @@ func _physics_process(delta):
 	
 	if son_tir:
 		get_node("SonTir").stream_paused = false
-		print(get_node("SonTir").get_playback_position())
-		print(get_node("SonTir").stream.get_length())
-		if get_node("SonTir").get_playback_position() >= temps_tir || get_node("SonTir").get_playback_position() >= get_node("SonTir").stream.get_length() - 0.05:
+		if get_node("SonTir").get_playback_position() >= temps_tir || get_node("SonTir").get_playback_position() >= get_node("SonTir").stream.get_length() - 0.02:
 			son_tir = false
 	else:
 		get_node("SonTir").stream_paused = true
+	
+	if son_hit:
+		get_node("SonHit").stream_paused = false
+		if get_node("SonHit").get_playback_position() >= get_node("SonHit").stream.get_length() - 0.07:
+			son_tir = false
+	else:
+		get_node("SonHit").stream_paused = true
 
 func _on_coolDownDeTir_timeout():
 	tir = true

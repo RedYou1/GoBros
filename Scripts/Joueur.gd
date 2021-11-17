@@ -44,6 +44,8 @@ func hit(collider, damage):
 	print(collider.name)
 	if !in_recovery:
 		if collider.is_in_group("Robot") && ! self.mort:
+			son_hit = true
+			get_node("SonHit").play()
 			in_recovery = true
 			get_node("TimerRecovery").start()
 			vie -= damage
@@ -51,6 +53,8 @@ func hit(collider, damage):
 			if vie <= 0:
 				self.mort = true
 		if collider.is_in_group("Balle") && ! self.mort:
+			son_hit = true
+			get_node("SonHit").play()
 			in_recovery = true
 			get_node("TimerRecovery").start()
 			vie -= damage
