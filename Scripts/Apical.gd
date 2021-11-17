@@ -27,6 +27,7 @@ var mem_mort = false
 export(float) var vitesse_marteau
 export(float) var vitesse_dash
 export(int) var balles_max = 100
+var son_ambiance = false
 
 func hit(collider, damage):
 	self.standard_hit(collider, damage)
@@ -36,7 +37,7 @@ func intro_apical(delta):
 		tourner_vers_joueur()
 		fonction_detection_joueur()
 	elif !position_intro_ok:
-		get_parent().get_node("Ambiance").stream_paused = false
+		son_ambiance = true
 		if !memoire_hauteur:
 			if get_node("../Joueur"):
 				if get_node("../Joueur").is_on_floor:
@@ -83,7 +84,6 @@ func intro_apical(delta):
 				memoire_hauteur = false
 				vitesse_ennemi = mem_vitesse
 				phase = 2
-		
 
 func tirer_apical():
 	var balle = balleApical.instance()
@@ -287,6 +287,11 @@ func _physics_process(delta):
 			marteau_apical()
 		elif phase == 3:
 			dash_apical(delta)
+		
+		if son_ambiance:
+			get_parent().get_node("Ambiance").stream_paused = false
+		else:
+			get_parent().get_node("Ambiance").stream_paused = true
 	else:
 		if !mem_mort:
 			get_node("Vie").visible = false

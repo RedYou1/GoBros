@@ -4,7 +4,6 @@ extends "res://Scripts/Niveau.gd"
 # Declare member variables here. Examples:
 var mem_position_apical
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_node("Ambiance").stream_paused = true

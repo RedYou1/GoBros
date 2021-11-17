@@ -23,6 +23,7 @@ var cooldownDeTir
 var is_in_liquide = false
 var son_tir = false
 var son_hit = false
+var son_mort = false
 var tir = false
 
 func mourir(delta):
@@ -31,6 +32,7 @@ func mourir(delta):
 		self.animation.frame = 0
 		self.animation.playing = true
 	if animation.frame == animation.frames.get_frame_count("mourir")-1:
+		son_mort = true
 		self.animation.playing = false
 		modulate.a -= delta
 		if modulate.a <= 0:
@@ -40,8 +42,6 @@ func mourir(delta):
 				Global.goto_scene("res://Scenes/GameOver.tscn")
 			else:
 				queue_free()
-	else:
-		get_node("Mort").stream_paused = false
 	
 	
 func _ready():
@@ -86,6 +86,13 @@ func _physics_process(delta):
 			son_tir = false
 	else:
 		get_node("SonHit").stream_paused = true
+	
+	if son_mort:
+		get_node("Mort").stream_paused = false
+		if get_node("Mort").get_playback_position() >= get_node("Mort").stream.get_length() - 0.05:
+			son_mort = false
+	else:
+		get_node("Mort").stream_paused = true
 
 func _on_coolDownDeTir_timeout():
 	tir = true

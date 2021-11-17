@@ -22,3 +22,4 @@ position = Vector2( 298.451, 5.3454 )
 position = Vector2( 0.148132, 1.17995 )
 
 [node name="Ambiance" type="AudioStreamPlayer" parent="."]
+pause_mode = 2

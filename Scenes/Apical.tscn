@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/EnemyDeBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Apical.gd" type="Script" id=2]
 [ext_resource path="res://Ressources/apical.png" type="Texture" id=3]
 [ext_resource path="res://Ressources/bulle.png" type="Texture" id=4]
 [ext_resource path="res://Ressources/sons/tir.mp3" type="AudioStream" id=5]
+[ext_resource path="res://Ressources/sons/mixkit-explosion-long-echo-1683.wav" type="AudioStream" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 17.6139
@@ -28,7 +29,7 @@ animations = [ {
 collision_layer = 2
 script = ExtResource( 2 )
 GRAVITY = 0.0
-vie_max = 150
+vie_max = 5
 temps_tir = 0.3
 vitesse_ennemi = 10.0
 distance_detection = 400
@@ -86,6 +87,9 @@ __meta__ = {
 [node name="TimerBulle" type="Timer" parent="." index="10"]
 wait_time = 5.0
 one_shot = true
+
+[node name="Mort" parent="." index="11"]
+stream = ExtResource( 6 )
 
 [node name="SonTir" parent="." index="12"]
 stream = ExtResource( 5 )
