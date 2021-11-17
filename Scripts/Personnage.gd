@@ -22,6 +22,7 @@ var cooldownDeTir
 var tir = false
 
 func mourir(delta):
+	get_node("Mort").stream_paused = false
 	if self.animation.animation != "mourir":
 		self.animation.animation = "mourir"
 		self.animation.frame = 0

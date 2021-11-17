@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Niveau.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Apical.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Mob_Tutoriel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Ressources/sons/ambiancemusic.mp3" type="AudioStream" id=4]
 
 [node name="BossLevel" instance=ExtResource( 1 )]
 
@@ -27,3 +28,7 @@ distance_despawn = 1000
 [node name="Mob_Tutoriel" parent="." index="5" instance=ExtResource( 3 )]
 position = Vector2( -314.716, -789.128 )
 message = "Tu as maintenant atteint la dernière étape de ton périple. Descend, que je puisse voir l'ampleur de tes connaissances"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="6"]
+stream = ExtResource( 4 )
+autoplay = true

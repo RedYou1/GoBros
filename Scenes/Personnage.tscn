@@ -30,4 +30,8 @@ wait_time = 0.2
 one_shot = true
 autostart = true
 
+[node name="Mort" type="AudioStreamPlayer" parent="."]
+autoplay = true
+stream_paused = true
+
 [connection signal="timeout" from="coolDownDeTir" to="." method="_on_coolDownDeTir_timeout"]
