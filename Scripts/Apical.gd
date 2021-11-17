@@ -15,18 +15,73 @@ var bloc = 0
 var marteau = false
 var marteau_fait = false
 var mem_vitesse
-var phase = 1
+var phase = 0
 var vitesse_rotation = 0
 var dash = false
 var dash_ok = false
 var nb_balles = 0
 var position_tir_ok = false
+var position_intro_ok = false
+var bulle_vue = false
+var timer_bulle = false
 export(float) var vitesse_marteau
 export(float) var vitesse_dash
 export(int) var balles_max = 100
 
 func hit(collider, damage):
 	self.standard_hit(collider, damage)
+
+func intro_apical(delta):
+	if !detection_joueur:
+		tourner_vers_joueur()
+		fonction_detection_joueur()
+	elif !position_intro_ok:
+		if !memoire_hauteur:
+			if get_node("../Joueur"):
+				if get_node("../Joueur").is_on_floor:
+					hauteur = get_node("../Joueur").position.y - 50
+					memoire_hauteur = true
+					vitesse_ennemi /=8
+		else:
+			if position.x > 0 + vitesse_ennemi:
+				mouvement_cote = -vitesse_ennemi
+			elif position.x < 0:
+				mouvement_cote = vitesse_ennemi
+			else:
+				mouvement_cote = 0
+			
+			if position.y < hauteur:
+				mouvement_haut = vitesse_ennemi
+			elif position.y > hauteur + vitesse_ennemi:
+				mouvement_haut = -vitesse_ennemi
+			else:
+				mouvement_haut = 0
+			
+			if mouvement_cote == 0 && mouvement_haut == 0:
+				position_intro_ok = true
+				
+			bouger_apical()
+	elif position_intro_ok:
+		if !bulle_vue:
+			get_node("Bulle").visible = true
+			if get_node("Bulle").modulate.a < 1:
+				get_node("Bulle").modulate.a += delta
+			elif !timer_bulle:
+				get_node("TimerBulle").start()
+				timer_bulle = true
+		else:
+			if get_node("Bulle").modulate.a > 0:
+				get_node("Bulle").modulate.a -= delta
+			else:
+				get_node("Bulle").visible = false
+				get_node("Vie").visible = true
+				position_intro_ok = false
+				bulle_vue = false
+				timer_bulle = false
+				memoire_hauteur = false
+				vitesse_ennemi = mem_vitesse
+				phase = 2
+		
 
 func tirer_apical():
 	var balle = balleApical.instance()
@@ -200,9 +255,14 @@ func marteau_apical():
 func _ready():
 	self.damage = 5
 	mem_vitesse = vitesse_ennemi
+	get_node("Bulle").modulate.a = 0
+	get_node("Bulle").visible = false
+	get_node("Vie").visible = false
 
 
 func _physics_process(delta):
+	if phase == 0:
+		intro_apical(delta)
 	if phase == 1:
 		tirer_apical()
 	if phase == 2:
@@ -210,3 +270,7 @@ func _physics_process(delta):
 	elif phase == 3:
 		dash_apical(delta)
 
+
+
+func _on_TimerBulle_timeout():
+	bulle_vue = true
