@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/YOU DIED (HD).mp3-419955ca28f3fa77074f03774f442229.mp3str"
+
+[deps]
+
+source_file="res://Ressources/sons/YOU DIED (HD).mp3"
+dest_files=[ "res://.import/YOU DIED (HD).mp3-419955ca28f3fa77074f03774f442229.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

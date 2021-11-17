@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Joueur.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Mob_Tutoriel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/TileMap.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/BackgroundBoss.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/BackgroundFin.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/FeuArtifice.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/DebutNiveau.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scenes/FinNiveau.tscn" type="PackedScene" id=12]
 
@@ -46,4 +47,12 @@ position = Vector2( -35.3115, -338.434 )
 position = Vector2( 1377.78, -885.38 )
 scene_prochain_niveau = "res://Scenes/Menu.tscn"
 
-[node name="BackgroundBoss" parent="." instance=ExtResource( 4 )]
+[node name="FeuArtifice" parent="." instance=ExtResource( 5 )]
+position = Vector2( 413, -275.824 )
+frame = 26
+
+[node name="FeuArtifice2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 571, -265.824 )
+frame = 15
+
+[node name="BackgroundFin" parent="." instance=ExtResource( 4 )]

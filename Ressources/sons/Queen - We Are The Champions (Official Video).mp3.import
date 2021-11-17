@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Queen - We Are The Champions (Official Video).mp3-6b1f31cc7a55ddd40b6fc25945f87862.mp3str"
+
+[deps]
+
+source_file="res://Ressources/sons/Queen - We Are The Champions (Official Video).mp3"
+dest_files=[ "res://.import/Queen - We Are The Champions (Official Video).mp3-6b1f31cc7a55ddd40b6fc25945f87862.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
