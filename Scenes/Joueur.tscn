@@ -158,6 +158,7 @@ collision_layer = 13
 collision_mask = 13
 script = ExtResource( 2 )
 vie_max = 30
+distance_despawn = 10000
 temps_tir = 0.2
 vitesse = 3.0
 recovery_time = 3.0

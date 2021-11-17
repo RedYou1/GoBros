@@ -4,9 +4,8 @@
 [ext_resource path="res://Scripts/Apical.gd" type="Script" id=2]
 [ext_resource path="res://Ressources/apical.png" type="Texture" id=3]
 
-[sub_resource type="CapsuleShape2D" id=3]
-radius = 13.5
-height = 11.5
+[sub_resource type="CircleShape2D" id=3]
+radius = 17.6139
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -24,11 +23,12 @@ collision_mask = 16
 script = ExtResource( 2 )
 GRAVITY = 0.0
 vie_max = 100
-temps_tir = 0.2
-vitesse_ennemi = 5.0
+temps_tir = 0.3
+vitesse_ennemi = 10.0
 profondeur_marteau = 4.0
-vitesse_marteau = 10.0
+vitesse_marteau = 20.0
 vitesse_dash = 20.0
+balles_max = 5
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource( 3 )
@@ -45,3 +45,7 @@ enabled = false
 
 [node name="coolDownDeTir" parent="." index="8"]
 wait_time = 0.1
+
+[node name="TimerStart" type="Timer" parent="." index="9"]
+wait_time = 3.0
+one_shot = true

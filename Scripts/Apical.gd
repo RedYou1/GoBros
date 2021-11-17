@@ -3,6 +3,7 @@ extends "res://Scripts/EnemyDeBase.gd"
 
 # Declare member variables here. Examples:
 const balleApical = preload("res://Scenes/BalleApical.tscn")
+var phases_ok = false
 var depart_niveau = -368
 var fin_niveau = 368
 export(float) var profondeur_marteau = 3
@@ -18,12 +19,43 @@ var phase = 1
 var vitesse_rotation = 0
 var dash = false
 var dash_ok = false
+var nb_balles = 0
+var position_tir_ok = false
 export(float) var vitesse_marteau
 export(float) var vitesse_dash
+export(int) var balles_max = 100
+
+func hit(collider, damage):
+	self.standard_hit(collider, damage)
 
 func tirer_apical():
 	var balle = balleApical.instance()
-	if tir:
+	if !memoire_hauteur:
+		if get_node("../Joueur"):
+			if get_node("../Joueur").is_on_floor:
+				hauteur = get_node("../Joueur").position.y - 100
+				memoire_hauteur = true
+	
+	if !position_tir_ok && memoire_hauteur:
+		if position.x > 0 + vitesse_ennemi:
+			mouvement_cote = -vitesse_ennemi
+		elif position.x < 0:
+			mouvement_cote = vitesse_ennemi
+		else:
+			mouvement_cote = 0
+			
+		if position.y < hauteur:
+			mouvement_haut = vitesse_ennemi
+		elif position.y > hauteur + vitesse_ennemi:
+			mouvement_haut = -vitesse_ennemi
+		else:
+			mouvement_haut = 0
+			
+		if mouvement_cote == 0 && mouvement_haut == 0:
+			position_tir_ok = true
+		bouger_apical()
+				
+	if tir && position_tir_ok && nb_balles < balles_max:
 		balle.directionX = balle.vitesse
 		balle.position = position + Vector2(0,30)
 		if get_node("../Joueur"):
@@ -31,6 +63,12 @@ func tirer_apical():
 		get_parent().add_child(balle)
 		tir = false
 		cooldownDeTir.start(temps_tir)
+		nb_balles += 1
+	elif nb_balles >= balles_max:
+		phase = 2
+		memoire_hauteur = false
+		position_tir_ok = false
+		nb_balles = 0
 
 func bouger_apical():
 	collision_mouvement = move_and_collide(Vector2(mouvement_cote,mouvement_haut))
@@ -42,27 +80,35 @@ func dash_apical(delta):
 	if !memoire_hauteur:
 		if get_node("../Joueur"):
 			if get_node("../Joueur").is_on_floor:
-				hauteur = get_node("../Joueur").position.y - 20
+				hauteur = get_node("../Joueur").position.y
 				memoire_hauteur = true
-	if !dash:
+				print(hauteur)
+				print(get_node("../Joueur").position.y)
+				
+	if !dash && memoire_hauteur:
 		if sens:
-			if position.x > depart_niveau - vitesse_ennemi:
+			if position.x > depart_niveau + vitesse_ennemi:
 				mouvement_cote = -vitesse_ennemi
-			elif position.x > depart_niveau + vitesse_ennemi:
+			elif position.x < depart_niveau - vitesse_ennemi:
 				mouvement_cote = vitesse_ennemi
 			else:
 				mouvement_cote = 0
 		else:
-			if position.x > fin_niveau - vitesse_ennemi:
+			if position.x > fin_niveau + vitesse_ennemi:
 				mouvement_cote = -vitesse_ennemi
-			elif position.x > fin_niveau + vitesse_ennemi:
+			elif position.x < fin_niveau - vitesse_ennemi:
 				mouvement_cote = vitesse_ennemi
 			else:
 				mouvement_cote = 0
 				
 		if position.y < hauteur:
 			mouvement_haut = vitesse_ennemi
-		elif mouvement_cote == 0:
+		elif position.y > hauteur + vitesse_ennemi:
+			mouvement_haut = -vitesse_ennemi
+		else:
+			mouvement_haut = 0
+			
+		if mouvement_cote == 0 && mouvement_haut == 0:
 			dash = true
 		bouger_apical()
 	else:
@@ -80,51 +126,47 @@ func dash_apical(delta):
 				mouvement_cote = vitesse_dash
 				if position.x < fin_niveau:
 					bouger_apical()
-					if collision_mouvement:
-						if collision_mouvement.get_collider().name == "Joueur":
-							set_collision_layer_bit(3, false)
 				else:
-					self.collision_mask = 1
 					vitesse_ennemi = mem_vitesse
 					dash_ok = false
-					phase = 0
+					dash = false
+					phase = 1
 					sens = false
 					vitesse_rotation = 0
+					memoire_hauteur = false
+					self.animation.rotation = 0
 			else:
 				mouvement_cote = -vitesse_dash
 				if position.x > depart_niveau:
 					bouger_apical()
-					if collision_mouvement:
-						if collision_mouvement.get_collider().name == "Joueur":
-							set_collision_layer_bit(3, false)
 				else:
-					set_collision_layer_bit(3, true)
 					sens = true
 					vitesse_ennemi = mem_vitesse
 					dash_ok = false
 					dash = false
 					vitesse_rotation = 0
+					memoire_hauteur = false
 	
 	
 func marteau_apical():
-	if !marteau:
+	if !memoire_hauteur:
+		if get_node("../Joueur"):
+			if get_node("../Joueur").is_on_floor:
+				hauteur = get_node("../Joueur").position.y - 75
+				memoire_hauteur = true
+	if !marteau && memoire_hauteur:
 		var position_prochain_bloc
-		position_prochain_bloc = 64*bloc + depart_niveau
-		print(position_prochain_bloc)
-		print(position)
-		if !memoire_hauteur:
-			if get_node("../Joueur"):
-				if get_node("../Joueur").is_on_floor:
-					hauteur = get_node("../Joueur").position.y - 75
-					memoire_hauteur = true
-		if position.y < hauteur -vitesse_ennemi:
+		position_prochain_bloc = 64*bloc + depart_niveau + 16
+		if position.y < hauteur:
 			mouvement_haut = vitesse_ennemi
 		elif position.y > hauteur + vitesse_ennemi:
 			mouvement_haut = -vitesse_ennemi
 		else:
 			mouvement_haut = 0
-		if position.x < position_prochain_bloc:
+		if position.x < position_prochain_bloc - vitesse_ennemi:
 			mouvement_cote = vitesse_ennemi
+		elif position.x > position_prochain_bloc:
+			mouvement_cote = -vitesse_ennemi
 		elif mouvement_haut == 0:
 			marteau = true
 		bouger_apical()
@@ -135,12 +177,9 @@ func marteau_apical():
 			mouvement_haut = vitesse_ennemi
 			if position.y < hauteur + profondeur_marteau*32 + 16:
 				bouger_apical()
-				if collision_mouvement:
-					if collision_mouvement.get_collider().name == "Joueur":
-						set_collision_layer_bit(3, false)
 			else:
 				marteau_fait = true
-		else: 
+		elif bloc <= 11: 
 			vitesse_ennemi = mem_vitesse
 			mouvement_haut = -vitesse_ennemi
 			if position.y > hauteur:
@@ -148,13 +187,13 @@ func marteau_apical():
 			else:
 				marteau = false
 				marteau_fait = false
-				set_collision_layer_bit(3, true)
 				bloc+=1
 	if bloc >11:
 		sens = true
 		bloc = 0
-		phase = 2
+		phase = 3
 		memoire_hauteur = false
+		hauteur = 0
 		sens = false
 
 # Called when the node enters the scene tree for the first time.
@@ -165,6 +204,9 @@ func _ready():
 
 func _physics_process(delta):
 	if phase == 1:
+		tirer_apical()
+	if phase == 2:
 		marteau_apical()
-	elif phase == 2:
+	elif phase == 3:
 		dash_apical(delta)
+
