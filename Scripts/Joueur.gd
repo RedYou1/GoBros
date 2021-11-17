@@ -12,7 +12,6 @@ var velocite
 var mem_modulate
 const balleScene = preload("res://Scenes/BalleJoueur.tscn")
 
-
 func gerer_recovery():
 	if in_recovery:
 		self.get_node("AnimatedSprite").modulate.a = 0.5
@@ -62,6 +61,8 @@ func hit(collider, damage):
 func tirer(dir_balle):
 		
 	if self.tir:
+		son_tir = true
+		get_node("SonTir").play()
 		var balle = self.balleScene.instance()
 		
 		if dir_balle == "haut":
