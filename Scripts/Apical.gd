@@ -76,6 +76,7 @@ func intro_apical(delta):
 			else:
 				get_node("Bulle").visible = false
 				get_node("Vie").visible = true
+				get_node("CollisionShape2D").disabled = false
 				position_intro_ok = false
 				bulle_vue = false
 				timer_bulle = false
@@ -273,6 +274,7 @@ func _ready():
 	get_node("Bulle").modulate.a = 0
 	get_node("Bulle").visible = false
 	get_node("Vie").visible = false
+	get_node("CollisionShape2D").disabled = true
 
 
 func _physics_process(delta):

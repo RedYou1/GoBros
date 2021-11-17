@@ -28,19 +28,21 @@ animations = [ {
 collision_layer = 2
 script = ExtResource( 2 )
 GRAVITY = 0.0
-vie_max = 5
+vie_max = 150
 temps_tir = 0.3
 vitesse_ennemi = 10.0
 distance_detection = 400
 profondeur_marteau = 4.0
 vitesse_marteau = 20.0
 vitesse_dash = 20.0
-balles_max = 5
+balles_max = 25
 
 [node name="CollisionShape2D" parent="." index="0"]
+scale = Vector2( 1.25, 1.25 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" parent="." index="1"]
+scale = Vector2( 1.25, 1.25 )
 frames = SubResource( 2 )
 animation = "mourir"
 
