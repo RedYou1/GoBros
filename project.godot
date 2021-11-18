@@ -11,8 +11,8 @@ config_version=4
 [application]
 
 config/name="Go Bros"
-run/main_scene="res://Scenes/Menu.tscn"
-boot_splash/image="res://loading_screen.PNG"
+run/main_scene="res://Scenes/BossLevel.tscn"
+boot_splash/image="res://Ressources/LOADING.PNG"
 config/icon="res://icon.png"
 
 [autoload]

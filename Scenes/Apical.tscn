@@ -65,6 +65,7 @@ scale = Vector2( 2, 2 )
 z_index = 10
 
 [node name="Message" type="Label" parent="Bulle/Node2D" index="0"]
+visible = false
 modulate = Color( 0, 0, 0, 1 )
 anchor_left = 0.5
 anchor_top = 0.5
