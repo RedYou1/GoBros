@@ -6,6 +6,7 @@ var depart_niveau = -368
 var fin_niveau = 368
 export(float) var profondeur_marteau = 3
 var hauteur = 0
+var hauteur_bloc = 0
 var memoire_hauteur = false
 var mouvement_haut = 0
 var mouvement_cote = 0
@@ -56,6 +57,7 @@ func intro_apical(delta):
 			if get_node("../Joueur"):
 				if get_node("../Joueur").is_on_floor:
 					hauteur = get_node("../Joueur").position.y - 50
+					hauteur_bloc = get_node("../Joueur").position.y
 					memoire_hauteur = true
 					vitesse_ennemi /=8
 		else:
@@ -108,10 +110,8 @@ func intro_apical(delta):
 func tirer_apical():
 	var balle = balleApical.instance()
 	if !memoire_hauteur:
-		if get_node("../Joueur"):
-			if get_node("../Joueur").is_on_floor:
-				hauteur = get_node("../Joueur").position.y - 100
-				memoire_hauteur = true
+			hauteur = hauteur_bloc - 100
+			memoire_hauteur = true
 	
 	#On se déplace à la bonne position
 	if !position_tir_ok && memoire_hauteur:
@@ -162,12 +162,9 @@ func bouger_apical():
 #param delta: pour gérer la vitesse des animations
 func dash_apical(delta):
 	if !memoire_hauteur:
-		if get_node("../Joueur"):
-			if get_node("../Joueur").is_on_floor:
-				hauteur = get_node("../Joueur").position.y
-				memoire_hauteur = true
-				print(hauteur)
-				print(get_node("../Joueur").position.y)
+		if !memoire_hauteur:
+			hauteur = hauteur_bloc
+			memoire_hauteur = true
 	#O se déplace à la bonne position
 	if !dash && memoire_hauteur:
 		if sens:
@@ -227,6 +224,7 @@ func dash_apical(delta):
 					sens = false
 					vitesse_rotation = 0
 					memoire_hauteur = false
+					hauteur_bloc += 32
 					self.animation.rotation = 0
 			else:
 				mouvement_cote = -vitesse_dash
@@ -244,14 +242,14 @@ func dash_apical(delta):
 					dash = false
 					vitesse_rotation = 0
 					memoire_hauteur = false
+					hauteur_bloc += 32
 	
 #Fonction pour gérer la phase marteau d'apical
 func marteau_apical():
 	if !memoire_hauteur:
-		if get_node("../Joueur"):
-			if get_node("../Joueur").is_on_floor:
-				hauteur = get_node("../Joueur").position.y - 75
-				memoire_hauteur = true
+		if !memoire_hauteur:
+			hauteur = hauteur_bloc - 75
+			memoire_hauteur = true
 	#On se déplace à la position du prochain bloc
 	if !marteau && memoire_hauteur:
 		var position_prochain_bloc
@@ -285,6 +283,7 @@ func marteau_apical():
 						set_collision_mask_bit(0, false)
 			else:
 				marteau_fait = true
+				marteau = false
 		elif bloc <= 11: 
 			vitesse_ennemi = mem_vitesse
 			mouvement_haut = -vitesse_ennemi
@@ -300,8 +299,8 @@ func marteau_apical():
 		sens = true
 		bloc = 0
 		phase = 3
+		hauteur_bloc += (profondeur_marteau -1) * 32
 		memoire_hauteur = false
-		hauteur = 0
 		sens = false
 
 # Called when the node enters the scene tree for the first time.
