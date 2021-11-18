@@ -11,7 +11,6 @@ var mort = false
 func _ready():
 	movement = Vector2(directionX,directionY).rotated(rotation)# * delta
 	
-	get_node("Sprite").rotation = movement.angle()
 	
 
 func _physics_process(delta):
