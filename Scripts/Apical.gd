@@ -316,15 +316,15 @@ func _ready():
 #Fonction principale
 func _physics_process(delta):
 	if !self.mort:
-		#On active un mode plus rapide lorsque qu'apical est en dessous de 15% de vie
+		#On active un mode plus rapide lorsque qu'apical est en dessous de 10% de vie
 		print((vie*100) / vie_max)
-		if (vie*100) / vie_max <= 15 && !mem_vie_basse:
+		if (vie*100) / vie_max <= 10 && !mem_vie_basse:
 			vitesse_ennemi *=2
-			vitesse_marteau *= 2
+			vitesse_marteau *= 5
 			vitesse_dash *= 2
 			modulate.r = 2
 			get_node("Vie").modulate.r = 10
-			temps_tir /=2
+			temps_tir /=1.5
 			mem_vie_basse = true
 			
 		if phase == 0:
