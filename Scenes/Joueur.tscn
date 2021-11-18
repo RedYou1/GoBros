@@ -160,7 +160,7 @@ animations = [ {
 collision_layer = 13
 collision_mask = 13
 script = ExtResource( 2 )
-vie_max = 500
+vie_max = 30
 distance_despawn = 10000
 temps_tir = 0.2
 vitesse = 3.0
@@ -204,6 +204,7 @@ __meta__ = {
 position = Vector2( 0, -8.5946 )
 frames = SubResource( 28 )
 animation = "tirer"
+frame = 1
 playing = true
 
 [node name="position de tir haut" parent="." index="3"]

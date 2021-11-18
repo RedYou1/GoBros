@@ -291,6 +291,7 @@ func _physics_process(delta):
 			vitesse_marteau *= 2
 			vitesse_dash *= 2
 			modulate.r = 2
+			get_node("Vie").modulate.r = 10
 			temps_tir /=2
 			mem_vie_basse = true
 			
