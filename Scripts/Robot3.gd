@@ -21,12 +21,12 @@ func dash(delta):
 	if dash_ok:
 		self.animation.modulate.r = mem_modulate_r
 		self.vitesse_ennemi = vitesse_dash
-		if !dash_fini && !detection_blocage && !detection_vide:
+		if !dash_fini && !detection_vide:
 			son_dash = true
 			get_node("SonDash").play()
 			self.robot_marcher(self.sens)
 			if collision_mouvement:
-				if collision_mouvement.collider.name == "Joueur" || get_node("DetectionBlocAvant").get_collider():
+				if collision_mouvement.collider.name == "Joueur" || detection_blocage:
 					dash_ok = false
 					dash_fini = true
 					timer_dash.start(temps_avant_dash)
