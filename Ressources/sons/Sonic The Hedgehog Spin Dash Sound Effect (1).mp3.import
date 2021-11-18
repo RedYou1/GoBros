@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Sonic The Hedgehog Spin Dash Sound Effect (1).mp3-f761cfeb558a2c10361dc0f2b172517c.mp3str"
+
+[deps]
+
+source_file="res://Ressources/sons/Sonic The Hedgehog Spin Dash Sound Effect (1).mp3"
+dest_files=[ "res://.import/Sonic The Hedgehog Spin Dash Sound Effect (1).mp3-f761cfeb558a2c10361dc0f2b172517c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

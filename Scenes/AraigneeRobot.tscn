@@ -760,7 +760,7 @@ position = Vector2( 0, 1 )
 scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 177 )
 animation = "tirer"
-frame = 37
+frame = 13
 
 [node name="position de tir droit" parent="." index="3"]
 position = Vector2( -54.5586, -2.3928 )

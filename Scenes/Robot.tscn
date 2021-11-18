@@ -50,6 +50,5 @@ cast_to = Vector2( 10, 0 )
 
 [node name="SonTir" parent="." index="16"]
 stream = ExtResource( 3 )
-volume_db = -10.0
 
 [connection signal="timeout" from="TimerBouger" to="." method="_on_TimerBouger_timeout"]

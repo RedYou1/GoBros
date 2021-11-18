@@ -11,6 +11,7 @@ var mem_val_vitesse
 export(float) var temps_du_dash = 0.1
 var timer_du_dash
 var mem_modulate_r
+var son_dash = false
 
 #Fonction pour le dash du robot 3
 #param delta: pour gérer la vitesse des animations
@@ -21,9 +22,11 @@ func dash(delta):
 		self.animation.modulate.r = mem_modulate_r
 		self.vitesse_ennemi = vitesse_dash
 		if !dash_fini && !detection_blocage && !detection_vide:
+			son_dash = true
+			get_node("SonDash").play()
 			self.robot_marcher(self.sens)
 			if collision_mouvement:
-				if collision_mouvement.collider.name == "Joueur":
+				if collision_mouvement.collider.name == "Joueur" || get_node("DetectionBlocAvant").get_collider():
 					dash_ok = false
 					dash_fini = true
 					timer_dash.start(temps_avant_dash)
@@ -65,6 +68,15 @@ func _physics_process(delta):
 	elif !self.mort:
 		self.animation.modulate.r = mem_modulate_r
 		self.robot_bouger_standard()
+	
+	#Gestion du son du dash
+	if son_dash:
+		get_node("SonDash").stream_paused = false
+		if get_node("SonDash").get_playback_position() >= get_node("SonDash").stream.get_length() - 0.05:
+			son_dash = false
+	else:
+		get_node("SonDash").stream_paused = true
+		get_node("SonDash").play()
 
 #Timer entre les dash
 func _on_TimerDash_timeout():
