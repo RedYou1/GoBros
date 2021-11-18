@@ -35,12 +35,12 @@ autoplay = true
 stream_paused = true
 
 [node name="SonTir" type="AudioStreamPlayer" parent="."]
-volume_db = -20.0
+volume_db = -10.0
 autoplay = true
 stream_paused = true
 
 [node name="SonHit" type="AudioStreamPlayer" parent="."]
-volume_db = -20.0
+volume_db = -5.0
 autoplay = true
 stream_paused = true
 

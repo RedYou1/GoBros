@@ -95,4 +95,7 @@ stream = ExtResource( 6 )
 [node name="SonTir" parent="." index="12"]
 stream = ExtResource( 5 )
 
+[node name="SonHit" parent="." index="13"]
+volume_db = -10.0
+
 [connection signal="timeout" from="TimerBulle" to="." method="_on_TimerBulle_timeout"]

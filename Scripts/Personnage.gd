@@ -88,13 +88,15 @@ func _physics_process(delta):
 			son_tir = false
 	else:
 		get_node("SonTir").stream_paused = true
+		get_node("SonTir").play()
 	
 	if son_hit:
 		get_node("SonHit").stream_paused = false
 		if get_node("SonHit").get_playback_position() >= get_node("SonHit").stream.get_length() - 0.07:
-			son_tir = false
+			son_hit = false
 	else:
 		get_node("SonHit").stream_paused = true
+		get_node("SonHit").play()
 	
 	if son_mort:
 		get_node("Mort").stream_paused = false
@@ -102,6 +104,7 @@ func _physics_process(delta):
 			son_mort = false
 	else:
 		get_node("Mort").stream_paused = true
+		get_node("Mort").play()
 
 #Timer pour le tir
 func _on_coolDownDeTir_timeout():
