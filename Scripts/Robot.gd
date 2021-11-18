@@ -109,7 +109,7 @@ func robot_tirer(sens):
 			self.tir = false
 			self.animation.animation = "idle"
 			self.cooldownDeTir.start()
-		else:
+		elif self.animation.frame != 5 && self.animation.frame != 12:
 			tir_robot = false
 	else:
 		self.animation.position = position_base

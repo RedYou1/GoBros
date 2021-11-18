@@ -10,8 +10,8 @@ var mort = false
 
 func _ready():
 	movement = Vector2(directionX,directionY).rotated(rotation)# * delta
-	
-	
+	if rotation == 0:
+		get_node("Sprite").rotation = movement.angle()
 
 func _physics_process(delta):
 	var col = move_and_collide(movement)
