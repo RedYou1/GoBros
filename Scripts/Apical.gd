@@ -24,6 +24,7 @@ var position_intro_ok = false
 var bulle_vue = false
 var timer_bulle = false
 var mem_mort = false
+var mem_vie_basse = false
 export(float) var vitesse_marteau
 export(float) var vitesse_dash
 export(int) var balles_max = 100
@@ -284,6 +285,15 @@ func _ready():
 
 func _physics_process(delta):
 	if !self.mort:
+		print((vie*100) / vie_max)
+		if (vie*100) / vie_max <= 10 && !mem_vie_basse:
+			vitesse_ennemi *=2
+			vitesse_marteau *= 2
+			vitesse_dash *= 2
+			modulate.r = 2
+			temps_tir /=2
+			mem_vie_basse = true
+			
 		if phase == 0:
 			intro_apical(delta)
 		if phase == 1:
