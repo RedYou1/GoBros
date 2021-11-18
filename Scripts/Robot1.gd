@@ -61,7 +61,9 @@ func _physics_process(delta):
 		if !repli:
 			if tir:
 				self.robot_tirer(self.sens)
-			else:
+			elif distance_joueur > distance_repli+10:
 				self.robot_suivre_joueur()
+			else:
+				self.immobile()
 	elif !self.mort:
 		self.robot_bouger_standard()

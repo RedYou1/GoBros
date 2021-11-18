@@ -10,7 +10,7 @@ var mem_timer = false
 var mem_val_vitesse
 export(float) var temps_du_dash = 0.1
 var timer_du_dash
-var mem_modulate_g
+var mem_modulate_r
 
 #Fonction pour le dash du robot 3
 #param delta: pour gérer la vitesse des animations
@@ -18,7 +18,7 @@ func dash(delta):
 	#Si c'est le temps de dasher, on remet la couleur correct et on dash pendant le temps de dash
 	#Le dash s'arrête si on collisionne le joueur
 	if dash_ok:
-		self.animation.modulate.g = mem_modulate_g
+		self.animation.modulate.r = mem_modulate_r
 		self.vitesse_ennemi = vitesse_dash
 		if !dash_fini && !detection_blocage && !detection_vide:
 			self.robot_marcher(self.sens)
@@ -41,12 +41,12 @@ func dash(delta):
 		if !mem_timer:
 			mem_timer = true
 			timer_dash.start()
-		self.animation.modulate.g -= delta / timer_dash.wait_time
+		self.animation.modulate.r = 90 / ((get_node("TimerDash").time_left*100) / get_node("TimerDash").wait_time)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	timer_dash = get_node("TimerDash")
-	mem_modulate_g = self.animation.modulate.g
+	mem_modulate_r = self.animation.modulate.r
 	timer_du_dash = get_node("TimerDureeDash")
 	self.detection_joueur
 	mem_val_vitesse = self.vitesse_ennemi
@@ -63,7 +63,7 @@ func _physics_process(delta):
 			self.tourner_vers_joueur()
 		dash(delta)
 	elif !self.mort:
-		self.animation.modulate.g = mem_modulate_g
+		self.animation.modulate.r = mem_modulate_r
 		self.robot_bouger_standard()
 
 #Timer entre les dash

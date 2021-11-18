@@ -33,8 +33,8 @@ func mourir(delta):
 		self.animation.animation = "mourir"
 		self.animation.frame = 0
 		self.animation.playing = true
-	if animation.frame == animation.frames.get_frame_count("mourir")-1:
 		son_mort = true
+	if animation.frame == animation.frames.get_frame_count("mourir")-1:
 		self.animation.playing = false
 		modulate.a -= delta
 		if modulate.a <= 0:
