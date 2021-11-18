@@ -5,7 +5,7 @@
 [ext_resource path="res://Ressources/vacaroxa generic/Enemies/Explosion_Particle.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 14.8392, 16 )
+extents = Vector2( 14.8392, 15.9145 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 3 )
