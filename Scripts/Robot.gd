@@ -181,10 +181,11 @@ func fonction_detection_vide():
 	if get_node("DetectionVide").get_collider() && self.is_on_floor:
 		if get_node("DetectionVide").get_collider().is_in_group("Block"):
 			detection_vide = false
+			get_node("TimerDetectionVide").stop()
 		else:
-			detection_vide = true
+			get_node("TimerDetectionVide").start()
 	else:
-		detection_vide = true
+		get_node("TimerDetectionVide").start()
 
 #Fonction pour détecter les blocages et les murs
 func fonction_detection_blocage():
@@ -237,3 +238,7 @@ func _on_TimerBouger_timeout():
 func _physics_process(delta):
 	self.robot_set_raycast()
 		
+
+
+func _on_TimerDetectionVide_timeout():
+	detection_vide = true

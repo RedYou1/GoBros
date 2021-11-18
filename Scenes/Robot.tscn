@@ -51,4 +51,8 @@ cast_to = Vector2( 10, 0 )
 [node name="SonTir" parent="." index="16"]
 stream = ExtResource( 3 )
 
+[node name="TimerDetectionVide" type="Timer" parent="." index="18"]
+wait_time = 0.05
+
 [connection signal="timeout" from="TimerBouger" to="." method="_on_TimerBouger_timeout"]
+[connection signal="timeout" from="TimerDetectionVide" to="." method="_on_TimerDetectionVide_timeout"]
