@@ -20,7 +20,7 @@ var animation
 var cooldownDeTir
 
 
-var is_in_liquide = false
+var is_in_liquide = 0
 var son_tir = false
 var son_hit = false
 var son_mort = false
@@ -64,7 +64,7 @@ func _physics_process(delta):
 	
 	#On modifie la gravité si le personnage est dans un liquide
 	var vec = Vector2(0,velocityY)
-	if is_in_liquide:
+	if is_in_liquide > 0:
 		vec *= 0.1
 	var t = move_and_collide(vec)
 	if t != null:

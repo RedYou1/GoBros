@@ -25,11 +25,10 @@ func _physics_process(delta):
 					unSleep()
 			else:
 				unSleep()
+			if position.y > distance_despawn:
+				queue_free()
 		else:
 			sleep = true
-	
-		if position.y > distance_despawn:
-			queue_free()
 
 func hit(from,damage):
 	vie -= damage
