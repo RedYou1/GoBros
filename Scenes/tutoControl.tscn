@@ -21,7 +21,7 @@ tile_data = PoolIntArray( -982965, 5, 0, -982964, 5, 0, -982963, 4, 0, -982962, 
 
 [node name="Mob_Tutoriel" parent="." index="4" instance=ExtResource( 2 )]
 position = Vector2( -238.11, -26.9858 )
-message = "Salut, je suis apical ton humble guide. Sert toi des notes de cours pour SURVIVRE aux robots,monstres et autres. Les notes de cours te dise d'utiliser A,S,D pour bouger. Bonne chance !"
+message = "Salut, je suis apical ton humble guide. Sert toi des notes de cours pour SURVIVRE aux robots,monstres et autres. Les notes de cours te dise d'utiliser A,D (les flèches fonctionne aussi) pour bouger. Bonne chance !"
 
 [node name="Mob_Tutoriel2" parent="." index="5" instance=ExtResource( 2 )]
 position = Vector2( 782.589, -22.2236 )

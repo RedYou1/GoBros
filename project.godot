@@ -12,7 +12,7 @@ config_version=4
 
 config/name="Go Bros"
 run/main_scene="res://Scenes/TestJonathan.tscn"
-boot_splash/image="res://Ressources/LOADING.PNG"
+boot_splash/image="res://loading_screen.PNG"
 config/icon="res://icon.png"
 
 [autoload]
