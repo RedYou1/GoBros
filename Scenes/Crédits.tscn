@@ -1,0 +1,64 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/Crédits.gd" type="Script" id=1]
+
+[node name="Crédits" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fenetre" type="CenterContainer" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Fenetre"]
+self_modulate = Color( 0.235294, 0.235294, 0.235294, 1 )
+margin_left = 440.0
+margin_top = 160.0
+margin_right = 840.0
+margin_bottom = 560.0
+rect_min_size = Vector2( 400, 400 )
+
+[node name="Carre" type="CenterContainer" parent="Fenetre/ColorRect"]
+margin_right = 200.0
+margin_bottom = 200.0
+rect_scale = Vector2( 2, 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Liste" type="VBoxContainer" parent="Fenetre/ColorRect/Carre"]
+margin_left = 10.0
+margin_top = 13.0
+margin_right = 190.0
+margin_bottom = 187.0
+
+[node name="Label" type="Label" parent="Fenetre/ColorRect/Carre/Liste"]
+margin_right = 180.0
+margin_bottom = 116.0
+rect_min_size = Vector2( 180, 0 )
+text = "Jeu fait par Jonathan Chiasson, Thierry Nadeau et Jean-Christophe Demers dans le cadre du cours de Jeu 2D 2021.
+
+"
+align = 3
+autowrap = true
+
+[node name="CenterContainer" type="CenterContainer" parent="Fenetre/ColorRect/Carre/Liste"]
+margin_top = 120.0
+margin_right = 180.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 0, 30 )
+
+[node name="Fermer" type="Button" parent="Fenetre/ColorRect/Carre/Liste"]
+margin_top = 154.0
+margin_right = 180.0
+margin_bottom = 174.0
+text = "Fermer"
+
+[connection signal="pressed" from="Fenetre/ColorRect/Carre/Liste/Fermer" to="." method="_on_Fermer_pressed"]

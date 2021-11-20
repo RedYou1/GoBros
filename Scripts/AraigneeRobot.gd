@@ -2,8 +2,11 @@ extends "res://Scripts/Robot.gd"
 
 # Declare member variables here. Examples:
 const balleAraignee = preload("res://Scenes/BalleAraignee.tscn")
-	
+
+#Fonction pour gérer les dégats donnés à apical
+#param sens: sens dans lequel l'araignée tire
 func araignee_tirer(sens):
+	#On tire de manière synchronisée avec l'animation.
 	if self.tir && self.is_on_floor:
 		
 		var balle = balleAraignee.instance()
@@ -31,6 +34,7 @@ func araignee_tirer(sens):
 func _ready():
 	self.tourner(sens)
 
+#Fonction principale
 func _physics_process(delta):
 	self.fonction_detection_blocage()
 	self.fonction_detection_vide()

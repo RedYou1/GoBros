@@ -86,11 +86,6 @@ animations = [ {
 "name": "tirer",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 15 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 23 ), ExtResource( 19 ), ExtResource( 14 ), ExtResource( 22 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
-"loop": true,
-"name": "marcher",
-"speed": 15.0
-}, {
 "frames": [ ExtResource( 57 ), ExtResource( 62 ), ExtResource( 66 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 59 ), ExtResource( 68 ), ExtResource( 64 ), ExtResource( 58 ), ExtResource( 65 ), ExtResource( 67 ), ExtResource( 61 ), ExtResource( 69 ), ExtResource( 60 ), ExtResource( 63 ) ],
 "loop": true,
 "name": "mourir",
@@ -100,14 +95,19 @@ animations = [ {
 "loop": true,
 "name": "sauter",
 "speed": 20.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 23 ), ExtResource( 19 ), ExtResource( 14 ), ExtResource( 22 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "marcher",
+"speed": 15.0
 } ]
 
 [node name="Robot1" instance=ExtResource( 1 )]
 collision_mask = 1
 script = ExtResource( 2 )
-vie_max = 10
+vie_max = 25
 temps_tir = 2.0
-distance_repli = 50
+distance_repli = 150
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2( -1, 0 )
@@ -117,7 +117,7 @@ shape = SubResource( 1 )
 scale = Vector2( 0.12, 0.12 )
 frames = SubResource( 2 )
 animation = "tirer"
-frame = 13
+frame = 15
 
 [node name="DetectionAvant" parent="." index="6"]
 position = Vector2( 0, -8 )

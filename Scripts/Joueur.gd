@@ -12,12 +12,14 @@ var velocite
 var mem_modulate
 const balleScene = preload("res://Scenes/BalleJoueur.tscn")
 
+#Fonction pour gérer l'animation du recovery time
 func gerer_recovery():
 	if in_recovery:
 		self.get_node("AnimatedSprite").modulate.a = 0.5
 	else:
 		self.animation.modulate = mem_modulate
 
+#Fonction qui gère la détection de bloc pour le raycast pour grimper
 func set_detection_bloc():
 	if self.animation.flip_h:
 		detection_bloc.cast_to.x = -10
@@ -31,6 +33,7 @@ func set_detection_bloc():
 	else:
 		bloc_detecte = false
 
+#Fonction d'init
 func _ready():
 	barre_vie = get_node("Camera2D/Node2D/Vie")
 	barre_vie.max_value = self.vie_max
@@ -39,9 +42,11 @@ func _ready():
 	get_node("TimerRecovery").wait_time = recovery_time
 	mem_modulate = self.animation.modulate
 
-
+#Fonction qui gère les impacts donnés au joueur
 func hit(collider, damage):
 	if !in_recovery:
+		#Quand le joueur reçois un impact du groupe sélectionné, il tomber en recovery
+		#et le son pour le hit est enclenché
 		if collider.is_in_group("Robot") && ! self.mort:
 			son_hit = true
 			get_node("SonHit").play()
@@ -60,6 +65,8 @@ func hit(collider, damage):
 			barre_vie.value = vie
 			if vie <= 0:
 				self.mort = true
+		#On met une exception pour les liquides pour que la lave
+		#Fasse des dégats en continu
 		if collider.is_in_group("liquide") && ! self.mort:
 			vie -= damage
 			barre_vie.value = vie

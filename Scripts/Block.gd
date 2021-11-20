@@ -18,8 +18,11 @@ func _physics_process(delta):
 			velocityY += GRAVITY
 			var t = move_and_collide(Vector2(0,velocityY))
 			if t != null:
-				velocityY = 0
-				sleep = true
+				if t.get_collider().is_in_group("Block"):
+					velocityY = 0
+					sleep = true
+				else:
+					unSleep()
 			else:
 				unSleep()
 		else:

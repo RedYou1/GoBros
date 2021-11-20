@@ -30,18 +30,21 @@ wait_time = 0.2
 one_shot = true
 autostart = true
 
-[node name="Mort" type="AudioStreamPlayer" parent="."]
+[node name="Mort" type="AudioStreamPlayer2D" parent="."]
 autoplay = true
 stream_paused = true
+max_distance = 600.0
 
-[node name="SonTir" type="AudioStreamPlayer" parent="."]
-volume_db = -20.0
+[node name="SonTir" type="AudioStreamPlayer2D" parent="."]
+volume_db = -10.0
 autoplay = true
 stream_paused = true
+max_distance = 600.0
 
-[node name="SonHit" type="AudioStreamPlayer" parent="."]
-volume_db = -20.0
+[node name="SonHit" type="AudioStreamPlayer2D" parent="."]
+volume_db = -5.0
 autoplay = true
 stream_paused = true
+max_distance = 600.0
 
 [connection signal="timeout" from="coolDownDeTir" to="." method="_on_coolDownDeTir_timeout"]
