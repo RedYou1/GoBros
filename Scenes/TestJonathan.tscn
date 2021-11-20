@@ -58,10 +58,5 @@ frame = 15
 
 [node name="BackgroundFin" parent="." instance=ExtResource( 4 )]
 
-[node name="Robot3" parent="." groups=[
-"EnemyDeBase",
-"Personnage",
-] instance=ExtResource( 6 )]
+[node name="Robot3" parent="." instance=ExtResource( 6 )]
 position = Vector2( 3143.27, -544.783 )
-collision_layer = 6
-distance_despawn = 1000
