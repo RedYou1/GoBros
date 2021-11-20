@@ -5,7 +5,7 @@
 [ext_resource path="res://Scenes/TileMap.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/BackgroundFin.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/FeuArtifice.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Robot3.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/AraigneeRobot.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/DebutNiveau.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scenes/FinNiveau.tscn" type="PackedScene" id=12]
 
@@ -58,5 +58,10 @@ frame = 15
 
 [node name="BackgroundFin" parent="." instance=ExtResource( 4 )]
 
-[node name="Robot3" parent="." instance=ExtResource( 6 )]
-position = Vector2( 3143.27, -544.783 )
+[node name="AraigneeRobot" parent="." groups=[
+"EnemyDeBase",
+"Personnage",
+] instance=ExtResource( 6 )]
+position = Vector2( 3210.03, -223.453 )
+collision_layer = 6
+distance_despawn = 1000
