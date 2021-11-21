@@ -7,13 +7,16 @@ export(int) var distance_despawn = 10000
 
 var sleep
 var explosion
+var raycast
 var velocityY = 0
 
 func _ready():
 	explosion = get_node("explosion")
+	raycast = get_node("block_above")
 
 func _physics_process(delta):
 	if not sleep:
+		raycast.enabled = false
 		if GRAVITY != 0:
 			velocityY += GRAVITY
 			var t = move_and_collide(Vector2(0,velocityY))
@@ -49,7 +52,7 @@ func _on_explosion_animation_finished():
 
 func unSleep():
 	sleep = false
-	var raycast = get_node("block_above")
+	raycast.enabled = true
 	var col = raycast.get_collider()
 	if col != null and col.is_in_group("Block"):
 		col.unSleep()
