@@ -63,10 +63,13 @@ func _physics_process(delta):
 	velocityY += GRAVITY
 	
 	#On modifie la gravité si le personnage est dans un liquide
-	var vec = Vector2(0,velocityY)
 	if is_in_liquide > 0:
-		vec *= 0.1
-	var t = move_and_collide(vec)
+		if velocityY > 3:
+			velocityY = 3
+		elif velocityY < -12:
+			velocityY = -12
+	
+	var t = move_and_collide(Vector2(0,velocityY))
 	if t != null:
 		is_on_floor = true
 		velocityY = 0

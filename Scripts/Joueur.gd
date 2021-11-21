@@ -74,7 +74,7 @@ func hit(collider, damage):
 				self.mort = true
 
 func tirer(dir_balle):
-		
+	
 	if self.tir:
 		son_tir = true
 		get_node("SonTir").play()
@@ -154,7 +154,7 @@ func _physics_process(delta):
 	if !self.mort:
 		
 		set_animation()
-	
+		
 		if Input.is_action_pressed("DROIT"):
 			collision_mouvement = move_and_collide(Vector2(vitesse,0))
 		
@@ -163,10 +163,10 @@ func _physics_process(delta):
 			
 		if Input.is_action_pressed("HAUT") && bloc_detecte:
 			self.velocityY = -vitesse
-	
+		
 		if Input.is_action_just_pressed("SAUT") and self.is_on_floor:
 			self.velocityY = -15
-	
+		
 		if Input.is_action_pressed("TIRER"):
 			if Input.is_action_pressed("BAS"):
 				tirer("bas")
