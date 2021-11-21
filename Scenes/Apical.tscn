@@ -94,6 +94,8 @@ stream = ExtResource( 6 )
 
 [node name="SonTir" parent="." index="12"]
 stream = ExtResource( 5 )
+volume_db = 0.0
+pitch_scale = 2.0
 
 [node name="SonHit" parent="." index="13"]
 volume_db = -10.0
