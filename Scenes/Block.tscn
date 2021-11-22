@@ -5,7 +5,7 @@
 [ext_resource path="res://Ressources/vacaroxa generic/Enemies/Explosion_Particle.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 15.9375, 15.9145 )
+extents = Vector2( 15.999, 15.999 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 3 )
@@ -49,6 +49,7 @@ animations = [ {
 z_index = -10
 collision_layer = 31
 collision_mask = 31
+collision/safe_margin = 0.001
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -63,7 +64,6 @@ frames = SubResource( 9 )
 frame = 1
 
 [node name="block_above" type="RayCast2D" parent="."]
-enabled = true
 cast_to = Vector2( 0, -32 )
 
 [node name="SonExplosion" type="AudioStreamPlayer2D" parent="."]
