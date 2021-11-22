@@ -33,7 +33,6 @@ message = "Tu as maintenant atteint la dernière étape de ton périple. Descend
 [node name="Ambiance" parent="." index="6"]
 stream = ExtResource( 5 )
 volume_db = 1.0
-autoplay = true
 stream_paused = true
 
 [node name="BackgroundBoss" parent="." index="7" instance=ExtResource( 6 )]

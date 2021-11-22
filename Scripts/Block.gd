@@ -16,18 +16,19 @@ func _ready():
 
 func _physics_process(delta):
 	if not sleep:
-		raycast.enabled = false
 		if GRAVITY != 0 && get_node("DansEcran").is_on_screen():
 			velocityY += GRAVITY
 			var t = move_and_collide(Vector2(0,velocityY))
 			if t != null:
 				velocityY = 0
 				sleep = true
+				raycast.enabled = false
 			else:
 				unSleep()
 			if position.y > distance_despawn:
 				queue_free()
 		else:
+			raycast.enabled = false
 			sleep = true
 
 func hit(from,damage):

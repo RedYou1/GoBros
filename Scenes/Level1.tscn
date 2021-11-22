@@ -38,45 +38,20 @@ __meta__ = {
 [node name="Ambiance" parent="." index="6"]
 stream = ExtResource( 8 )
 
-[node name="Robot2" parent="." index="7" groups=[
-"EnemyDeBase",
-"Personnage",
-] instance=ExtResource( 3 )]
+[node name="Robot2" parent="." index="7" instance=ExtResource( 3 )]
 position = Vector2( 1570, 91 )
-collision_layer = 6
-distance_despawn = 1000
 
-[node name="Robot5" parent="." index="8" groups=[
-"EnemyDeBase",
-"Personnage",
-] instance=ExtResource( 3 )]
+[node name="Robot5" parent="." index="8" instance=ExtResource( 3 )]
 position = Vector2( 7158, -131 )
-collision_layer = 6
-distance_despawn = 1000
 
-[node name="AraigneeRobot" parent="." index="9" groups=[
-"EnemyDeBase",
-"Personnage",
-] instance=ExtResource( 4 )]
+[node name="AraigneeRobot" parent="." index="9" instance=ExtResource( 4 )]
 position = Vector2( 3414.63, -565.495 )
-collision_layer = 6
-distance_despawn = 1000
 
-[node name="Robot1" parent="." index="10" groups=[
-"EnemyDeBase",
-"Personnage",
-] instance=ExtResource( 5 )]
+[node name="Robot1" parent="." index="10" instance=ExtResource( 5 )]
 position = Vector2( 3461.13, -581.9 )
-collision_layer = 6
-distance_despawn = 1000
 
-[node name="Robot3" parent="." index="11" groups=[
-"EnemyDeBase",
-"Personnage",
-] instance=ExtResource( 6 )]
+[node name="Robot3" parent="." index="11" instance=ExtResource( 6 )]
 position = Vector2( 4752.75, -87.4532 )
-collision_layer = 6
-distance_despawn = 1000
 
 [node name="Label2" type="Label" parent="." index="12"]
 margin_left = -1292.16
@@ -92,10 +67,5 @@ __meta__ = {
 
 [node name="Background2" parent="." index="13" instance=ExtResource( 7 )]
 
-[node name="Robot4" parent="." index="14" groups=[
-"EnemyDeBase",
-"Personnage",
-] instance=ExtResource( 3 )]
+[node name="Robot4" parent="." index="14" instance=ExtResource( 3 )]
 position = Vector2( 6728.07, -85.5262 )
-collision_layer = 6
-distance_despawn = 1000
