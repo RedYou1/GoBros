@@ -27,7 +27,7 @@ func araignee_tirer(sens):
 		elif self.animation.frame == 59:
 			son_tir = false
 			self.tir = false
-			self.animation.animation = "idle"
+			self.immobile()
 			self.cooldownDeTir.start(temps_tir)
 
 # Called when the node enters the scene tree for the first time.

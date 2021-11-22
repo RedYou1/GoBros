@@ -87,7 +87,7 @@ func _physics_process(delta):
 	#On gère les différents sont du personnage
 	if son_tir:
 		get_node("SonTir").stream_paused = false
-		if get_node("SonTir").get_playback_position() >= temps_tir || get_node("SonTir").get_playback_position() >= get_node("SonTir").stream.get_length() - 0.02:
+		if get_node("SonTir").get_playback_position() >= temps_tir || get_node("SonTir").get_playback_position() >= get_node("SonTir").stream.get_length() - 0.05:
 			son_tir = false
 	else:
 		get_node("SonTir").stream_paused = true

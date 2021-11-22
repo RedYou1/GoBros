@@ -5,7 +5,7 @@
 [ext_resource path="res://Scenes/TileMap.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/BackgroundFin.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/FeuArtifice.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Robot3.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/AraigneeRobot.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/DebutNiveau.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scenes/FinNiveau.tscn" type="PackedScene" id=12]
 
@@ -19,7 +19,7 @@ tile_data = PoolIntArray( -3538702, 5, 0, -3538701, 5, 0, -3538700, 5, 0, -35386
 
 [node name="Mob_Tutoriel" parent="." instance=ExtResource( 2 )]
 position = Vector2( -508.503, -1618.76 )
-message = "Par là c'est du suicide."
+message = "Par l�  c'est du suicide."
 
 [node name="Mob_Tutoriel2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 7781.22, -1746.42 )
@@ -31,7 +31,7 @@ message = "Bienvenue dans le jeu. Je m'appelle Apical, et je t'accompagnerai pou
 
 [node name="Mob_Tutoriel4" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1095.89, -150.666 )
-message = "Saute pour passer les obstacles. Tu peux aussi grimper en appuyant sur HAUT. Sinon, tu peux toujours te frayer un chemin... à coup de fusil..."
+message = "Saute pour passer les obstacles. Tu peux aussi grimper en appuyant sur HAUT. Sinon, tu peux toujours te frayer un chemin... �  coup de fusil..."
 
 [node name="Mob_Tutoriel5" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1727.91, -178.855 )
@@ -39,7 +39,7 @@ message = "Oui, je me téléporte. Ne pose pas de question. Un premier ennemi t'
 
 [node name="Mob_Tutoriel6" parent="." instance=ExtResource( 2 )]
 position = Vector2( 3522.74, -180.631 )
-message = "Félicitations! Tu as vaincu ton premier ennemi. Tu peux maintenant poursuivre ta route jusqu'à la fin."
+message = "Félicitations! Tu as vaincu ton premier ennemi. Tu peux maintenant poursuivre ta route jusqu'�  la fin."
 
 [node name="DebutNiveau" parent="." instance=ExtResource( 11 )]
 position = Vector2( -35.3115, -338.434 )
@@ -58,5 +58,10 @@ frame = 15
 
 [node name="BackgroundFin" parent="." instance=ExtResource( 4 )]
 
-[node name="Robot3" parent="." instance=ExtResource( 6 )]
-position = Vector2( 3143.27, -544.783 )
+[node name="AraigneeRobot" parent="." groups=[
+"EnemyDeBase",
+"Personnage",
+] instance=ExtResource( 6 )]
+position = Vector2( 3210.03, -223.453 )
+collision_layer = 6
+distance_despawn = 1000
