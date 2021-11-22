@@ -8,6 +8,7 @@ var delay
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#On défnit un délai en random pour décaler les feux d'Artifices les uns des autres
 	visible = false
 	rng.randomize()
 	delay = rng.randf_range(0, 3)

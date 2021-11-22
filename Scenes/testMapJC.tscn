@@ -122,22 +122,12 @@ script = ExtResource( 4 )
 
 [node name="Joueur" parent="." instance=ExtResource( 3 )]
 position = Vector2( -170.646, 150.009 )
-distance_despawn = 10000
 
-[node name="AraigneeRobot" parent="." groups=[
-"EnemyDeBase",
-] instance=ExtResource( 10 )]
+[node name="AraigneeRobot" parent="." instance=ExtResource( 10 )]
 position = Vector2( -931.768, 163.649 )
-collision_layer = 6
 
-[node name="Robot1" parent="." groups=[
-"EnemyDeBase",
-] instance=ExtResource( 8 )]
+[node name="Robot1" parent="." instance=ExtResource( 8 )]
 position = Vector2( 487.819, 124.007 )
-collision_layer = 6
 
-[node name="Robot2" parent="." groups=[
-"EnemyDeBase",
-] instance=ExtResource( 9 )]
+[node name="Robot2" parent="." instance=ExtResource( 9 )]
 position = Vector2( 1171.18, 239.159 )
-collision_layer = 6

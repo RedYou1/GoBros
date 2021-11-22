@@ -11,6 +11,7 @@ func _ready():
 
 
 func _physics_process(delta):
+	#On arrête le son de game over quand il arrive au bout de sa durée
 	if get_node("Son").get_playback_position() >= get_node("Son").stream.get_length() - 0.05:
 		get_node("Son").stream_paused = true
 
