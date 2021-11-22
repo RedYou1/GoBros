@@ -2,8 +2,6 @@ extends "res://Scripts/Robot.gd"
 
 
 # Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -12,4 +10,23 @@ func _ready():
 
 
 func _physics_process(delta):
-	self.robot_tirer(self.sens)
+	self.fonction_detection_vide()
+	self.fonction_detection_blocage()
+	
+	if self.detection_joueur && !self.mort:
+		if self.tir:
+			self.tourner_vers_joueur()
+			self.robot_tirer(self.sens)
+		else:
+			self.robot_suivre_joueur()
+	elif !self.mort:
+		self.robot_bouger_standard()
+		
+
+
+func _on_TimerBouger_timeout():
+	if !self.detection_joueur && !self.mort:
+		if self.sens:
+			self.sens = false
+		else:
+			self.sens = true

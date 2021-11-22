@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Balle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Ressources/Balles/Balle joueur/01.png" type="Texture" id=2]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 0.0
+} ]
+
+[node name="BalleJoueur" instance=ExtResource( 1 )]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2( -3.90079, 0 )
+frames = SubResource( 1 )
