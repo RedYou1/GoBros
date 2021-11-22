@@ -181,7 +181,6 @@ func fonction_detection_vide():
 	if get_node("DetectionVide").get_collider() && self.is_on_floor:
 		if get_node("DetectionVide").get_collider().is_in_group("Block"):
 			detection_vide = false
-			get_node("TimerDetectionVide").stop()
 		else:
 			get_node("TimerDetectionVide").start()
 	else:

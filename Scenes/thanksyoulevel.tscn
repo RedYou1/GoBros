@@ -16,7 +16,6 @@ tile_data = PoolIntArray( -327695, 6, 0, -327694, 6, 0, -327693, 6, 0, -327692, 
 
 [node name="Ambiance" parent="." index="4"]
 stream = ExtResource( 4 )
-autoplay = true
 
 [node name="Label" type="Label" parent="." index="5"]
 margin_left = 386.704
