@@ -2,9 +2,11 @@ extends "res://Scripts/Robot.gd"
 
 # Declare member variables here. Examples:
 const balleAraignee = preload("res://Scenes/BalleAraignee.tscn")
-export (float) var vitesse_course = 1.5
-	
+
+#Fonction pour gérer les dégats donnés à apical
+#param sens: sens dans lequel l'araignée tire
 func araignee_tirer(sens):
+	#On tire de manière synchronisée avec l'animation.
 	if self.tir && self.is_on_floor:
 		
 		var balle = balleAraignee.instance()
@@ -19,16 +21,20 @@ func araignee_tirer(sens):
 			self.animation.animation = "tirer"
 			self.animation.frame = 0
 		elif self.animation.frame == 28:
+			son_tir = true
+			get_node("SonTir").play()
 			get_parent().add_child(balle)
 		elif self.animation.frame == 59:
+			son_tir = false
 			self.tir = false
-			self.animation.animation = "idle"
+			self.immobile()
 			self.cooldownDeTir.start(temps_tir)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.tourner(sens)
 
+#Fonction principale
 func _physics_process(delta):
 	self.fonction_detection_blocage()
 	self.fonction_detection_vide()

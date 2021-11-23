@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/Robot.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/EnemyDeBase.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Ressources/sons/tir.mp3" type="AudioStream" id=3]
 
 [node name="Robot" groups=[
 "Robot",
@@ -47,4 +48,11 @@ position = Vector2( 0, -25 )
 enabled = true
 cast_to = Vector2( 10, 0 )
 
+[node name="SonTir" parent="." index="16"]
+stream = ExtResource( 3 )
+
+[node name="TimerDetectionVide" type="Timer" parent="." index="18"]
+wait_time = 0.02
+
 [connection signal="timeout" from="TimerBouger" to="." method="_on_TimerBouger_timeout"]
+[connection signal="timeout" from="TimerDetectionVide" to="." method="_on_TimerDetectionVide_timeout"]

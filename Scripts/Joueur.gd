@@ -12,13 +12,14 @@ var velocite
 var mem_modulate
 const balleScene = preload("res://Scenes/BalleJoueur.tscn")
 
-
+#Fonction pour gérer l'animation du recovery time
 func gerer_recovery():
 	if in_recovery:
 		self.get_node("AnimatedSprite").modulate.a = 0.5
 	else:
 		self.animation.modulate = mem_modulate
 
+#Fonction qui gère la détection de bloc pour le raycast pour grimper
 func set_detection_bloc():
 	if self.animation.flip_h:
 		detection_bloc.cast_to.x = -10
@@ -32,6 +33,7 @@ func set_detection_bloc():
 	else:
 		bloc_detecte = false
 
+#Fonction d'init
 func _ready():
 	barre_vie = get_node("Camera2D/Node2D/Vie")
 	barre_vie.max_value = self.vie_max
@@ -40,11 +42,14 @@ func _ready():
 	get_node("TimerRecovery").wait_time = recovery_time
 	mem_modulate = self.animation.modulate
 
-
+#Fonction qui gère les impacts donnés au joueur
 func hit(collider, damage):
-	print(collider.name)
 	if !in_recovery:
+		#Quand le joueur reçois un impact du groupe sélectionné, il tomber en recovery
+		#et le son pour le hit est enclenché
 		if collider.is_in_group("Robot") && ! self.mort:
+			son_hit = true
+			get_node("SonHit").play()
 			in_recovery = true
 			get_node("TimerRecovery").start()
 			vie -= damage
@@ -52,16 +57,27 @@ func hit(collider, damage):
 			if vie <= 0:
 				self.mort = true
 		if collider.is_in_group("Balle") && ! self.mort:
+			son_hit = true
+			get_node("SonHit").play()
 			in_recovery = true
 			get_node("TimerRecovery").start()
 			vie -= damage
 			barre_vie.value = vie
 			if vie <= 0:
 				self.mort = true
+		#On met une exception pour les liquides pour que la lave
+		#Fasse des dégats en continu
+		if collider.is_in_group("liquide") && ! self.mort:
+			vie -= damage
+			barre_vie.value = vie
+			if vie <= 0:
+				self.mort = true
 
 func tirer(dir_balle):
-		
+	
 	if self.tir:
+		son_tir = true
+		get_node("SonTir").play()
 		var balle = self.balleScene.instance()
 		
 		if dir_balle == "haut":
@@ -130,9 +146,7 @@ func gestion_collision():
 				get_node("TimerRecovery").start()
 				vie -= damage
 				barre_vie.value = vie
-				if vie <= 0:
-					self.mort = true
-					
+				
 func _physics_process(delta):
 	set_detection_bloc()
 	gerer_recovery()
@@ -140,7 +154,7 @@ func _physics_process(delta):
 	if !self.mort:
 		
 		set_animation()
-	
+		
 		if Input.is_action_pressed("DROIT"):
 			collision_mouvement = move_and_collide(Vector2(vitesse,0))
 		
@@ -149,10 +163,10 @@ func _physics_process(delta):
 			
 		if Input.is_action_pressed("HAUT") && bloc_detecte:
 			self.velocityY = -vitesse
-	
+		
 		if Input.is_action_just_pressed("SAUT") and self.is_on_floor:
 			self.velocityY = -15
-	
+		
 		if Input.is_action_pressed("TIRER"):
 			if Input.is_action_pressed("BAS"):
 				tirer("bas")
