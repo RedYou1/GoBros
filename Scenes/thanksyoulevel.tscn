@@ -8,7 +8,7 @@
 [node name="Niveau" instance=ExtResource( 1 )]
 
 [node name="FinNiveau" parent="." index="2"]
-position = Vector2( 5263.24, -35.3117 )
+position = Vector2( 5270.37, -10.3665 )
 scene_prochain_niveau = "res://Scenes/Menu.tscn"
 
 [node name="TileMap" parent="." index="3"]
