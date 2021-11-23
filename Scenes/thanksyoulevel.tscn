@@ -63,3 +63,13 @@ __meta__ = {
 }
 
 [node name="BackgroundFin" parent="." index="10" instance=ExtResource( 5 )]
+
+[node name="Label5" type="Label" parent="." index="11"]
+margin_left = 3442.43
+margin_top = -73.0537
+margin_right = 3509.43
+margin_bottom = -34.0537
+text = "Elle est bonne la musique ?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
