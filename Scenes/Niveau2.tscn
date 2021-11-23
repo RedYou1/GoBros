@@ -8,7 +8,7 @@
 [ext_resource path="res://Scenes/Robot1.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Background3.tscn" type="PackedScene" id=7]
 
-[node name="Niveau" instance=ExtResource( 1 )]
+[node name="Niveau2" instance=ExtResource( 1 )]
 
 [node name="Joueur" parent="." index="0"]
 position = Vector2( 160.06, -49.4695 )
