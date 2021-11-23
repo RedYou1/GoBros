@@ -1,3 +1,6 @@
+#Le bloc va tomber jusqu'à tant qu'il ne puisse plus, alors il se mettra à dormir jusqu'à tant qu'il se fasse réveiller.
+#Les blocs réveillent les autres d'au-dessus lorsqu'il se met à tomber ou lorsqu'il se fait détruire.
+
 extends KinematicBody2D
 
 
@@ -12,7 +15,7 @@ var velocityY = 0
 
 func _ready():
 	explosion = get_node("explosion")
-	raycast = get_node("block_above")
+	raycast = get_node("bloc_above")
 
 func _physics_process(delta):
 	if not sleep:
@@ -30,6 +33,8 @@ func _physics_process(delta):
 		else:
 			sleep = true
 
+#Fait perdre de la vie et se détruit lorsqu'il en n'a plus.
+#Lorsqu'il se détruit, réveille celui d'au-dessus et joue une animation.
 func hit(from,damage):
 	vie -= damage
 	if vie <= 0:
@@ -48,6 +53,7 @@ func hit(from,damage):
 func _on_explosion_animation_finished():
 	queue_free()
 
+#Réveille le bloc et réveille celui d'au-dessus s'il y en a.
 func unSleep():
 	sleep = false
 	raycast.enabled = true

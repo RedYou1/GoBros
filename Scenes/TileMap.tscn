@@ -5,7 +5,7 @@
 [ext_resource path="res://Ressources/Minecraft/grass_block_side.png" type="Texture" id=3]
 [ext_resource path="res://Ressources/vacaroxa generic/Assets_area_2/tileset/tiles_out.png" type="Texture" id=4]
 [ext_resource path="res://Ressources/Minecraft/dirt.png" type="Texture" id=5]
-[ext_resource path="res://Scripts/MapGenerator.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/GenerateurDeMap.gd" type="Script" id=6]
 [ext_resource path="res://Ressources/Minecraft/lava_still.png" type="Texture" id=7]
 [ext_resource path="res://Ressources/Minecraft/water_flow.png" type="Texture" id=8]
 [ext_resource path="res://Ressources/Minecraft/SansGravite.png" type="Texture" id=9]
