@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/musictuto.mp3-e167637187b639894e415fd05f79bdb7.mp3str"
+
+[deps]
+
+source_file="res://Ressources/sons/musictuto.mp3"
+dest_files=[ "res://.import/musictuto.mp3-e167637187b639894e415fd05f79bdb7.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
