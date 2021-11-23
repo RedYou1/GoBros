@@ -1,9 +1,0 @@
-[gd_scene format=2]
-
-[node name="DebutNiveau" type="ColorRect"]
-modulate = Color( 0, 0, 0, 0.588235 )
-margin_right = 200.0
-margin_bottom = 200.0
-__meta__ = {
-"_edit_use_anchors_": false
-}

@@ -1,6 +1,10 @@
+#Prends toutes les cellules et instancie un bloc avec son image à sa position.
+
 extends TileMap
 
-const block = preload("res://Scenes/Block.tscn")
+const block = preload("res://Scenes/Bloc.tscn")
+
+#Les exceptions
 const blocks = {
 	"0": preload("res://Scenes/Fond.tscn"),
 	"7": preload("res://Scenes/Lave.tscn"),
