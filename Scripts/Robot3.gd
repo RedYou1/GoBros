@@ -66,6 +66,7 @@ func _physics_process(delta):
 			self.tourner_vers_joueur()
 		dash(delta)
 	elif !self.mort:
+		self.vitesse_ennemi = mem_val_vitesse
 		self.animation.modulate.r = mem_modulate_r
 		self.robot_bouger_standard()
 	

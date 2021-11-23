@@ -39,6 +39,7 @@ func hit(from,damage):
 	vie -= damage
 	if vie <= 0:
 		get_node("Sprite").visible = false
+		GRAVITY = 0
 		get_node("CollisionShape2D").disabled = true
 		get_node("SonExplosion").play()
 		explosion.visible = true

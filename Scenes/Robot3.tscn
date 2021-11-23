@@ -122,7 +122,7 @@ shape = SubResource( 1 )
 scale = Vector2( 0.12, 0.12 )
 frames = SubResource( 2 )
 animation = "idle"
-frame = 4
+frame = 6
 
 [node name="DetectionAvant" parent="." index="6"]
 position = Vector2( 3, -10 )
@@ -145,6 +145,7 @@ one_shot = false
 
 [node name="SonDash" type="AudioStreamPlayer" parent="." index="20"]
 stream = ExtResource( 70 )
+volume_db = -10.0
 autoplay = true
 stream_paused = true
 
