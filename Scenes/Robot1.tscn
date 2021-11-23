@@ -86,9 +86,9 @@ animations = [ {
 "name": "tirer",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 57 ), ExtResource( 62 ), ExtResource( 66 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 59 ), ExtResource( 68 ), ExtResource( 64 ), ExtResource( 58 ), ExtResource( 65 ), ExtResource( 67 ), ExtResource( 61 ), ExtResource( 69 ), ExtResource( 60 ), ExtResource( 63 ) ],
+"frames": [ ExtResource( 15 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 23 ), ExtResource( 19 ), ExtResource( 14 ), ExtResource( 22 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
 "loop": true,
-"name": "mourir",
+"name": "marcher",
 "speed": 15.0
 }, {
 "frames": [ ExtResource( 26 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 35 ), ExtResource( 34 ), ExtResource( 24 ), ExtResource( 27 ), ExtResource( 30 ), ExtResource( 25 ), ExtResource( 33 ), ExtResource( 36 ), ExtResource( 31 ), ExtResource( 32 ) ],
@@ -96,9 +96,9 @@ animations = [ {
 "name": "sauter",
 "speed": 20.0
 }, {
-"frames": [ ExtResource( 15 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 23 ), ExtResource( 19 ), ExtResource( 14 ), ExtResource( 22 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
+"frames": [ ExtResource( 57 ), ExtResource( 62 ), ExtResource( 66 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 59 ), ExtResource( 68 ), ExtResource( 64 ), ExtResource( 58 ), ExtResource( 65 ), ExtResource( 67 ), ExtResource( 61 ), ExtResource( 69 ), ExtResource( 60 ), ExtResource( 63 ) ],
 "loop": true,
-"name": "marcher",
+"name": "mourir",
 "speed": 15.0
 } ]
 
@@ -106,6 +106,7 @@ animations = [ {
 collision_mask = 1
 script = ExtResource( 2 )
 vie_max = 25
+distance_despawn = 10000
 temps_tir = 2.0
 distance_repli = 150
 
@@ -117,7 +118,6 @@ shape = SubResource( 1 )
 scale = Vector2( 0.12, 0.12 )
 frames = SubResource( 2 )
 animation = "tirer"
-frame = 13
 
 [node name="DetectionAvant" parent="." index="6"]
 position = Vector2( 0, -8 )
