@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/Background.gd" type="Script" id=2]
+
+[node name="Background" type="ParallaxBackground"]
+script = ExtResource( 2 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+z_index = -50
+motion_scale = Vector2( 0.5, 0 )
+
+[node name="Back1" type="TextureRect" parent="ParallaxLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

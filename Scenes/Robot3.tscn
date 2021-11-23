@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://Scenes/Robot.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Robot3.gd" type="Script" id=2]
@@ -54,6 +54,22 @@
 [ext_resource path="res://Ressources/Robot3/03_Walk/Walk_000.png" type="Texture" id=52]
 [ext_resource path="res://Ressources/Robot3/03_Walk/Walk_002.png" type="Texture" id=53]
 [ext_resource path="res://Ressources/Robot3/03_Walk/Walk_003.png" type="Texture" id=54]
+[ext_resource path="res://Ressources/Robot3/13_Death/Death_004.png" type="Texture" id=55]
+[ext_resource path="res://Ressources/Robot3/13_Death/Death_000.png" type="Texture" id=56]
+[ext_resource path="res://Ressources/Robot3/13_Death/Death_005.png" type="Texture" id=57]
+[ext_resource path="res://Ressources/Robot3/13_Death/Death_001.png" type="Texture" id=58]
+[ext_resource path="res://Ressources/Robot3/13_Death/Death_006.png" type="Texture" id=59]
+[ext_resource path="res://Ressources/Robot3/13_Death/Death_007.png" type="Texture" id=60]
+[ext_resource path="res://Ressources/Robot3/13_Death/Death_008.png" type="Texture" id=61]
+[ext_resource path="res://Ressources/Robot3/13_Death/Death_009.png" type="Texture" id=62]
+[ext_resource path="res://Ressources/Robot3/13_Death/Death_010.png" type="Texture" id=63]
+[ext_resource path="res://Ressources/Robot3/13_Death/Death_011.png" type="Texture" id=64]
+[ext_resource path="res://Ressources/Robot3/13_Death/Death_012.png" type="Texture" id=65]
+[ext_resource path="res://Ressources/Robot3/13_Death/Death_013.png" type="Texture" id=66]
+[ext_resource path="res://Ressources/Robot3/13_Death/Death_014.png" type="Texture" id=67]
+[ext_resource path="res://Ressources/Robot3/13_Death/Death_002.png" type="Texture" id=68]
+[ext_resource path="res://Ressources/Robot3/13_Death/Death_003.png" type="Texture" id=69]
+[ext_resource path="res://Ressources/sons/Sonic The Hedgehog Spin Dash Sound Effect (1).mp3" type="AudioStream" id=70]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 11.1055
@@ -80,18 +96,58 @@ animations = [ {
 "loop": true,
 "name": "sauter",
 "speed": 20.0
+}, {
+"frames": [ ExtResource( 56 ), ExtResource( 58 ), ExtResource( 68 ), ExtResource( 69 ), ExtResource( 55 ), ExtResource( 57 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 62 ), ExtResource( 63 ), ExtResource( 64 ), ExtResource( 65 ), ExtResource( 66 ), ExtResource( 67 ) ],
+"loop": true,
+"name": "mourir",
+"speed": 15.0
 } ]
 
 [node name="Robot3" instance=ExtResource( 1 )]
+collision_mask = 1
 script = ExtResource( 2 )
-ajustement_saut = 0
-ajustement_marche = 0
+vie_max = 30
+distance_despawn = 10000
+temps_tir = 2.0
+distance_detection = 100
+damage = 3
+vitesse_dash = 20
+temps_du_dash = 0.2
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2( -1, 0 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" parent="." index="1"]
+scale = Vector2( 0.12, 0.12 )
 frames = SubResource( 2 )
 animation = "idle"
 frame = 6
+
+[node name="DetectionAvant" parent="." index="6"]
+position = Vector2( 3, -10 )
+collision_mask = 1
+collide_with_areas = false
+
+[node name="TimerDash" type="Timer" parent="." index="8"]
+wait_time = 3.0
+one_shot = true
+
+[node name="TimerDureeDash" type="Timer" parent="." index="9"]
+wait_time = 0.1
+one_shot = true
+
+[node name="TimerBouger" parent="." index="13"]
+wait_time = 3.0
+
+[node name="TimerDetectionJoueur" parent="." index="14"]
+one_shot = false
+
+[node name="SonDash" type="AudioStreamPlayer" parent="." index="20"]
+stream = ExtResource( 70 )
+volume_db = -10.0
+autoplay = true
+stream_paused = true
+
+[connection signal="timeout" from="TimerDash" to="." method="_on_TimerDash_timeout"]
+[connection signal="timeout" from="TimerDureeDash" to="." method="_on_TimerDureeDash_timeout"]

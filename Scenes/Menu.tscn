@@ -1,63 +1,89 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/menu.gd" type="Script" id=1]
 [ext_resource path="res://Ressources/image/logo.png" type="Texture" id=2]
 [ext_resource path="res://Ressources/image/background.jpg" type="Texture" id=3]
+[ext_resource path="res://Scenes/Controles.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Crédits.tscn" type="PackedScene" id=5]
 
 [node name="Control" type="Control"]
 anchor_left = 0.122
 anchor_top = 0.282
 anchor_right = 0.122
 anchor_bottom = 0.282
-margin_left = 55.072
-margin_top = 93.8
-margin_right = 89.072
-margin_bottom = 142.8
+margin_left = -156.16
+margin_top = -203.04
+margin_right = 1129.84
+margin_bottom = 519.96
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchor_left = -0.385
-anchor_right = -0.385
-margin_left = 184.985
-margin_top = 66.3177
-margin_right = 446.985
-margin_bottom = 246.318
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button" type="Button" parent="VBoxContainer"]
-margin_right = 262.0
-margin_bottom = 20.0
-focus_neighbour_top = NodePath("../Button3")
-text = "Jouer"
-
-[node name="Button2" type="Button" parent="VBoxContainer"]
-margin_top = 24.0
-margin_right = 262.0
-margin_bottom = 44.0
-text = "Credits"
-
-[node name="Button3" type="Button" parent="VBoxContainer"]
-margin_top = 48.0
-margin_right = 262.0
-margin_bottom = 68.0
-focus_neighbour_bottom = NodePath("../Button")
-text = "Quitter"
-
-[node name="Background" type="Sprite" parent="."]
-position = Vector2( 329.638, 34.0434 )
-scale = Vector2( 0.562638, 0.530537 )
-z_index = -3
-texture = ExtResource( 3 )
-
 [node name="Sprite2" type="Sprite" parent="."]
-position = Vector2( 301.475, -87.5071 )
+position = Vector2( 640, 141 )
 scale = Vector2( 0.362982, 0.313638 )
 z_index = -2
 texture = ExtResource( 2 )
 
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_Button_pressed"]
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 640.0
+margin_bottom = 360.0
+rect_scale = Vector2( 2, 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 283.0
+margin_top = 134.0
+margin_right = 356.0
+margin_bottom = 226.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_right = 73.0
+margin_bottom = 20.0
+focus_neighbour_top = NodePath("../Button3")
+text = "Jouer"
+
+[node name="Button4" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 73.0
+margin_bottom = 44.0
+text = "Contrôles"
+
+[node name="Button2" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 48.0
+margin_right = 73.0
+margin_bottom = 68.0
+text = "Credits"
+
+[node name="Button3" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 72.0
+margin_right = 73.0
+margin_bottom = 92.0
+focus_neighbour_bottom = NodePath("../Button")
+text = "Quitter"
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 647.54, 360.168 )
+scale = Vector2( 0.739723, 0.681083 )
+z_index = -3
+texture = ExtResource( 3 )
+
+[node name="Controles" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="Crédits" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button4" to="." method="_on_Button4_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button3" to="." method="_on_Button3_pressed"]

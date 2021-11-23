@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/tir.mp3-c27f8a4bc14067444697c211e97d0d4b.mp3str"
+
+[deps]
+
+source_file="res://Ressources/sons/tir.mp3"
+dest_files=[ "res://.import/tir.mp3-c27f8a4bc14067444697c211e97d0d4b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
